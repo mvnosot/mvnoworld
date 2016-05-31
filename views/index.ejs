@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="signin.css" rel="stylesheet">
+
+  <script type="text/javascript">
+      var confirmCheck = false;
+    
+      function authSendOnclick() {
+        alert("전송하였습니다.");
+        document.getElementById("btnConfirm").disabled = false;
+      }
+      
+      function authConfirmOnclick() {
+        confirmCheck = true;
+        alert("인증 확인!!");
+      }
+      
+      function loginSubmit() {
+        if(confirmCheck) {
+          return true;
+          
+        }else {
+          alert("인증하세요:D");
+          return false;  
+        }
+      }
+      
+      /**
+      document.getElementById("confirmButton").addEventListener("click", function() {
+        confirmCheck = true;
+        alert("인증 확인!!");
+      });
+      
+      document.getElementById("loginButton").addEventListener("click", function() {
+        
+        if(confirmCheck) {
+          this.submit();
+          
+        }else {
+          alert("인증하세요:D");
+        }
+      });
+      */
+  </script>
+  
+</head>
+
+<body>
+  
+  <div class="container">
+  
+    <form class="form-signin" action="/login" method="post" onSubmit="return loginSubmit()">
+    <h2 class="form-signin-heading">MVNO ROOM</h2>
+      <label for="inputPN">Phone Number</label>
+      <input type="text" id="inputPN" class="form-control" placeholder="EX) 01098761111" required autofocus>
+      <label for="inputBirth">Birthday</label>
+      <input type="text" id="inputBirth" class="form-control" placeholder="EX) 820805" required>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="inputAuth">Auth Number</label>
+        <input type="text" id="inputAuth" class="form-control" required>
+        <button type="button" class="btn btn-primary" onclick="authSendOnclick()">Send</button>
+        <button type="button" class="btn btn-success" disabled=true onclick="authConfirmOnclick()" id="btnConfirm">Confirm</button>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+    
+  </div> <!-- /container -->
+
+</body>
+</html>
