@@ -1,5 +1,5 @@
 {
-  "name": "workspace",
+  "name": "mvnoworld",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -13,6 +13,21 @@
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
-    "ejs" : "*"
-  }
+    "ejs": "*"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mvnosot/mvnoworld.git"
+  },
+  "keywords": [
+    "mvno"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mvnosot/mvnoworld/issues"
+  },
+  "homepage": "https://github.com/mvnosot/mvnoworld#readme",
+  "description": ""
 }
