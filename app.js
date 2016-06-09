@@ -46,6 +46,8 @@ app.use(bodyParser.json());
 
 // Configure router
 var router = require('./routes')(app, User);
+//20160602 wonk777
+var router_cust = require('./routes/cust_info/custInfo')(app, User);
 
 // Run server
 var port = process.env.PORT || '3000';
