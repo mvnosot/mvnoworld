@@ -33,5 +33,10 @@ module.exports = function(app, User) {
     app.get('/cust_info', function(req, res) {
       res.render('cust_info/custInfoView', { title: 'MVNO ROOM' });
     });
+
+    /* GET home page. */
+    app.get('/cust_info/vas_list', function(req, res) {
+      res.render('cust_info/custInfoVasList', { title: 'MVNO ROOM' });
+    });
     
 }
