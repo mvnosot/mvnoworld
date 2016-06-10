@@ -24,6 +24,8 @@ mongoose.connect("mongodb://scott:tiger@ds019633.mlab.com:19633/mvnoworld");
 
 // load models
 var User = require('./models/user');
+//20160609 load prod models
+var Prod = require('./models/prod');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -48,6 +50,8 @@ app.use(bodyParser.json());
 var router = require('./routes')(app, User);
 //20160602 wonk777
 var router_cust = require('./routes/cust_info/custInfo')(app, User);
+//20160609 pyangru
+var router_prod = require('./routes/prod_chg/prodChg')(app, User, Prod);
 
 // Run server
 var port = process.env.PORT || '3000';
