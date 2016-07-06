@@ -8,12 +8,27 @@ module.exports = function(app, User) {
     });
     
     /* GET Login */
-    app.get('/api/login', function(req, res) {
-        User.findOne({phone_number: req.body.inputPN, birthday : req.body.inputBirth}
-            , function(err, books){
-                if(err) return res.status(500).send({error: 'database failure'});
-                res.json(books);
-            })
+    app.get('/login', function(req, res) {
+        // User.findOne({phone_number: req.body.inputPN, birthday : req.body.inputBirth}
+        //     , function(err, books){
+        //         if(err) return res.status(500).send({error: 'database failure'});
+        //         res.json(books);
+        //     })
+        
+        res.render('main');
+        
+    });
+    
+    /* POST Login */
+    app.post('/login', function(req, res) {
+        // User.findOne({phone_number: req.body.inputPN, birthday : req.body.inputBirth}
+        //     , function(err, books){
+        //         if(err) return res.status(500).send({error: 'database failure'});
+        //         res.json(books);
+        //     })
+        
+        res.render('main');
+        
     });
 /**
     // todo get

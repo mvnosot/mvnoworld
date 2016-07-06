@@ -11,7 +11,7 @@
 
   <style>
       .container {
-        background-color: #FFFFCC;
+        //background-color: #FFFFCC;
       }
       
       .row {
@@ -37,8 +37,10 @@
           return true;
           
         }else {
-          alert("인증하세요:D");
-          return false;  
+          return true; /// TEST
+          
+          // alert("인증하세요:D");
+          // return false;  
         }
       }
       
@@ -69,7 +71,7 @@
       <div class="col-xs-10 col-sm-9">
         
         <form class="form-signin" action="/login" method="post" onSubmit="return loginSubmit()">
-        <h2 class="form-signin-heading">MVNO ROOM</h2>
+        <h2 class="form-signin-heading">MVNO WORLD</h2>
           <label for="inputPN">Phone Number</label>
           <input type="text" name="inputPN" class="form-control" placeholder="EX) 01098761111" required autofocus>
           <label for="inputBirth">Birthday</label>

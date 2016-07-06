@@ -1,0 +1,161 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../public/stylesheets/test.css" rel="stylesheet" type="text/css">
+    <style>
+      .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+          width: 50%;
+          height: 300px;
+          }
+        .navbar {
+          background-color: #ffffff; /* yello */
+        }
+
+        .navbar-brand {
+          color : #ffffff;
+        }
+      
+		body, html {
+  			width: 100%;
+		}
+      
+        #mainDiv{ 
+          /*width:100%;*/
+          height:350px;
+          background-size:cover; 
+          background-image:url('./main_sktelink2.png'); 
+        }
+
+        #menuDiv{
+          /*width:100%;*/
+          margin-bottom: 0.5%; 
+          margin-top: 1%;
+          margin-left: 0.5%;
+          margin-right: 0.5%;
+          height:30%;
+          background-color:#ffffff;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">SKT MVNO WORLD</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">Contacts</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12" id="mainDiv"></div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse1">나의 사용량 조회</a>
+              </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <h4>
+                      <span class="label label-info">Data</span>
+                    </h4>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                    </div>
+                  </div>
+                  <div class="col-xs-4">
+                    <h4>
+                      <span class="label label-warning">Voice call</span>
+                    </h4>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                    </div>
+                  </div>
+                  <div class="col-xs-4">
+                    <h4>
+                      <span class="label label-danger">SMS/MMS</span>
+                    </h4>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="carousel-example" data-interval="5000" class="carousel slide"
+            data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example" data-slide-to="1" class=""></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="item active">
+                  <img src="./pic_evnet.jpg">
+                </div>
+                <div class="item">
+                  <img src="./pic_gold_num.jpg">
+                </div>
+              </div>
+              <a class="left carousel-control" href="#carousel-example" data-slide="prev"><i class="icon-prev  fa fa-angle-left"></i></a>
+              <a class="right carousel-control" href="#carousel-example" data-slide="next"><i class="icon-next fa fa-angle-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="section section-primary">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p class="">Contact us</p>
+            <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+            <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+            <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+            <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>
