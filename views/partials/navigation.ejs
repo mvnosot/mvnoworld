@@ -1,5 +1,6 @@
 <script>
-  function back(){
+  //뒤로가기
+  function page_back(){
     if (typeof goto_url == "undefined"){
       window.location.href = "/";    
     }else{
@@ -10,7 +11,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="javascript:back();">BACK</a>
+        <a class="navbar-brand" href="javascript:page_back();">BACK</a>
         <span class="navbar-brand">My이동전화</span>
       </div>
     </div>
