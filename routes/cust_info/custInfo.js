@@ -1,5 +1,5 @@
 
-module.exports = function(app, User) {
+module.exports = function(app, CustModel) {
     
     
 /**
@@ -31,7 +31,10 @@ module.exports = function(app, User) {
 
     /* GET home page. */
     app.get('/cust_info', function(req, res) {
-      res.render('cust_info/custInfoView', { title: 'MVNO ROOM' });
+      CustModel.findOne({svc_num:"01029644930"},function(err,data){
+        if(err)return console.log("Data ERROR:",err);
+        res.render('cust_info/custInfoView',data);
+      })
     });
 
     /* GET home page. */

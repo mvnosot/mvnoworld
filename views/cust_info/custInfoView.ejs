@@ -57,10 +57,10 @@
             가입정보<span class="badge right"><a href="/cust_info/vas_list">더보기</a></span>
           </div>
           <div class="panel-body">
-              <div>고객명<span class="right">이*경</span></div>
-              <div>최종개통유형<span class="right">기기변경</span></div>
-              <div>최종개통일자<span class="right">2016/06/01</span></div>
-              <div>단말정보<span class="right">갤럭시S7</span></div>
+              <div>고객명<span class="right"><%=cust_name%></span></div>
+              <div>최종개통유형<span class="right"><%=last_scrb_type%></span></div>
+              <div>최종개통일자<span class="right"><%=last_sctb_dt.substr(0,4)+'.'+last_sctb_dt.substr(4,2)+'.'+last_sctb_dt.substr(6,2)%></span></div>
+              <div>단말정보<span class="right"><%=eqp_mdl_nm%></span></div>
           </div>  
         </div>
         
@@ -69,8 +69,8 @@
             요금 상품
           </div>
           <div class="panel-body">
-              <div>요금제명<span class="right">망내할인무제한55</span></div>
-              <div>신청일자<span class="right">2016/06/01</span></div>
+              <div>요금제명<span class="right"><%=fee_prod_nm%></span></div>
+              <div>신청일자<span class="right"><%=fee_prod_scrb_dt.substr(0,4)+'.'+fee_prod_scrb_dt.substr(4,2)+'.'+fee_prod_scrb_dt.substr(6,2)%></span></div>
           </div>  
         </div>
         
@@ -79,10 +79,14 @@
             부가서비스 (신청일자)<span class="badge right">더보기</span>
           </div>
           <div class="panel-body">
-              <div>컬러링<span class="right">2016/06/01</span></div>
-              <div>콜키퍼<span class="right">2016/06/01</span></div>
-              <div>레터링<span class="right">2016/06/15</span></div>
-              <div>통화가능통보<span class="right">2016/06/20</span></div>
+              <!--부가서비스목록-->
+              <%
+              var vas_scrb_dt;
+              for(var i=0; i<vas_list.length; i++){
+                vas_scrb_dt = vas_list[i].vas_scrb_dt.substr(0,4)+'.'+vas_list[i].vas_scrb_dt.substr(4,2)+'.'+vas_list[i].vas_scrb_dt.substr(6,2);
+              %>
+                <div><%=vas_list[i].vas_nm%><span class="right"><%=vas_scrb_dt%></span></div>
+              <%}%>
           </div> 
         </div>
                     
