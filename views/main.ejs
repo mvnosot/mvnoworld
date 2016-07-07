@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="../public/stylesheets/test.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/main.css" rel="stylesheet" type="text/css">
     <style>
       .carousel-inner > .item > img, .carousel-inner > .item > a > img {
           width: 50%;
@@ -45,71 +45,63 @@
   </head>
   
   <body>
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">SKT MVNO WORLD</a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active">
-              <a href="#">Home</a>
-            </li>
-            <li>
-              <a href="#">Contacts</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    
+    <!-- header navigation -->
+    <%- include ./partials/navigation.ejs %>
+    
+    
     <div class="section">
+      
+      <!-- 공제량 조회 -->
       <div class="container">
         <div class="row">
-          <div class="col-xs-12" id="mainDiv"></div>
+          <div class="col-xs-4">
+            <h5>
+              <span class="label label-default">Data</span>
+            </h5>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <h5>
+              <span class="label label-default">Voice call</span>
+            </h5>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <h5>
+              <span class="label label-default">SMS/MMS</span>
+            </h5>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="section">
+    
+      <!-- 나의 서비스 정보 -->
       <div class="container">
         <div class="panel-group">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" href="#collapse1">나의 사용량 조회</a>
+                <a data-toggle="collapse" href="#collapse1">나의 서비스 정보</a>
               </h4>
             </div>
             <div id="collapse1" class="panel-collapse collapse">
               <div class="panel-body">
                 <div class="row">
                   <div class="col-xs-4">
-                    <h4>
-                      <span class="label label-info">Data</span>
-                    </h4>
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
-                    </div>
+                    이름 : 이종원
                   </div>
                   <div class="col-xs-4">
-                    <h4>
-                      <span class="label label-warning">Voice call</span>
-                    </h4>
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
-                    </div>
+                    서비스번호 : 010-6284-****
                   </div>
                   <div class="col-xs-4">
-                    <h4>
-                      <span class="label label-danger">SMS/MMS</span>
-                    </h4>
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
-                    </div>
+                    요금제 : 유심단독LITE
                   </div>
                 </div>
               </div>
@@ -117,8 +109,45 @@
           </div>
         </div>
       </div>
+    
+      <!-- 업무 링크 -->
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4" style="background-color: #eeeeee">
+            <div class="row">
+              <div class="col-xs-6 col-sm-12">
+                <h5>나의 상세정보</h5>  
+              </div>
+              <div class="col-xs-6 col-sm-12">
+                <img src="images/script-4-120.png" class="img-responsive max-width: 100px;, height: auto;, display: right-block;">    
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4" style="background-color: #eeeeee">
+            <div class="row">
+              <div class="col-xs-6 col-sm-12">
+                <h5>요금제 조회</h5>  
+              </div>
+              <div class="col-xs-6 col-sm-12">
+                <img src="images/coin-9-120.png" class="img-responsive max-width: 100px;, height: auto;, display: right-block;">    
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4" style="background-color: #eeeeee">
+            <div class="row">
+              <div class="col-xs-6 col-sm-12">
+                <h5>일시정지 조회</h5>  
+              </div>
+              <div class="col-xs-6 col-sm-12">
+                <img src="images/lock-22-120.png" class="img-responsive max-width: 100px;, height: auto;, display: right-block;">    
+              </div> 
+          </div>
+        </div>
+      </div>
+      
     </div>
-    <div class="section">
+    <!-- EVENT -->
+    <!--div class="section">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -142,20 +171,13 @@
           </div>
         </div>
       </div>
+    </div-->
+    
+    <!-- footer -->
+    <div class="section">
+      <%- include ./partials/footer.ejs %>
     </div>
-    <footer class="section section-primary">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <p class="">Contact us</p>
-            <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
-            <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
-            <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
-            <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
-          </div>
-        </div>
-      </div>
-    </footer>
+    
   </body>
 
 </html>
