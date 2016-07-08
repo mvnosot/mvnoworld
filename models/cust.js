@@ -20,6 +20,12 @@ var custSchema = new Schema({
     fee_prod_id : String,   //요금제코드
     fee_prod_nm : String,   //요금제명
     fee_prod_scrb_dt : String,   //요금제신청일자
+    full_data : Number,     //데이터 총 제공량(GB)
+    use_data : Number,      //데이터 사용량(GB)
+    full_voice : Number,    //음성 총 제공량(분)
+    use_voice : Number,     //음성 사용량(분)
+    full_sms : Number,      //SMS 총 제공량(건) 
+    use_sms : Number,       //SMS 총 사용량(건)
     vas_list : [
             {
                 vas_id : String,

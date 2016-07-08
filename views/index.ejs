@@ -33,6 +33,7 @@
       }
       
       function loginSubmit() {
+        //alert("P.N : " + document.getElementById("inputPN").value);
         if(confirmCheck) {
           return true;
           
@@ -73,9 +74,9 @@
         <form class="form-signin" action="/login" method="post" onSubmit="return loginSubmit()">
         <h2 class="form-signin-heading">MVNO WORLD</h2>
           <label for="inputPN">Phone Number</label>
-          <input type="text" name="inputPN" class="form-control" placeholder="EX) 01098761111" required autofocus>
+          <input type="text" id="inputPN" class="form-control" placeholder="EX) 01098761111" required autofocus>
           <label for="inputBirth">Birthday</label>
-          <input type="text" name="inputBirth" class="form-control" placeholder="EX) 820805" required>
+          <input type="text" id="inputBirth" class="form-control" placeholder="EX) 820805" required>
           <div class="checkbox">
             <label>
               <input type="checkbox" value="remember-me"> Remember me
