@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+
+  
+</head>
+
+<body>
+
+<div>
+  <p>
+    <h3>step1. 골드번호 유형선택</h3>
+  <ul>
+      <li>
+          <a href="/num_mng/gold_list/1">AAAA</a>
+      </li>
+      <li>
+          <a href="/num_mng/gold_list/2">AAAB</a>
+      </li>
+      <li>
+          <a href="/num_mng/gold_list/3">AABB</a>
+      </li>
+      <li>
+          <a href="/num_mng/gold_list/4">ABAB</a>
+      </li>
+      <li>
+          <a href="/num_mng/gold_list/5">ABBB</a>
+      </li>
+      <li>
+          <a href="/num_mng/gold_list/6">국번동일</a>
+      </li>
+      <li>
+          <a href="/num_mng/gold_list/7">기타</a>
+      </li>
+  </ul>
+  </p>
+</div>
+
+<div>
+  <p>
+    <h3>step2. 골드번호 선택</h3>
+  <ul>
+      <% if(data) { %>
+        <% data.forEach(function(e){ %>
+          <li>
+            <a href="/num_mng/gold_list_2/<%= e._id.rsv_num_cd %><%= e._id.line_num %>"><%= e._id.line_num %></a>
+            (<%= e.count %> 건)
+          </li>
+        <% })  %>
+      <% } %>
+  </ul>
+  </p>
+</div>
+
+</body>
+</html>

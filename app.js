@@ -21,6 +21,7 @@ db.once("open", function() {
 });
 
 mongoose.connect("mongodb://scott:tiger@ds019633.mlab.com:19633/mvnoworld");
+// mongoose.connect("mongodb://scott:tiger@ds011963.mlab.com:11963/testmg");
 
 // load models
 var User = require('./models/user');
@@ -28,6 +29,12 @@ var User = require('./models/user');
 var Prod = require('./models/prod');
 //20160615 load cust models
 var Cust = require('./models/cust');
+
+// 20160707 zzihi
+// 번호자원
+var Numrsc = require('./models/numrsc');
+// 이벤트관리_골드번호이벤트
+var Evntgold = require('./models/evntgold');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -47,15 +54,17 @@ app.use(bodyParser.json());
 //app.use('/', routes);
 //app.use('/users', users);
 
-
 // Configure router
-var router = require('./routes')(app, User);
 //20160602 wonk777
 var router_cust = require('./routes/cust_info/custInfo')(app, Cust);
 //20160609 pyangru
 var router_prod = require('./routes/prod_chg/prodChg')(app, User, Prod);
-//20160707 zzihi
-var router_prod = require('./routes/evnt_num/evntGoldNum')(app, User, Prod);
+
+// 20160707 zzihi
+// 번호자원
+var router_numMng = require('./routes/num_mng/numMng')(app, Numrsc);
+// 이벤트관리_골드번호이벤트
+var router_evntGoldMng = require('./routes/evnt_mng/evntGoldMng')(app, Evntgold);
 
 
 // Run server
