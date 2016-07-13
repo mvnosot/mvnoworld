@@ -1,4 +1,3 @@
-
 module.exports = function(app, User) {
     
     
@@ -15,7 +14,7 @@ module.exports = function(app, User) {
         //         res.json(books);
         //     })
         
-        res.redirect('/main');
+        res.redirect('main');
         
     });
     
