@@ -48,6 +48,8 @@
         var data_prog = document.getElementById("data_prog");
         data_prog.style.width = per_data;
         data_prog.innerHTML = per_data;
+        
+        proc_view("data_prog", Math.round(use_data/full_data*100));
       }
       
       function initVoiceProgress() {
@@ -58,6 +60,8 @@
         var voice_prog = document.getElementById("voice_prog");
         voice_prog.style.width = per_voice;
         voice_prog.innerHTML = per_voice;
+        
+        proc_view("voice_prog", Math.round(use_voice/full_voice*100));
       }
       
       function initSmsProgress() {
@@ -68,6 +72,20 @@
         var sms_prog = document.getElementById("sms_prog");
         sms_prog.style.width = per_sms;
         sms_prog.innerHTML = per_sms;
+        
+        proc_view("sms_prog", Math.round(use_sms/full_sms*100));
+      }
+      
+      function proc_view(elementid, data) {
+        var proc_eid = document.getElementById(elementid);
+        
+        if (data < 30){
+          proc_eid.className  = "progress-bar progress-bar-danger";  
+        }else if (data < 60){
+          proc_eid.className  = "progress-bar progress-bar-warning";  
+        }else{
+          proc_eid.className  = "progress-bar progress-bar-success"; 
+        }
       }
       
     </script>
@@ -88,24 +106,24 @@
             <h5>
               <span class="label label-default">Data</span>
             </h5>
-            <div class="progress">
-              <div class="progress-bar" id="data_prog" role="progressbar"></div>
+            <div class="progress progress-striped active">
+              <div class="progress-bar progress-bar-success" id="data_prog" role="progressbar"></div>
             </div>
           </div>
           <div class="col-xs-4">
             <h5>
               <span class="label label-default">Voice call</span>
             </h5>
-            <div class="progress">
-              <div class="progress-bar" id="voice_prog" role="progressbar"></div>
+            <div class="progress progress-striped active">
+              <div class="progress-bar progress-bar-danger" id="voice_prog" role="progressbar"></div>
             </div>
           </div>
           <div class="col-xs-4">
             <h5>
               <span class="label label-default">SMS/MMS</span>
             </h5>
-            <div class="progress">
-              <div class="progress-bar" id="sms_prog" role="progressbar"></div>
+            <div class="progress progress-striped active">
+              <div class="progress-bar progress-bar-warning" id="sms_prog" role="progressbar"></div>
             </div>
           </div>
         </div>
