@@ -6,11 +6,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="stylesheets/bootstrap.css">
 
   <style>
       .container {
@@ -43,16 +38,12 @@
  
   <%- include ../partials/navigation.ejs %>
 
-
-
-    
-
       <div class="container">
         나의 회선번호<span class="badge right"><%=svc_num%></span>
         <p></p>
         <div class="panel panel-primary">
           <div class="panel-heading">
-            가입정보<span class="badge right"><a href="/cust_info/vas_list">더보기</a></span>
+            <h3 class="panel-title">가입정보<span class="badge right"><a href="/cust_info/vas_list">더보기</a></span></h3>
           </div>
           <div class="panel-body">
               <div>고객명<span class="right"><%=cust_name%></span></div>
@@ -62,7 +53,7 @@
           </div>  
         </div>
         
-        <div class="panel panel-success">
+        <div class="panel panel-primary">
           <div class="panel-heading">
             요금 상품
           </div>
@@ -72,7 +63,7 @@
           </div>  
         </div>
         
-        <div class="panel panel-success">
+        <div class="panel panel-primary">
           <div class="panel-heading">
             부가서비스 (신청일자)<span class="badge right">더보기</span>
           </div>
@@ -87,7 +78,6 @@
               <%}%>
           </div> 
         </div>
-                    
         <ul class="list-group">
           <li class="list-group-item">
             <span class="badge">2</span>
@@ -103,5 +93,8 @@
           </li>
         </ul>    
       </div>
+    <div class="section">
+      <%- include ../partials/footer.ejs %>
+    </div>
 </body>
 </html>

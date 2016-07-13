@@ -55,13 +55,20 @@ var router = require('./routes')(app, User);
 //20160602 wonk777
 var router_cust = require('./routes/cust_info/custInfo')(app, Cust);
 //20160609 pyangru
-var router_prod = require('./routes/prod_chg/prodChg')(app, User, Prod);
+//var router_prod = require('./routes/prod_chg/prodChg')(app, User, Prod);
+//20160713 pyangru
+//요금제조회
+var router_prod = require('./routes/prod_chg/prodChg')(app, Prod);
+//요금제변경
+var router_prodAct = require('./routes/prod_chg/prodChgAct')(app, Prod);
+
 //20160712 ljw
 var router_main = require('./routes/main')(app, Cust);
 // 번호자원
 var router_numMng = require('./routes/num_mng/numMng')(app, Numrsc);
 // 이벤트관리_골드번호이벤트
 var router_evntGoldMng = require('./routes/evnt_mng/evntGoldMng')(app, Evntgold);
+
 
 
 // Run server
@@ -73,7 +80,6 @@ var server = app.listen(port, function() {
 
 /* 로그인 세션 사용 시 참고
 var session = require('express-session');     // express-session 모듈 사용
-
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
