@@ -73,7 +73,6 @@ var server = app.listen(port, function() {
 
 /* 로그인 세션 사용 시 참고
 var session = require('express-session');     // express-session 모듈 사용
-
 app.use(session({
   secret: 'keyboard cat',
   resave: false,

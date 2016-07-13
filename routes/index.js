@@ -1,5 +1,3 @@
-var express = require('express');
-var router = express.Router();
 
 module.exports = function(app, User) {
     
@@ -17,7 +15,7 @@ module.exports = function(app, User) {
         //         res.json(books);
         //     })
         
-        res.render('main');
+        res.redirect('main');
         
     });
     
