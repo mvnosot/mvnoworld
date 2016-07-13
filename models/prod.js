@@ -11,7 +11,7 @@ var Schema = mongoose.Schema;
     prod_vo : "100분",
     prod_sms : "기본제공",
     prod_fee : "29900",
-    prod_dtc : "비고"
+    prod_etc : "비고"
 */
 var prodSchema = new Schema({
     mvno_cd: String,
@@ -23,7 +23,7 @@ var prodSchema = new Schema({
     prod_vo : String,
     prod_sms : String,
     prod_fee : String,
-    prod_dtc : String
+    prod_etc : String
 })
 
 // module model

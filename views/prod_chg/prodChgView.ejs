@@ -38,16 +38,15 @@
 
 <body>
      
-    <form class="form-inline" action="/login" method="post" onSubmit="return loginSubmit()">
+  <%- include ../partials/navigation.ejs %>
 
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="./routes/cust_info/custInfo">BACK</a>
-            <span class="navbar-brand">요금제조회변경</span>
-          </div>
-        </div>
-      </nav>       
+  <script>
+    var doc = document.querySelector('link[rel="import"]').import;
+    // Grab DOM from doc.html's document.
+    var text = doc.querySelector('.navbar navbar-default');
+    document.body.appendChild(text.cloneNode(true));
+  </script>
+  
      
         <div class="container">
             나의 회선번호<span class="badge right">010-29**-49**</span>
@@ -67,58 +66,30 @@
             <table class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Column heading</th>
-      <th>Column heading</th>
-      <th>Column heading</th>
+      <th>구분</th>
+      <th>요금제</br>이용금액</th>
+      <th>DATA</th>
+      <th>음성</th>
+      <th>문자</th>
     </tr>
   </thead>
   <tbody>
+
+   
+    <% data.forEach(function(e) { %>
+    
     <tr>
-      <td>1</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
+      <td><%=e.prod_cl%></td>
+      <td><%=e.prod_nm%></br><%=e.prod_fee%></td>
+      <td><%=e.prod_data%></td>
+      <td><%=e.prod_vo%></td>
+      <td><%=e.prod_sms%></td>
     </tr>
-    <tr>
-      <td>2</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="info">
-      <td>3</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="success">
-      <td>4</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="danger">
-      <td>5</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="warning">
-      <td>6</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="active">
-      <td>7</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
+    <% }) %>
+   
   </tbody>
 </table> 
 
-    </form>
+
 </body>
 </html>

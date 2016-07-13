@@ -1,5 +1,5 @@
 
-module.exports = function(app, User) {
+module.exports = function(app, ProdModel) {
     
     
 /**
@@ -17,7 +17,7 @@ module.exports = function(app, User) {
     app.put('/api/todo/:user_id', function(req, res) {
        res.end(); 
     });
-    
+    x
     // todo create
     app.post('/api/todo', function(req, res) {
        res.end(); 
@@ -31,7 +31,10 @@ module.exports = function(app, User) {
 
     /* GET home page. */
     app.get('/prod_chg', function(req, res) {
-      res.render('prod_chg/prodChgView', { title: 'MVNO ROOM' });
+         ProdModel.find({},function(err,prods){
+        if(err)return console.log("Data ERROR:",err);
+        res.render('prod_chg/prodChgView', {data:prods});
+        })
     });
     
 }

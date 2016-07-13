@@ -51,7 +51,7 @@ var router = require('./routes')(app, User);
 //20160602 wonk777
 var router_cust = require('./routes/cust_info/custInfo')(app, Cust);
 //20160609 pyangru
-var router_prod = require('./routes/prod_chg/prodChg')(app, User, Prod);
+var router_prod = require('./routes/prod_chg/prodChg')(app, Prod);
 
 // Run server
 var port = process.env.PORT || '3000';
