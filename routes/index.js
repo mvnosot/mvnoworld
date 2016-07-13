@@ -29,8 +29,8 @@ module.exports = function(app, User) {
         
         console.log("login data : " + req.body.inputPN)
         var pn = req.body.inputPN;
-        res.render('main', { phone_number: pn });
         
+        res.redirect('/main');
     });
 /**
  * 

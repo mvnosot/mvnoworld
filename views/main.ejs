@@ -24,9 +24,53 @@
 		body, html {
   			width: 95%;
 		}
-      
-
     </style>
+    
+    <script>
+      window.onload = function(){
+        
+        initProgress();
+        
+        
+      }
+      
+      function initProgress() {
+        initDataProgress();
+        initVoiceProgress();
+        initSmsProgress();
+      }
+      
+      function initDataProgress() {
+        var full_data = <%=full_data%>;
+        var use_data = <%=use_data%>;
+        var per_data = Math.round(use_data/full_data*100)+'%';
+        
+        var data_prog = document.getElementById("data_prog");
+        data_prog.style.width = per_data;
+        data_prog.innerHTML = per_data;
+      }
+      
+      function initVoiceProgress() {
+        var full_voice = <%=full_voice%>
+        var use_voice = <%=full_voice%>
+        var per_voice = Math.round(use_voice/full_voice*100)+'%';
+        
+        var voice_prog = document.getElementById("voice_prog");
+        voice_prog.style.width = per_voice;
+        voice_prog.innerHTML = per_voice;
+      }
+      
+      function initSmsProgress() {
+        var full_sms = <%=full_sms%>;
+        var use_sms = <%=use_sms%>;
+        var per_sms = Math.round(use_sms/full_sms*100)+'%';
+        
+        var sms_prog = document.getElementById("sms_prog");
+        sms_prog.style.width = per_sms;
+        sms_prog.innerHTML = per_sms;
+      }
+      
+    </script>
   </head>
   
   <body>
@@ -45,7 +89,7 @@
               <span class="label label-default">Data</span>
             </h5>
             <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+              <div class="progress-bar" id="data_prog" role="progressbar"></div>
             </div>
           </div>
           <div class="col-xs-4">
@@ -53,7 +97,7 @@
               <span class="label label-default">Voice call</span>
             </h5>
             <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+              <div class="progress-bar" id="voice_prog" role="progressbar"></div>
             </div>
           </div>
           <div class="col-xs-4">
@@ -61,7 +105,7 @@
               <span class="label label-default">SMS/MMS</span>
             </h5>
             <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+              <div class="progress-bar" id="sms_prog" role="progressbar"></div>
             </div>
           </div>
         </div>
@@ -80,13 +124,13 @@
               <div class="panel-body">
                 <div class="row">
                   <div class="col-xs-4">
-                    이름 : 이종원
+                    이름 : <%=cust_name%>
                   </div>
                   <div class="col-xs-4">
-                    서비스번호 : <%=phone_number%>
+                    서비스번호 : <%=svc_num%>
                   </div>
                   <div class="col-xs-4">
-                    요금제 : 유심단독LITE
+                    요금제 : <%=fee_prod_nm%>
                   </div>
                 </div>
               </div>

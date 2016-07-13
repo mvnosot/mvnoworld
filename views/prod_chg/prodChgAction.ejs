@@ -74,12 +74,13 @@
     </tr>
   </thead>
   <tbody>
+
    
     <% data.forEach(function(e) { %>
     
     <tr>
       <td><%=e.prod_cl%></td>
-      <td><a href="/prod_chg/<%= e._id %>"><%=e.prod_nm%></br><%=e.prod_fee%></a></td>
+      <td><%=e.prod_nm%></br><%=e.prod_fee%></td>
       <td><%=e.prod_data%></td>
       <td><%=e.prod_vo%></td>
       <td><%=e.prod_sms%></td>
