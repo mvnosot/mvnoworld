@@ -39,7 +39,12 @@ module.exports = function(app, CustModel) {
 
     /* GET home page. */
     app.get('/cust_info/vas_list', function(req, res) {
-      res.render('cust_info/custInfoVasList', { title: 'MVNO ROOM' });
+      CustModel.findOne({svc_num:"01025104930"},function(err,data){
+        if(err)return console.log("Data ERROR:",err);
+        res.render('cust_info/custInfoVasList',data);
+      })
+      
+      //res.render('cust_info/custInfoVasList', { title: 'MVNO ROOM' });
     });
     
 }

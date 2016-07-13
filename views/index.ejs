@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
   
 <head>
@@ -32,7 +33,6 @@
       }
       
       function loginSubmit() {
-        //alert("P.N : " + document.getElementById("inputPN").value);
         if(confirmCheck) {
           return true;
           
@@ -73,170 +73,38 @@
         <form class="form-signin" action="/login" method="post" onSubmit="return loginSubmit()">
         <h2 class="form-signin-heading">MVNO WORLD</h2>
           <label for="inputPN">Phone Number</label>
-          <input type="text" id="inputPN" class="form-control" placeholder="EX) 01098761111" required autofocus>
+          <input type="text" name="inputPN" class="form-control" placeholder="EX) 01098761111" required autofocus>
           <label for="inputBirth">Birthday</label>
-          <input type="text" id="inputBirth" class="form-control" placeholder="EX) 820805" required>
+          <input type="text" name="inputBirth" class="form-control" placeholder="EX) 820805" required>
           <div class="checkbox">
             <label>
               <input type="checkbox" value="remember-me"> Remember me
             </label>
           </div>
-        </div>
-      </div>
-      <!-- 반복끝 -->
-      <!-- 반복시작 -->
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>
-                      <i class="fa fa-angle-right fa-fw fa-lg pull-left"></i>
-                    </th>
-                    <th class="text-info">가입정보</th>
-                    <th class="text-xs-left">
-                      <button type="submit" class="btn btn-primary" href="main.html">view_more</button>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="text-muted">-</td>
-                    <td class="text-muted">고객명</td>
-                    <td class="text-muted text-xs-left">이*경</td>
-                  </tr>
-                  <tr>
-                    <td class="text-muted">-</td>
-                    <td class="text-muted">최종개통유형</td>
-                    <td class="text-muted text-xs-left">기기변경</td>
-                  </tr>
-                  <tr>
-                    <td class="text-muted">-</td>
-                    <td class="text-muted">최종개통일자</td>
-                    <td class="text-muted">2016/01/01</td>
-                  </tr>
-                </tbody>
-              </table>
+          
+          <!--div class="row">
+            <div class="col-xs-10">
+              <label for="inputAuth">Auth Number</label>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- 반복끝 -->
-      <!-- 반복시작 -->
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>
-                      <i class="fa fa-angle-right fa-fw fa-lg pull-left"></i>
-                    </th>
-                    <th class="text-info">가입정보</th>
-                    <th class="text-xs-left">
-                      <button type="submit" class="btn btn-primary" href="main.html">view_more</button>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="text-muted">-</td>
-                    <td class="text-muted">고객명</td>
-                    <td class="text-muted text-xs-left">이*경</td>
-                  </tr>
-                  <tr>
-                    <td class="text-muted">-</td>
-                    <td class="text-muted">최종개통유형</td>
-                    <td class="text-muted text-xs-left">기기변경</td>
-                  </tr>
-                  <tr>
-                    <td class="text-muted">-</td>
-                    <td class="text-muted">최종개통일자</td>
-                    <td class="text-muted">2016/01/01</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- 반복끝 -->
-      <!-- 반복시작 -->
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>
-                      <i class="fa fa-angle-right fa-fw fa-lg pull-left"></i>
-                    </th>
-                    <th class="text-info">가입정보</th>
-                    <th class="text-xs-left">
-                      <button type="submit" class="btn btn-primary" href="main.html">view_more</button>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="text-muted">-</td>
-                    <td class="text-muted">고객명</td>
-                    <td class="text-muted text-xs-left">이*경</td>
-                  </tr>
-                  <tr>
-                    <td class="text-muted">-</td>
-                    <td class="text-muted">최종개통유형</td>
-                    <td class="text-muted text-xs-left">기기변경</td>
-                  </tr>
-                  <tr>
-                    <td class="text-muted">-</td>
-                    <td class="text-muted">최종개통일자</td>
-                    <td class="text-muted">2016/01/01</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- 반복끝 -->
-      <div class="section">
-        <div class="container">
           <div class="row">
-            <div class="col-md-12">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                <br>Ut enim ad minim veniam, quis nostrud</p>
+            <div class="col-xs-8">
+              <input type="text" name="inputAuth" class="form-control" required>
             </div>
-          </div>
-        </div>
+            <div class="col-xs-4">
+              <button type="button" class="btn btn-default" onclick="authSendOnclick()">Send</button>
+            </div>
+            <div class="col-xs-2">
+              <button type="button" class="btn btn-success" disabled=true onclick="authConfirmOnclick()" id="btnConfirm">Confirm</button>
+            </div>
+          </div-->
+          <br>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">LOG IN</button>
+        </form>
+    
       </div>
-      <footer class="section section-primary">
-        <div class="container">
-          <div class="row">
-            <div class="p-y-3 row text-xs-center">
-              <div class="col-xs-4 col-md-NaN">
-                <h5 class="text-center text-xs-center">Contact us</h5>
-              </div>
-              <div class="col-xs-4">
-                <h5 class="text-center text-xs-center">Notice</h5>
-              </div>
-              <div class="col-xs-4">
-                <h5 class="text-center text-xs-center">Privacy Policy</h5>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <h5 class="text-center text-xs-center"></h5>
-              <p class="text-center">COPYRIGHT SK TELECOM CO., LTD. ALL RIGHTS RESERVED.</p>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
-  </body>
+  </div> <!-- /container -->
 
+</body>
 </html>
