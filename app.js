@@ -42,14 +42,12 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(logger('dev'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-// add bodyParser - get data from body(view) by json
-app.use(bodyParser.json());
 
 //app.use('/', routes);
 //app.use('/users', users);
@@ -59,6 +57,9 @@ app.use(bodyParser.json());
 var router_cust = require('./routes/cust_info/custInfo')(app, Cust);
 //20160609 pyangru
 var router_prod = require('./routes/prod_chg/prodChg')(app, User, Prod);
+//20160712 ljw
+var router_main = require('./routes/main')(app, Cust);
+
 
 // 20160707 zzihi
 // 번호자원
@@ -74,5 +75,14 @@ var server = app.listen(port, function() {
   console.log("Express server has startd on port " + port);
 });
 
+/* 로그인 세션 사용 시 참고
+var session = require('express-session');     // express-session 모듈 사용
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));    // express-session 모듈 사용
+*/
 
 module.exports = app;

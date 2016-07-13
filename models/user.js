@@ -2,17 +2,9 @@ var mongoose =require('mongoose');
 var Schema = mongoose.Schema;
 
 /*
-    "phone_number": "01062846257",
-    "user_name": "",
-    "": "",
-    "": "",
-    "": "",
-    "": "",
-    "": "",
-    "": "",
-    "": "",
-    "": "",
-    "": "",
+    User Schema 
+    로그인 시 인증 절차를 위한 모델
+    
     "name": "이종원",
     "mvno_cd": "M00030",
     "mvno_nm": "SK텔링크",
