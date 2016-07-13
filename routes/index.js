@@ -15,7 +15,7 @@ module.exports = function(app, User) {
         //         res.json(books);
         //     })
         
-        res.render('main');
+        res.redirect('main');
         
     });
     
