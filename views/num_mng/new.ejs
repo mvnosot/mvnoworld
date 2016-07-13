@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+
+  
+</head>
+
+<body>
+
+<div>
+    <h3>서비스번호 자원 신규등록</h3>
+    <!--svc_num : String,       //서비스번호-->
+    <!--mvno_co_cd : String,    //사업자코드-->
+    <!--mvno_nm : String,       //사업자명-->
+    <!--idnt_num_cd : String,   //식별번호-->
+    <!--exg_num : String,       //국번-->
+    <!--line_num : String,      //라인번호-->
+    <!--num_st_cd : String,     //번호상태코드-->
+    <!--rsv_num : String,       //예약번호-->
+    <!--rsv_num_cd : String,    //예약번호코드-->
+    <!--audit_dt : String-->
+    <form action="/num_mng" method="post">
+        <div>
+          <label class="control-label" for="inputDefault">서비스번호</label>
+          <input type="text" name="numrsc[svc_num]"><br>
+          <label class="control-label" for="inputDefault">사업자코드</label>
+          <input type="text" name="numrsc[mvno_co_cd]"><br>
+          <label class="control-label" for="inputDefault">사업자명</label>
+          <input type="text" name="numrsc[mvno_nm]"><br>
+          <label class="control-label" for="inputDefault">식별번호</label>
+          <input type="text" name="numrsc[idnt_num_cd]"><br>
+          <label class="control-label" for="inputDefault">국번</label>
+          <input type="text" name="numrsc[exg_num]"><br>
+          <label class="control-label" for="inputDefault">라인번호</label>
+          <input type="text" name="numrsc[line_num]"><br>
+          <label class="control-label" for="inputDefault">번호상태코드</label>
+          <input type="text" name="numrsc[num_st_cd]"><br>
+          <label class="control-label" for="inputDefault">예약번호</label>
+          <input type="text" name="numrsc[rsv_num]"><br>
+          <label class="control-label" for="inputDefault">예약번호코드</label>
+          <input type="text" name="numrsc[rsv_num_cd]"><br>
+          <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
