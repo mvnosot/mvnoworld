@@ -6,9 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  
+  <link rel="stylesheet" href="stylesheets/bootstrap.css">
+
   <style>
       .container {
 
@@ -40,12 +41,7 @@
  
   <%- include ../partials/navigation.ejs %>
 
-  <script>
-    var doc = document.querySelector('link[rel="import"]').import;
-    // Grab DOM from doc.html's document.
-    var text = doc.querySelector('.navbar navbar-default');
-    document.body.appendChild(text.cloneNode(true));
-  </script>
+
 
     
 
@@ -74,7 +70,7 @@
           </div>  
         </div>
         
-        <div class="panel panel-warning">
+        <div class="panel panel-success">
           <div class="panel-heading">
             부가서비스 (신청일자)<span class="badge right">더보기</span>
           </div>
