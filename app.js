@@ -29,8 +29,6 @@ var User = require('./models/user');
 var Prod = require('./models/prod');
 //20160615 load cust models
 var Cust = require('./models/cust');
-
-// 20160707 zzihi
 // 번호자원
 var Numrsc = require('./models/numrsc');
 // 이벤트관리_골드번호이벤트
@@ -60,9 +58,6 @@ var router_cust = require('./routes/cust_info/custInfo')(app, Cust);
 var router_prod = require('./routes/prod_chg/prodChg')(app, User, Prod);
 //20160712 ljw
 var router_main = require('./routes/main')(app, Cust);
-
-
-// 20160707 zzihi
 // 번호자원
 var router_numMng = require('./routes/num_mng/numMng')(app, Numrsc);
 // 이벤트관리_골드번호이벤트
