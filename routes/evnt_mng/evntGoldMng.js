@@ -18,13 +18,13 @@ module.exports = function(app, Evntgold) {
         ], function (err, evntgolds) {
                 if(err)return console.log("Data ERROR:",err);
                 res.render('evnt_mng/gold_list_3',{data:evntgolds,data2:evntradio,data3:null});
-                // res.json({success:true,data:evntgolds});
         });
           
     });
     
     // 응모 요청
     app.post('/evnt_mng', function(req, res) {
+        
         Evntgold.create(
             {
                 gold_svc_num:req.body.gold_svc_num,
@@ -38,11 +38,10 @@ module.exports = function(app, Evntgold) {
 
     // 응모결과 조회
     app.get('/evnt_mng/show/:id', function(req, res, next) {
-        var svc_num = req.params.id;
         
         Evntgold.aggregate([
 
-              { $match : { gold_svc_num:svc_num} },
+              { $match : { gold_svc_num:req.params.id} },
               { $group : {
                   _id : { gold_svc_num: "$gold_svc_num"},
                   count: { $sum: 1 }

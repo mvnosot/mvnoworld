@@ -18,7 +18,6 @@ module.exports = function(app, Numrsc) {
             res.redirect('/num_mng');
         });
     });
-
     
     
     // 골드번호 유형 선택
@@ -72,10 +71,7 @@ module.exports = function(app, Numrsc) {
                 // res.json({success:true,data:numrscs});
         });
     });
-    
-    
-    
-    
+
         
     // show
     app.get('/num_mng/:id', function(req, res) {
