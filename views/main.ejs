@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="/stylesheets/main.css" rel="stylesheet" type="text/css">
+    <!--link href="/stylesheets/main.css" rel="stylesheet" type="text/css"-->
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet" type="text/css">
+    
     <style>
       .carousel-inner > .item > img, .carousel-inner > .item > a > img {
           width: 50%;
@@ -20,18 +21,68 @@
         .navbar-brand {
           color : #ffffff;
         }
-      
-		body, html {
-  			width: 95%;
-		}
+        
+        .bs-callout {
+        padding: 20px;
+        margin: 20px 0;
+        border: 1px solid #eee;
+        border-left-width: 5px;
+        border-radius: 3px;
+        }
+        .bs-callout h4 {
+        margin-top: 0;
+        margin-bottom: 5px;
+        }
+        .bs-callout p:last-child {
+        margin-bottom: 0;
+        }
+        .bs-callout code {
+        border-radius: 3px;
+        }
+        .bs-callout+.bs-callout {
+        margin-top: -5px;
+        }
+        .bs-callout-default {
+        border-left-color: #777;
+        }
+        .bs-callout-default h4 {
+        color: #777;
+        }
+        .bs-callout-primary {
+        border-left-color: #428bca;
+        }
+        .bs-callout-primary h4 {
+        color: #428bca;
+        }
+        .bs-callout-success {
+        border-left-color: #5cb85c;
+        }
+        .bs-callout-success h4 {
+        color: #5cb85c;
+        }
+        .bs-callout-danger {
+        border-left-color: #d9534f;
+        }
+        .bs-callout-danger h4 {
+        color: #d9534f;
+        }
+        .bs-callout-warning {
+        border-left-color: #f0ad4e;
+        }
+        .bs-callout-warning h4 {
+        color: #f0ad4e;
+        }
+        .bs-callout-info {
+        border-left-color: #5bc0de;
+        }
+        .bs-callout-info h4 {
+        color: #5bc0de;
+        }
     </style>
     
     <script>
       window.onload = function(){
-        
         initProgress();
-        
-        
       }
       
       function initProgress() {
@@ -43,37 +94,40 @@
       function initDataProgress() {
         var full_data = <%=full_data%>;
         var use_data = <%=use_data%>;
-        var per_data = Math.round(use_data/full_data*100)+'%';
+        var per_data = Math.round(use_data/full_data*100);
+        var per_data_str = per_data+'%';
         
         var data_prog = document.getElementById("data_prog");
-        data_prog.style.width = per_data;
-        data_prog.innerHTML = per_data;
+        data_prog.style.width = per_data_str;
+        data_prog.innerHTML = per_data_str;
         
-        proc_view("data_prog", Math.round(use_data/full_data*100));
+        proc_view("data_prog", per_data);
       }
       
       function initVoiceProgress() {
         var full_voice = <%=full_voice%>
         var use_voice = <%=full_voice%>
-        var per_voice = Math.round(use_voice/full_voice*100)+'%';
+        var per_voice = Math.round(use_voice/full_voice*100);
+        var per_voice_str = per_voice+'%';
         
         var voice_prog = document.getElementById("voice_prog");
-        voice_prog.style.width = per_voice;
-        voice_prog.innerHTML = per_voice;
+        voice_prog.style.width = per_voice_str;
+        voice_prog.innerHTML = per_voice_str;
         
-        proc_view("voice_prog", Math.round(use_voice/full_voice*100));
+        proc_view("voice_prog", per_voice);
       }
       
       function initSmsProgress() {
         var full_sms = <%=full_sms%>;
         var use_sms = <%=use_sms%>;
-        var per_sms = Math.round(use_sms/full_sms*100)+'%';
+        var per_sms = Math.round(use_sms/full_sms*100);
+        var per_sms_str = per_sms+'%';
         
         var sms_prog = document.getElementById("sms_prog");
-        sms_prog.style.width = per_sms;
-        sms_prog.innerHTML = per_sms;
+        sms_prog.style.width = per_sms_str;
+        sms_prog.innerHTML = per_sms_str;
         
-        proc_view("sms_prog", Math.round(use_sms/full_sms*100));
+        proc_view("sms_prog", per_sms);
       }
       
       function proc_view(elementid, data) {
@@ -99,6 +153,14 @@
     
     <div class="section">
       
+      <!-- 나의 서비스 정보 -->
+      <div class="container">
+        <div class="bs-callout bs-callout-info" id=callout-helper-context-color-specificity> 
+          <p><h5>나의 서비스 정보</h5> <%=cust_name%> | <%=svc_num%> | <%=fee_prod_nm%></p> 
+        </div>
+      </div>
+      
+      
       <!-- 공제량 조회 -->
       <div class="container">
         <div class="row">
@@ -120,7 +182,7 @@
           </div>
           <div class="col-xs-4">
             <h5>
-              <span class="label label-default">SMS/MMS</span>
+              <span class="label label-default">SMS / MMS</span>
             </h5>
             <div class="progress progress-striped active">
               <div class="progress-bar progress-bar" id="sms_prog" role="progressbar"></div>
@@ -128,35 +190,7 @@
           </div>
         </div>
       </div>
-    
-      <!-- 나의 서비스 정보 -->
-      <div class="container">
-        <div class="panel-group">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" href="#collapse1">나의 서비스 정보</a>
-              </h4>
-            </div>
-            <div id="collapse1" class="panel-collapse collapse">
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-xs-4">
-                    이름 : <%=cust_name%>
-                  </div>
-                  <div class="col-xs-4">
-                    서비스번호 : <%=svc_num%>
-                  </div>
-                  <div class="col-xs-4">
-                    요금제 : <%=fee_prod_nm%>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    
+
       <!-- 업무 링크 -->
       <div class="container">
         <div class="row">
@@ -192,13 +226,15 @@
               <div class="col-xs-6 col-sm-12">
                 <img src="images/lock-22-120.png" class="img-responsive max-width: 100px;, height: auto;, display: right-block;">    
               </div> 
+            </div>
           </div>
         </div>
       </div>
       
-    </div>
+    </div> <!-- END Section -->  
+    
     <!-- EVENT -->
-    <!--div class="section">
+    <div class="section">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -210,10 +246,12 @@
               </ol>
               <div class="carousel-inner">
                 <div class="item active">
-                  <img src="./pic_evnet.jpg">
+                  <a href="/num_mng/gold_list">
+                    <img src="/images/pic_gold_num.jpg">
+                  </a>
                 </div>
                 <div class="item">
-                  <img src="./pic_gold_num.jpg">
+                  <img src="/images/pic_event.jpg">
                 </div>
               </div>
               <a class="left carousel-control" href="#carousel-example" data-slide="prev"><i class="icon-prev  fa fa-angle-left"></i></a>
@@ -222,12 +260,15 @@
           </div>
         </div>
       </div>
-    </div-->
-    
-    <!-- footer -->
+    </div>
+
+      
+      <!-- footer -->
     <div class="section">
       <%- include ./partials/footer.ejs %>
     </div>
+    
+    
     
   </body>
 
