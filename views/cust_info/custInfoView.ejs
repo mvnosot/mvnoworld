@@ -36,14 +36,14 @@
 
 <body>
  
-  <%- include ../partials/navigation.ejs %>
+  <% include ../partials/navigation.ejs %>
 
       <div class="container">
         나의 회선번호<span class="badge right"><%=svc_num%></span>
         <p></p>
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">가입정보<span class="badge right"><a href="/cust_info/vas_list">더보기</a></span></h3>
+            <p class="text-danger">가입정보<span class="badge right"><a href="/cust_info/vas_list">더보기</a></span></p>
           </div>
           <div class="panel-body">
               <div>고객명<span class="right"><%=cust_name%></span></div>
@@ -53,9 +53,9 @@
           </div>  
         </div>
         
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
           <div class="panel-heading">
-            요금 상품
+            <p class="text-danger">요금 상품</p>
           </div>
           <div class="panel-body">
               <div>요금제명<span class="right"><%=fee_prod_nm%></span></div>
@@ -63,9 +63,9 @@
           </div>  
         </div>
         
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
           <div class="panel-heading">
-            부가서비스 (신청일자)<span class="badge right">더보기</span>
+            <p class="text-danger">부가서비스 (신청일자)<span class="badge right">더보기</span></p>
           </div>
           <div class="panel-body">
               <!--부가서비스목록-->
@@ -94,7 +94,7 @@
         </ul>    
       </div>
     <div class="section">
-      <%- include ../partials/footer.ejs %>
+      <% include ../partials/footer.ejs %>
     </div>
 </body>
 </html>

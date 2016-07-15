@@ -6,9 +6,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
   <style>
       .container {
    
@@ -38,7 +35,7 @@
 
 <body>
      
-  <%- include ../partials/navigation.ejs %>
+  <% include ../partials/navigation.ejs %>
 
   <script>
     var doc = document.querySelector('link[rel="import"]').import;
@@ -63,23 +60,27 @@
               </div>  
             </div>
             
-        <ul class="nav nav-tabs">
-  <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">서비스 개요</a></li>
-  <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">요금 및 혜택</a></li>
-    <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">유의 사항</a></li>  
-</ul>
-<div id="myTabContent" class="tab-content">
-  <div class="tab-pane fade active in" id="intro">
-    <p>이거 함써봐</p>
-  </div>
-  <div class="tab-pane fade" id="description">
-    <p>싸게 줄께</p>
-  </div>
-  <div class="tab-pane fade" id="note">
-    <p>오백원!</p>
-  </div>
-  
-</div>  
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">서비스 개요</a></li>
+            <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">요금 및 혜택</a></li>
+              <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">유의 사항</a></li>  
+          </ul>
+          <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="intro">
+              <p>이거 함써봐</p>
+            </div>
+            <div class="tab-pane fade" id="description">
+              <p>싸게 줄께</p>
+            </div>
+            <div class="tab-pane fade" id="note">
+              <p>오백원!</p>
+            </div>
+            
+          </div>  
+        </div>
+        <div class="section">
+              <% include ../partials/footer.ejs %>
+        </div>          
 
 </body>
 </html>

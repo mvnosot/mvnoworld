@@ -39,7 +39,7 @@
 
 <body>
  
-      <%- include ../partials/navigation.ejs %>
+      <% include ../partials/navigation.ejs %>
     
       <script>
         var doc = document.querySelector('link[rel="import"]').import;
@@ -53,7 +53,7 @@
         나의 회선번호<span class="badge right"><%=svc_num%></span>
         <p></p>
 
-        <div class="panel panel-primary">
+        <div class="panel panel-default">
           <div class="panel-heading">
             가입 부가서비스 정보<span class="badge right"><%=vas_list.length%></span>
           </div>
@@ -84,7 +84,7 @@
       </div>
     <!-- footer -->
     <div class="section">
-      <%- include ../partials/footer.ejs %>
+      <% include ../partials/footer.ejs %>
     </div>
 </body>
 </html>
