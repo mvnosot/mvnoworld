@@ -59,8 +59,7 @@ var router_cust = require('./routes/cust_info/custInfo')(app, Cust);
 //20160713 pyangru
 //요금제조회
 var router_prod = require('./routes/prod_chg/prodChg')(app, Prod);
-//요금제변경
-var router_prodAct = require('./routes/prod_chg/prodChgAct')(app, Prod);
+
 
 //20160712 ljw
 var router_main = require('./routes/main')(app, Cust);

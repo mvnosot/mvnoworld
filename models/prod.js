@@ -23,7 +23,12 @@ var prodSchema = new Schema({
     prod_vo : String,
     prod_sms : String,
     prod_fee : String,
-    prod_etc : String
+    prod_etc : String,
+    description: String,
+    note: String,
+    img_url1: String,
+    img_url2: String,
+    img_url3: String
 })
 
 // module model
