@@ -47,4 +47,14 @@ module.exports = function(app, CustModel) {
       //res.render('cust_info/custInfoVasList', { title: 'MVNO ROOM' });
     });
     
+    /* GET home page. */
+    app.get('/cust_info/custInfoViewdtl', function(req, res) {
+      CustModel.findOne({svc_num:"01025104930"},function(err,data){
+        if(err)return console.log("Data ERROR:",err);
+        res.render('cust_info/custInfoViewdtl',data);
+      })
+      
+      //res.render('cust_info/custInfoVasList', { title: 'MVNO ROOM' });
+    });
+    
 }
