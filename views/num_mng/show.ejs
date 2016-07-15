@@ -6,16 +6,38 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <style>
+      .container {
 
+      }
+      
+      .row {
+        
+      }
+      
+      .right{
+        float:right;
+        text-align:right;
 
+      }
+  </style>
+  
+  <script type="text/javascript">
+      var confirmCheck = false;
+    
+      function authSendOnclick() {
+        alert("전송하였습니다.");
+        document.getElementById("btnConfirm").disabled = false;
+      }
+  </script>
   
 </head>
 
 <body>
+  
+<% include ../partials/navigation.ejs %>
 
-<div>
+<div class="container">
     <h3>서비스번호 자원</h3>
     <!--svc_num : String,       //서비스번호-->
     <!--mvno_co_cd : String,    //사업자코드-->
@@ -49,6 +71,8 @@
           <a href="/num_mng"><button>Back</button></a>
         </div>
 </div>
-
+    <div class="section">
+      <% include ../partials/footer.ejs %>
+    </div>
 </body>
 </html>
