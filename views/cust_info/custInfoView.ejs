@@ -43,7 +43,7 @@
         <p></p>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <p class="text-danger">가입정보<span class="badge right"><a href="/cust_info/custInfoViewdtl">더보기</a></span></p>
+            <p class="text-danger" >가입정보<span class="badge right" onclick="goto_page('/cust_info/custInfoViewdtl');">더보기</span></p>
           </div>
           <div class="panel-body">
               <div>고객명<span class="right"><%=cust_name%></span></div>
@@ -65,7 +65,7 @@
         
         <div class="panel panel-default">
           <div class="panel-heading">
-            <p class="text-danger">부가서비스 (신청일자)<span class="badge right">더보기</span></p>
+            <p class="text-danger">부가서비스 (신청일자)<span class="badge right" onclick="goto_page('/cust_info/vas_list');">더보기</span></p>
           </div>
           <div class="panel-body">
               <!--부가서비스목록-->
