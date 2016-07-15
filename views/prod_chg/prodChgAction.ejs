@@ -6,9 +6,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
   <style>
       .container {
    
@@ -38,7 +35,7 @@
 
 <body>
      
-  <%- include ../partials/navigation.ejs %>
+  <% include ../partials/navigation.ejs %>
 
   <script>
     var doc = document.querySelector('link[rel="import"]').import;
@@ -62,8 +59,10 @@
                   <div>- 문자 <%=data.prod_sms%></div>
               </div>  
             </div>
-            
-          
+        </div>
+        <div class="section">
+              <% include ../partials/footer.ejs %>
+        </div>          
 
 </body>
 </html>
