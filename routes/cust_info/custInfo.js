@@ -36,7 +36,13 @@ module.exports = function(app, CustModel) {
         res.render('cust_info/custInfoView',data);
       })
     });
-
+    app.get('/prod_chg', function(req, res) {
+        CustModel.findOne({svc_num:"01029644930"},function(err,cust){
+             console.log("Data List:",cust);
+            if(err)return console.log("Data ERROR:",err);
+            res.render('prod_chg/prodChgView', {cust});
+        })
+    });
     /* GET home page. */
     app.get('/cust_info/vas_list', function(req, res) {
       CustModel.findOne({svc_num:"01025104930"},function(err,data){
