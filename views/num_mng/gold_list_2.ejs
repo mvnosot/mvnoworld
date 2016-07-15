@@ -6,12 +6,33 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <style>
+      .container {
 
+      }
+      
+      .row {
+        
+      }
+      
+      .right{
+        float:right;
+        text-align:right;
+
+      }
+  </style>
+  
+  <script type="text/javascript">
+      var confirmCheck = false;
+    
+      function authSendOnclick() {
+        alert("전송하였습니다.");
+        document.getElementById("btnConfirm").disabled = false;
+      }
+  </script>
+  
 <script>
   function process (){
-    var obj = document.evntForm.evntradio
     document.evntForm.submit();
   }
 </script>
@@ -20,7 +41,9 @@
 
 <body>
 
-<div>
+<% include ../partials/navigation.ejs %>
+
+<div class="container">
   <p>
     <h3>step1. 골드번호 유형선택</h3>
   <ul>
@@ -49,7 +72,7 @@
   </p>
 </div>
 
-<div>
+<div class="container">
   <form name="evntForm" action="/evnt_mng" method="get">
     <p>
       <h3>step2. 골드번호 선택</h3>
@@ -70,6 +93,10 @@
     </p>
   </form>
 </div>
+
+    <div class="section">
+      <% include ../partials/footer.ejs %>
+    </div>
 
 </body>
 </html>
