@@ -66,16 +66,12 @@ var router = require('./routes')(app, User);
 //20160602 wonk777
 var router_cust = require('./routes/cust_info/custInfo')(app, Cust);
 //20160609 pyangru
-<<<<<<< HEAD
-var router_prod = require('./routes/prod_chg/prodChg')(app, User, Prod);
-=======
 //var router_prod = require('./routes/prod_chg/prodChg')(app, User, Prod);
 //20160713 pyangru
 //요금제조회
 var router_prod = require('./routes/prod_chg/prodChg')(app, Prod);
 
 
->>>>>>> 59e308e5bc1c2343802851ab1b3cebabc8323962
 //20160712 ljw
 var router_main = require('./routes/main')(app, Cust);
 
