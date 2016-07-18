@@ -6,17 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <style>
-      .carousel-inner > .item > img, .carousel-inner > .item > a > img {
-          width: 50%;
-          height: 300px;
-          }
-        .navbar {
-          background-color: #ffffff; /* yello */
-        }
-
-        .navbar-brand {
-          color : #ffffff;
-        }
+    
+      .row {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
         
     </style>
     
@@ -93,44 +87,54 @@
     
     <div class="section">
       
-      <!-- 나의 서비스 정보 -->
       <div class="container">
-        <div class="bs-callout bs-callout-info" id=callout-helper-context-color-specificity> 
-          <p><h4>나의 서비스 정보</h4> <%=cust_name%> | <%=svc_num%> | <%=fee_prod_nm%></p> 
-        </div>
-      </div>
-      
-      
-      <!-- 공제량 조회 -->
-      <div class="container">
+        
         <div class="row">
-          <div class="col-xs-4">
-            <h5>
-              <span class="label label-default">Data</span>
-            </h5>
-            <div class="progress progress-striped active">
-              <div class="progress-bar progress-bar" id="data_prog" role="progressbar"></div>
+          <div class="col-xs-12 col-md-8">
+            <!-- 나의 서비스 정보 -->
+            <div class="row">
+              <div class="bs-callout bs-callout-danger" id=callout-helper-context-color-specificity> 
+                <p><h4>나의 서비스 정보</h4> <%=cust_name%> | <%=svc_num%> | <%=fee_prod_nm%></p> 
+              </div>
+            </div>
+            <!-- 공제량 조회 -->
+            <div class="row">
+              <div class="bs-callout bs-callout-danger" id=callout-helper-context-color-specificity>
+                <div class="row">
+                  <div class="col-xs-4">
+                    <h5>
+                      <span class="label label-default">Data</span>
+                    </h5>
+                    <div class="progress progress-striped active">
+                      <div class="progress-bar progress-bar" id="data_prog" role="progressbar"></div>
+                    </div>
+                  </div>
+                  <div class="col-xs-4">
+                    <h5>
+                      <span class="label label-default">Voice call</span>
+                    </h5>
+                    <div class="progress progress-striped active">
+                      <div class="progress-bar progress-bar" id="voice_prog" role="progressbar"></div>
+                    </div>
+                  </div>
+                  <div class="col-xs-4">
+                    <h5>
+                      <span class="label label-default">SMS / MMS</span>
+                    </h5>
+                    <div class="progress progress-striped active">
+                      <div class="progress-bar progress-bar" id="sms_prog" role="progressbar"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-xs-4">
-            <h5>
-              <span class="label label-default">Voice call</span>
-            </h5>
-            <div class="progress progress-striped active">
-              <div class="progress-bar progress-bar" id="voice_prog" role="progressbar"></div>
-            </div>
+          <div class="hidden-xs" class="col-xs-0 col-md-4">
+            <h4>이벤트 이미지(PC화면 위치)</h4>
           </div>
-          <div class="col-xs-4">
-            <h5>
-              <span class="label label-default">SMS / MMS</span>
-            </h5>
-            <div class="progress progress-striped active">
-              <div class="progress-bar progress-bar" id="sms_prog" role="progressbar"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+        </div> <!-- end row -->
+      </div> <!-- end container -->
+      
       <!-- 업무 링크 -->
       <div class="container">
         <div class="row">
@@ -141,7 +145,7 @@
               </div>
               <div class="col-xs-6 col-sm-12">
                 <a href="/cust_info">
-                  <img src="images/script-4-120.png" class="img-responsive max-width: 100px;, height: auto;, display: right-block;">    
+                  <img src="images/script-4-120.png" class="img-fluid" style="max-width: 100%; height: auto;">    
                 </a>  
               </div>
             </div>
@@ -173,44 +177,26 @@
         </div>
       </div>
       
+      <!-- 이벤트(모바일 위치) -->
+      <div class="hidden-md hidden-lg" class="container">
+        <h4>이벤트 위치 모바일</h4>
+      </div>
     </div> <!-- END Section -->  
     
     <!-- EVENT -->
-    <div class="section">
+    <!--div class="section">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <div id="carousel-example" data-interval="5000" class="carousel slide"
-            data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example" data-slide-to="1" class=""></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="item active">
-                  <a href="/num_mng/gold_list">
-                    <img src="/images/pic_gold_num.jpg">
-                  </a>
-                </div>
-                <div class="item">
-                  <img src="/images/pic_event.jpg">
-                </div>
-              </div>
-              <a class="left carousel-control" href="#carousel-example" data-slide="prev"><i class="icon-prev  fa fa-angle-left"></i></a>
-              <a class="right carousel-control" href="#carousel-example" data-slide="next"><i class="icon-next fa fa-angle-right"></i></a>
-            </div>
-          </div>
+        
         </div>
       </div>
-    </div>
+    </div-->
 
       
       <!-- footer -->
     <div class="section">
       <%- include ./partials/footer.ejs %>
     </div>
-    
-    
     
   </body>
 

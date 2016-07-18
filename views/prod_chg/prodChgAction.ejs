@@ -61,19 +61,23 @@
             </div>
             
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">서비스 개요</a></li>
-            <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">요금 및 혜택</a></li>
-              <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">유의 사항</a></li>  
+            <li class="active"><a href="#intro" data-toggle="tab" aria-expanded="true">서비스 개요</a></li>
+            <li><a href="#description" data-toggle="tab" aria-expanded="true">요금 및 혜택</a></li>
+            <li><a href="#note" data-toggle="tab" aria-expanded="true">유의 사항</a></li>  
           </ul>
           <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade active in" id="intro">
-              <p>이거 함써봐</p>
+              <h5><strong><%=data.prod_etc%></strong></h5>
+              <p><img src="/images/<%=data.img_url1%>.png" class="img-responsive max-width: 100px;, height: auto;, display: right-block;"></p>
+              <p><img src="/images/<%=data.img_url2%>.png" class="img-responsive max-width: 100px;, height: auto;, display: right-block;"></p>
+              <p><img src="/images/<%=data.img_url3%>.png" class="img-responsive max-width: 100px;, height: auto;, display: right-block;"></p>
+              
             </div>
             <div class="tab-pane fade" id="description">
-              <p>싸게 줄께</p>
+              <p><%=data.description%></p>
             </div>
             <div class="tab-pane fade" id="note">
-              <p>오백원!</p>
+              <p><%=data.note%></p>
             </div>
             
           </div>  
