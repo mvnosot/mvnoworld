@@ -26,6 +26,8 @@ var custSchema = new Schema({
     use_voice : Number,     //음성 사용량(분)
     full_sms : Number,      //SMS 총 제공량(건) 
     use_sms : Number,       //SMS 총 사용량(건)
+    last_scrb_spot : String,       //최종개통대리점
+    scrb_fee : Number,       //가입비
     vas_list : [
             {
                 vas_id : String,
