@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+  
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <style>
+      .container {
+
+      }
+      
+      .row {
+        
+      }
+      
+      .right{
+        float:right;
+        text-align:right;
+
+      }
+  </style>
+  
+  <script type="text/javascript">
+      var confirmCheck = false;
+    
+      function authSendOnclick() {
+        alert("전송하였습니다.");
+        document.getElementById("btnConfirm").disabled = false;
+      }
+  </script>
+  
+</head>
+
+<body>
+  
+<% include ../partials/navigation.ejs %>
+
+<div class="container">
+  <p>
+    <h3>step1. 골드번호 유형선택</h3>
+    
+    <div class="btn-group btn-group-justified">
+      <a href="#" class="btn btn-default">Left</a>
+      <a href="#" class="btn btn-default">Middle</a>
+      <a href="#" class="btn btn-default">Right</a>
+      <a href="#" class="btn btn-default">Right</a>
+    </div>
+    
+  <ul>
+      <li>
+          <a href="/num_mng/gold_list/1">AAAA</a>
+      </li>
+      <li>
+          <a href="/num_mng/gold_list/2">AAAB</a>
+      </li>
+      <li>
+          <a href="/num_mng/gold_list/3">AABB</a>
+      </li>
+      <li>
+          <a href="/num_mng/gold_list/4">ABAB</a>
+      </li>
+      <li>
+          <a href="/num_mng/gold_list/5">ABBB</a>
+      </li>
+      <li>
+          <a href="/num_mng/gold_list/6">국번동일</a>
+      </li>
+      <li>
+          <a href="/num_mng/gold_list/7">기타</a>
+      </li>
+  </ul>
+  </p>
+</div>
+
+<% if(data) { %>
+<div class="container">
+  <p>
+    <h3>step2. 골드번호 선택</h3>
+  <ul>
+
+        <% data.forEach(function(e){ %>
+          <li>
+            <a href="/num_mng/gold_list_2/<%= e._id.rsv_num_cd %><%= e._id.line_num %>"><%= e._id.line_num %></a>
+            (<%= e.count %> 건)
+          </li>
+        <% })  %>
+  </ul>
+  </p>
+</div>
+<% } %>
+
+    <div class="section">
+      <% include ../partials/footer.ejs %>
+    </div>
+    
+</body>
+</html>

@@ -18,6 +18,11 @@
           color : #ffffff;
         }
         
+        .row {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+        
     </style>
     
     <script>
@@ -95,7 +100,7 @@
       
       <!-- 나의 서비스 정보 -->
       <div class="container">
-        <div class="bs-callout bs-callout-info" id=callout-helper-context-color-specificity> 
+        <div class="bs-callout bs-callout-danger" id=callout-helper-context-color-specificity> 
           <p><h4>나의 서비스 정보</h4> <%=cust_name%> | <%=svc_num%> | <%=fee_prod_nm%></p> 
         </div>
       </div>
@@ -103,6 +108,7 @@
       
       <!-- 공제량 조회 -->
       <div class="container">
+        <div class="bs-callout bs-callout-danger" id=callout-helper-context-color-specificity>
         <div class="row">
           <div class="col-xs-4">
             <h5>
@@ -129,6 +135,7 @@
             </div>
           </div>
         </div>
+        </div>
       </div>
 
       <!-- 업무 링크 -->
@@ -141,7 +148,7 @@
               </div>
               <div class="col-xs-6 col-sm-12">
                 <a href="/cust_info">
-                  <img src="images/script-4-120.png" class="img-responsive max-width: 100px;, height: auto;, display: right-block;">    
+                  <img src="images/script-4-120.png" class="img-fluid" style="max-width: 100%; height: auto;">    
                 </a>  
               </div>
             </div>
@@ -176,7 +183,7 @@
     </div> <!-- END Section -->  
     
     <!-- EVENT -->
-    <div class="section">
+    <!--div class="section">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -202,7 +209,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div-->
 
       
       <!-- footer -->
