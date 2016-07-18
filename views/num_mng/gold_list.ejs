@@ -33,9 +33,101 @@
   
   <script type="text/javascript">
   
+    // step1. 골드번호 서비스번호 유형선택
+    // GET : /num_mng/gold_list/:id
+    function getLineNum(args) {
+      
+      var lineTitle = "010 - ";
+      
+      // 서브타이틀 세팅
+      switch(parseInt(args)){
+        case 1:
+          lineTitle += "XXXX - AAAA";
+          break;
+        case 2:
+          lineTitle += "XXXX - AAAB";
+          break;
+        case 3:
+          lineTitle += "XXXX - AABB";
+          break;
+        case 4:
+          lineTitle += "XXXX - ABAB";
+          break;
+        case 5:
+          lineTitle += "XXXX - ABBB";
+          break;
+        case 6:
+          lineTitle += "ABCD - ABCD";
+          break;
+        case 7:
+          lineTitle += "XXXX - GOOD";
+          break;
+        dafault:
+          lineTitle = "ERROR";
+      }
+      document.getElementById("linenum_title").innerHTML = lineTitle;
+
+      var req;
+      
+      if(window.XMLHttpRequest) {
+        req = new XMLHttpRequest();
+      } else {
+        req = new ActiveObject("Microsoft.XMLHTTP");
+      }
+
+      req.onreadystatechange = function () {
+        if(req.readyState == 4 && req.status == 200) {
+          
+          var jsontext = req.responseText;
+          var nums = JSON.parse(jsontext);
+          
+          var innertext = "";
+          
+          innertext += "<P><ul class=\"nav nav-pills\">";
+          
+          if (nums.numrscs.length > 0) {
+            for (var i = 0; i < nums.numrscs.length; i++) {
+              innertext += "<li><a onclick=\"getFromServer('" + nums.numrscs[i]._id.rsv_num_cd + nums.numrscs[i]._id.line_num + "')\">" + nums.numrscs[i]._id.line_num + "<span class=\"badge\">" + nums.numrscs[i].count + "</span></a></li>";
+            }
+          } else if (nums.numrscs.length == 0){
+            innertext += "<li><P>응모 가능번호가 없습니다.<BR/>다시 선택하세요</strong></P></li>";
+          }
+          
+          innertext += "</ul></P>";
+          
+          // target div
+          document.getElementById("linenum_div").innerHTML = innertext;
+          document.getElementById("svcnum_div").innerHTML = "";
+        }
+      }
+      
+      req.open("GET", "/num_mng/gold_list/" + args,true);
+      req.send();
+    }
+      
     // step2. 골드번호 서비스번호 목록 조회
     // GET : /num_mng/gold_list_2/:id
     function getFromServer(args) {
+      
+      var lineTitle = "010 - ";
+      
+      // 서브타이틀 세팅
+      switch(parseInt(args.substr(0,1))){
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 7:
+          lineTitle += "XXXX - " + args.substr(1);
+          break;
+        case 6:
+          lineTitle += args.substr(1) + " - " + args.substr(1);
+          break;
+        dafault:
+          lineTitle = "ERROR";
+      }
+      document.getElementById("linenum_title").innerHTML = lineTitle;
       
       var req;
 
@@ -57,19 +149,19 @@
             // 라인번호로 조회한 서비스번호 목록 세팅
             for (var i = 0; i < nums.numrscs.length; i++) {
               if(i==0){
-                innertext += "<form name=\"evntForm\" action=\"/evnt_mng\" method=\"get\"><p class=\"text-info\">";
+                innertext += "<div class=\"alert alert-info\"><form name=\"evntForm\" action=\"/evnt_mng\" method=\"get\"><p class=\"text-info\">";
               }
               
               innertext += "<label><input type=\"radio\" name=\"evntradio\" value=\"" + nums.numrscs[i].svc_num + "\">&nbsp\;"+ nums.numrscs[i].svc_num + "</label>";
               innertext += "&nbsp\;&nbsp\;&nbsp\;";
               
               if(i==nums.numrscs.length-1){
-                innertext += "</p>";
+                innertext += "</p></div>";
               }
               
             }
             
-            innertext += "<p><button onclick=\"process()\" class=\"btn btn-success\">선택완료</button></p></form>";
+            innertext += "<p align=\"center\"><button onclick=\"process()\" class=\"btn btn-success\">선택완료</button></p></form>";
           }
           
           // target div
@@ -101,43 +193,34 @@
   <p></p>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <p class="text-danger">step1. 골드번호 유형선택</p>
+            <p class="text-danger">step1. 골드번호 선택하기</p>
           </div>
           <div class="panel-body">
             <div class="btn-group btn-group-justified">
-              <a href="/num_mng/gold_list/1" class="btn btn-warning">AAAA</a>
-              <a href="/num_mng/gold_list/2" class="btn btn-warning">AAAB</a>
-              <a href="/num_mng/gold_list/3" class="btn btn-warning">AABB</a>
-              <a href="/num_mng/gold_list/4" class="btn btn-warning">ABAB</a>
+              <a onclick="getLineNum('1');" class="btn btn-primary">AAAA</a>
+              <a onclick="getLineNum('2');" class="btn btn-primary">AAAB</a>
+              <a onclick="getLineNum('3');" class="btn btn-primary">AABB</a>
+              <a onclick="getLineNum('4');" class="btn btn-primary">ABAB</a>
             </div>
             <div class="btn-group btn-group-justified">
-              <a href="/num_mng/gold_list/5" class="btn btn-warning">ABBB</a>
-              <a href="/num_mng/gold_list/6" class="btn btn-warning">국번동일</a>
-              <a href="/num_mng/gold_list/7" class="btn btn-warning">기타</a>
+              <a onclick="getLineNum('5');" class="btn btn-primary">ABBB</a>
+              <a onclick="getLineNum('6');" class="btn btn-primary">국번동일</a>
+              <a onclick="getLineNum('7');" class="btn btn-primary">기타</a>
             </div>
+            <BR/>
+            
+            <div class="well well-sm">
+              <!-- 라인번호 예시 -->
+              <p class="text-info" id="linenum_title" align="center"></p>
+              <!-- 라인번호  -->
+              <div id="linenum_div">원하는 골드번호 유형을 선택하세요</div>
+            </div>
+            <div id="svcnum_div">
+              <!-- 서비스번호 -->
+            </div>
+
           </div>  
         </div>
-        
-        <% if(data) { %>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <p class="text-danger">step2. 골드번호 선택</p>
-            </div>
-            <div class="panel-body">
-              <ul class="nav nav-pills">
-                <% data.forEach(function(e){ %>
-                  <li><a onclick="getFromServer('<%= e._id.rsv_num_cd %><%= e._id.line_num %>')"><%= e._id.line_num %><span class="badge"><%= e.count %></span></a></li>
-                <% })  %>
-                <% if(data.length == 0) { %>
-                  <li>응모 가능한 번호가 없습니다. 다른 유형을 선택해 주세요.</li>
-                <% } %>
-              </ul>
-              
-              <div id="svcnum_div"></div>
-              
-            </div>
-          </div>
-        <% } %>
         
 </div>
 

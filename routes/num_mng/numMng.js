@@ -26,6 +26,8 @@ module.exports = function(app, Numrsc) {
     });
     // 골드번호 라인번호 선택
     app.get('/num_mng/gold_list/:id', function(req, res) {
+        console.log("req.params.id=" + req.params.id);
+        
         Numrsc.aggregate([
 
               { $match : { num_st_cd : "AV", rsv_num_cd:""+req.params.id} },
@@ -38,8 +40,8 @@ module.exports = function(app, Numrsc) {
       
         ], function (err, numrscs) {
                 if(err)return console.log("Data ERROR:",err);
-                res.render('num_mng/gold_list',{data:numrscs});
-                // res.json({success:true,data:numrscs});
+                // res.render('num_mng/gold_list',{data:numrscs});
+                res.json({numrscs});
         });
     });
     // 골드번호 서비스번호 목록
@@ -53,24 +55,7 @@ module.exports = function(app, Numrsc) {
             res.json({numrscs});
         });
     });
-    // // 골드번호 서비스번호 선택
-    // app.get('/num_mng/gold_list_3/:id', function(req, res) {
-    //     Numrsc.aggregate([
 
-    //           { $match : { num_st_cd : "AV", svc_num:""+req.params.id} },
-    //           { $group : {
-    //               _id : { svc_num: "$svc_num"},
-    //               count: { $sum: 1 }
-    //             }
-    //           },
-    //           { $sort : { svc_num : 1} }
-      
-    //     ], function (err, numrscs) {
-    //             if(err)return console.log("Data ERROR:",err);
-    //             res.render('num_mng/gold_list',{data:numrscs});
-    //             // res.json({success:true,data:numrscs});
-    //     });
-    // });
 
         
     // show
