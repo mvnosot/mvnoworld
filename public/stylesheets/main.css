@@ -6604,7 +6604,7 @@ body {
 }
 .section {
   position: relative;
-  padding: 35px 0;
+  padding: 10px 0;
 }
 .section .background-image {
   z-index: 0;
