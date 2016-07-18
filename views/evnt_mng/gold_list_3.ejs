@@ -45,76 +45,79 @@
 
 <% include ../partials/navigation.ejs %>
 
-<form name="achvForm" action="/evnt_mng" method="post">
+
 
 <div class="container">
-    <p>
-      <h3>step3. 응모번호 확인 및 취득유형 선택</h3>
-      <ul>
-          <% if(data!=null) { %>
-            <% data.forEach(function(e){ %>
-            
-              <h5>
-                고객님이 선택한 <%= e._id.gold_svc_num %> 번호로 응모되며,<br>
-                현재 동일한 번호로 <%= e.count %>명이 응모 하셨습니다.
-              </h5>
+  골드번호 이벤트
+  <p></p>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <p class="text-danger">step3. 응모번호 확인 및 취득유형 선택</p>
+          </div>
+          <div class="panel-body">
+            <form name="achvForm" action="/evnt_mng" method="post">
               
-              <input name="gold_svc_num" type="hidden" value="<%= e._id.gold_svc_num %>">
-              
-            <% })  %>
-          <% } %>
+                <% if(data!=null) { %>
+                  <% data.forEach(function(e){ %>
+                  
+                    <h5>
+                      고객님이 선택한 <%= e._id.gold_svc_num %> 번호로 응모되며,<br>
+                      현재 동일한 번호로 <%= e.count %>명이 응모 하셨습니다.
+                    </h5>
+                    
+                    <input name="gold_svc_num" type="hidden" value="<%= e._id.gold_svc_num %>">
+                    
+                  <% })  %>
+                <% } %>
+                  
+                  <% if(data!=null && data.length==0
+                      && data2!=null && data2.length > 0) { %>
+                      <h5>
+                        고객님이 선택한 <%= data2 %> 번호로 응모되며,<br>
+                        현재 동일한 번호로 0명이 응모 하셨습니다.
+                      </h5>
+                      <input name="gold_svc_num" type="hidden" value="<%= data2 %>">
+                  <% } %>
             
-            <% if(data!=null && data.length==0
-                && data2!=null && data2.length > 0) { %>
+            <% if(data2!=null && data2.length > 0) { %>
                 <h5>
-                  고객님이 선택한 <%= data2 %> 번호로 응모되며,<br>
-                  현재 동일한 번호로 0명이 응모 하셨습니다.
+                  골드번호 당첨 시 취득 유형을 선택하여 주세요.
                 </h5>
-                <input name="gold_svc_num" type="hidden" value="<%= data2 %>">
+                  <label>
+                    <input type="radio" name="achvradio" value="1">010신규
+                    <input type="radio" name="achvradio" value="2">번호이동
+                    <input type="radio" name="achvradio" value="3">기기변경
+                    <input type="radio" name="achvradio" value="4">번호변경
+                  </label>
+              
+                
+                <h5>
+                  - 응모한 취득 유형으로만 골드번호를 취득할수 있습니다.<br>
+                  - 선불(PPS)고객은 프로모션 응모는 가능하지만, 당첨된 골드번호는 후불번호로만 취득 가능합니다.<br>
+                </h5>
+                
+              
+              <button onclick="process()" class="btn btn-danger">응모하기</button>
+              <!--<button onclick="process()">다른번호선택</button>-->
+              <a href="/num_mng/gold_list">다른번호선택</a>
+              </form>
+            
             <% } %>
-      </ul>
-      
-      <% if(data2!=null && data2.length > 0) { %>
-        <ul>
-          <h5>
-            골드번호 당첨 시 취득 유형을 선택하여 주세요.
-          </h5>
-            <label>
-              <input type="radio" name="achvradio" value="1">010신규
-              <input type="radio" name="achvradio" value="2">번호이동
-              <input type="radio" name="achvradio" value="3">기기변경
-              <input type="radio" name="achvradio" value="4">번호변경
-            </label>
-        </ul>
+            
+            <% if(data3!=null) { %>
+                  <% data3.forEach(function(e){ %>
+                    <h5>
+                      고객님이 선택한 <%= e._id.gold_svc_num %> 번호로 응모되었습니다.<br>
+                      현재 동일한 번호로 <%= e.count %>명이 응모 하셨습니다.
+                    </h5>
+                  <% })  %>
+            <% } %>
+          </div>
+        </div>
         
-        <ul>
-          
-          <h5>
-            - 응모한 취득 유형으로만 골드번호를 취득할수 있습니다.<br>
-            - 선불(PPS)고객은 프로모션 응모는 가능하지만, 당첨된 골드번호는 후불번호로만 취득 가능합니다.<br>
-          </h5>
-          
-        </ul>
-        
-        <button type="submit">응모하기</button>
-      
-      <% } %>
-      
-      <% if(data3!=null) { %>
-            <% data3.forEach(function(e){ %>
-              <h5>
-                고객님이 선택한 <%= e._id.gold_svc_num %> 번호로 응모되었습니다.<br>
-                현재 동일한 번호로 <%= e.count %>명이 응모 하셨습니다.
-              </h5>
-            <% })  %>
-      <% } %>
-    
-    </p>
 </div>
-    
-</form>
-
-        <a href="/num_mng/gold_list"><button>다른번호선택</button></a>
+        
+        
     <div class="section">
       <% include ../partials/footer.ejs %>
     </div>
