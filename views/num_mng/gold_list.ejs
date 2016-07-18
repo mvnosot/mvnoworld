@@ -31,6 +31,65 @@
       }
   </script>
   
+  <script type="text/javascript">
+  
+    // step2. 골드번호 서비스번호 목록 조회
+    // GET : /num_mng/gold_list_2/:id
+    function getFromServer(args) {
+      
+      var req;
+
+      if(window.XMLHttpRequest) {
+        req = new XMLHttpRequest();
+      } else {
+        req = new ActiveObject("Microsoft.XMLHTTP");
+      }
+
+      req.onreadystatechange = function (){
+        if(req.readyState == 4 && req.status == 200) {
+          
+          var jsontext = req.responseText;
+          var nums = JSON.parse(jsontext);
+          
+          var innertext = "";
+          
+          if (nums.numrscs.length > 0) {
+            // 라인번호로 조회한 서비스번호 목록 세팅
+            for (var i = 0; i < nums.numrscs.length; i++) {
+              if(i==0){
+                innertext += "<form name=\"evntForm\" action=\"/evnt_mng\" method=\"get\"><p class=\"text-info\">";
+              }
+              
+              innertext += "<label><input type=\"radio\" name=\"evntradio\" value=\"" + nums.numrscs[i].svc_num + "\">&nbsp\;"+ nums.numrscs[i].svc_num + "</label>";
+              innertext += "&nbsp\;&nbsp\;&nbsp\;";
+              
+              if(i==nums.numrscs.length-1){
+                innertext += "</p>";
+              }
+              
+            }
+            
+            innertext += "<p><button onclick=\"process()\" class=\"btn btn-success\">선택완료</button></p></form>";
+          }
+          
+          // target div
+          document.getElementById("svcnum_div").innerHTML = innertext;
+          
+        }
+      }
+      
+      req.open("GET", "/num_mng/gold_list_2/" + args,true);
+      // req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      req.send();
+      
+    }
+    
+    function process (){
+      document.evntForm.submit();
+    }
+
+  </script>
+  
 </head>
 
 <body>
@@ -38,51 +97,51 @@
 <% include ../partials/navigation.ejs %>
 
 <div class="container">
-  <p>
-    <h3>step1. 골드번호 유형선택</h3>
-  <ul>
-      <li>
-          <a href="/num_mng/gold_list/1">AAAA</a>
-      </li>
-      <li>
-          <a href="/num_mng/gold_list/2">AAAB</a>
-      </li>
-      <li>
-          <a href="/num_mng/gold_list/3">AABB</a>
-      </li>
-      <li>
-          <a href="/num_mng/gold_list/4">ABAB</a>
-      </li>
-      <li>
-          <a href="/num_mng/gold_list/5">ABBB</a>
-      </li>
-      <li>
-          <a href="/num_mng/gold_list/6">국번동일</a>
-      </li>
-      <li>
-          <a href="/num_mng/gold_list/7">기타</a>
-      </li>
-  </ul>
-  </p>
+  골드번호 이벤트
+  <p></p>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <p class="text-danger">step1. 골드번호 유형선택</p>
+          </div>
+          <div class="panel-body">
+            <div class="btn-group btn-group-justified">
+              <a href="/num_mng/gold_list/1" class="btn btn-warning">AAAA</a>
+              <a href="/num_mng/gold_list/2" class="btn btn-warning">AAAB</a>
+              <a href="/num_mng/gold_list/3" class="btn btn-warning">AABB</a>
+              <a href="/num_mng/gold_list/4" class="btn btn-warning">ABAB</a>
+            </div>
+            <div class="btn-group btn-group-justified">
+              <a href="/num_mng/gold_list/5" class="btn btn-warning">ABBB</a>
+              <a href="/num_mng/gold_list/6" class="btn btn-warning">국번동일</a>
+              <a href="/num_mng/gold_list/7" class="btn btn-warning">기타</a>
+            </div>
+          </div>  
+        </div>
+        
+        <% if(data) { %>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <p class="text-danger">step2. 골드번호 선택</p>
+            </div>
+            <div class="panel-body">
+              <ul class="nav nav-pills">
+                <% data.forEach(function(e){ %>
+                  <li><a onclick="getFromServer('<%= e._id.rsv_num_cd %><%= e._id.line_num %>')"><%= e._id.line_num %><span class="badge"><%= e.count %></span></a></li>
+                <% })  %>
+                <% if(data.length == 0) { %>
+                  <li>응모 가능한 번호가 없습니다. 다른 유형을 선택해 주세요.</li>
+                <% } %>
+              </ul>
+              
+              <div id="svcnum_div"></div>
+              
+            </div>
+          </div>
+        <% } %>
+        
 </div>
 
-<% if(data) { %>
-<div class="container">
-  <p>
-    <h3>step2. 골드번호 선택</h3>
-  <ul>
-
-        <% data.forEach(function(e){ %>
-          <li>
-            <a href="/num_mng/gold_list_2/<%= e._id.rsv_num_cd %><%= e._id.line_num %>"><%= e._id.line_num %></a>
-            (<%= e.count %> 건)
-          </li>
-        <% })  %>
-  </ul>
-  </p>
-</div>
-<% } %>
-
+        
     <div class="section">
       <% include ../partials/footer.ejs %>
     </div>

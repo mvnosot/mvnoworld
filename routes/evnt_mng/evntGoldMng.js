@@ -32,12 +32,12 @@ module.exports = function(app, Evntgold) {
                 
             },function(err,evntgolds){
             if(err)return console.log("Data ERROR:",err);
-            res.redirect('/evnt_mng/show/'+req.body.gold_svc_num);
+            res.redirect('/evnt_mng/'+req.body.gold_svc_num);
         });
     });
 
     // 응모결과 조회
-    app.get('/evnt_mng/show/:id', function(req, res, next) {
+    app.get('/evnt_mng/:id', function(req, res, next) {
         
         Evntgold.aggregate([
 

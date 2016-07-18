@@ -50,27 +50,27 @@ module.exports = function(app, Numrsc) {
             
         ).sort('svc_num').exec(function(err, numrscs){
             if(err)return console.log("Data ERROR:",err);
-            res.render('num_mng/gold_list_2',{data:numrscs});
+            res.json({numrscs});
         });
     });
-    // 골드번호 서비스번호 선택
-    app.get('/num_mng/gold_list_3/:id', function(req, res) {
-        Numrsc.aggregate([
+    // // 골드번호 서비스번호 선택
+    // app.get('/num_mng/gold_list_3/:id', function(req, res) {
+    //     Numrsc.aggregate([
 
-              { $match : { num_st_cd : "AV", svc_num:""+req.params.id} },
-              { $group : {
-                  _id : { svc_num: "$svc_num"},
-                  count: { $sum: 1 }
-                }
-              },
-              { $sort : { svc_num : 1} }
+    //           { $match : { num_st_cd : "AV", svc_num:""+req.params.id} },
+    //           { $group : {
+    //               _id : { svc_num: "$svc_num"},
+    //               count: { $sum: 1 }
+    //             }
+    //           },
+    //           { $sort : { svc_num : 1} }
       
-        ], function (err, numrscs) {
-                if(err)return console.log("Data ERROR:",err);
-                res.render('num_mng/gold_list',{data:numrscs});
-                // res.json({success:true,data:numrscs});
-        });
-    });
+    //     ], function (err, numrscs) {
+    //             if(err)return console.log("Data ERROR:",err);
+    //             res.render('num_mng/gold_list',{data:numrscs});
+    //             // res.json({success:true,data:numrscs});
+    //     });
+    // });
 
         
     // show
