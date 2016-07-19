@@ -31,7 +31,9 @@ module.exports = function(app, CustModel) {
 
     /* GET home page. */
     app.get('/cust_info', function(req, res) {
-      CustModel.findOne({svc_num:"01029644930"},function(err,data){
+      
+      // console.log("session svc_num:",req.session.svc_num);
+      CustModel.findOne({svc_num:req.session.svc_num},function(err,data){
         if(err)return console.log("Data ERROR:",err);
         res.render('cust_info/custInfoView',data);
       })
@@ -39,7 +41,7 @@ module.exports = function(app, CustModel) {
 
     /* GET home page. */
     app.get('/cust_info/vas_list', function(req, res) {
-      CustModel.findOne({svc_num:"01025104930"},function(err,data){
+      CustModel.findOne({svc_num:req.session.svc_num},function(err,data){
         if(err)return console.log("Data ERROR:",err);
         res.render('cust_info/custInfoVasList',data);
       })
@@ -49,7 +51,7 @@ module.exports = function(app, CustModel) {
     
     /* GET home page. */
     app.get('/cust_info/custInfoViewdtl', function(req, res) {
-      CustModel.findOne({svc_num:"01025104930"},function(err,data){
+      CustModel.findOne({svc_num:req.session.svc_num},function(err,data){
         if(err)return console.log("Data ERROR:",err);
         res.render('cust_info/custInfoViewdtl',data);
       })

@@ -11,7 +11,7 @@ var Schema = mongoose.Schema;
     "phone_number": "01062846257",
     "birthday": "820805",
 */
-var numberSchema = new Schema({
+var userSchema = new Schema({
     name: String,
     mvno_cd : String,
     mvno_nm : String,
@@ -20,4 +20,4 @@ var numberSchema = new Schema({
 })
 
 // module model
-module.exports = mongoose.model('number', numberSchema);
+module.exports = mongoose.model('user', userSchema);
