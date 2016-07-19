@@ -30,15 +30,7 @@
         document.getElementById("btnConfirm").disabled = false;
       }
   </script>
-  
-<script>
-  function process (){
-    var obj = document.evntForm.achvradio;
-    alert(obj.value);
-    document.achvForm.submit();
-  }
-</script>
-  
+
 </head>
 
 <body>
@@ -53,7 +45,12 @@
   <p></p>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <p class="text-danger">step2. 선택한 골드번호 응모하기</p>
+          <% if(data3==null) { %>
+            <p class="text-danger" id="pg_title">step2. 선택한 골드번호 응모하기</p>
+          <% } %>
+          <% if(data3!=null) { %>
+            <p class="text-danger" id="pg_title">step3. 골드번호 이벤트 응모완료</p>
+          <% } %>
           </div>
           <div class="panel-body">
             
@@ -101,7 +98,7 @@
                 </p>
                 <p "text-danger">
                   <h5>
-                    - <strong>응모한 취득 유형으로만</strong> 골드번호를 취득할수 있습니다.<br>
+                    - 응모한 취득 유형으로만 골드번호를 취득할수 있습니다.<br>
                     - 선불(PPS)고객은 프로모션 응모는 가능하지만, 당첨된 골드번호는 후불번호로만 취득 가능합니다.<br>
                   </h5>
                 </p>
@@ -113,10 +110,20 @@
             <% if(data3!=null) { %>
                   <% data3.forEach(function(e){ %>
                   
-                    <h5>
-                      고객님이 선택한 <%= e._id.gold_svc_num %> 번호로 응모되었습니다.<br>
-                      현재 동일한 번호로 <%= e.count %>명이 응모 하셨습니다.
-                    </h5>
+                    <div>
+                      <div class="well">
+                        <h2 class="text-danger"><%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %></h2>
+                        <h3>
+                          번호로 응모 하셨습니다.<br>
+                        </h3>
+                        <h3>
+                          현재 이 번호로 <font class="text-danger"><%= e.count %></font>명 응모하였습니다.
+                        </h3>
+                      </div>
+                      
+                      <p align="center"><a class="btn btn-primary" href="/num_mng/goldList" >응모결과 조회</a></p>
+                      
+                    </div>
                     
                   <% })  %>
             <% } %>
