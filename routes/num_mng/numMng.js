@@ -21,13 +21,11 @@ module.exports = function(app, Numrsc) {
     
     
     // 골드번호 유형 선택
-    app.get('/num_mng/gold_list', function(req, res) {
-      res.render('num_mng/gold_list',{data:null});
+    app.get('/num_mng/goldList', function(req, res) {
+      res.render('num_mng/goldList',{data:null});
     });
     // 골드번호 라인번호 선택
-    app.get('/num_mng/gold_list/:id', function(req, res) {
-        console.log("req.params.id=" + req.params.id);
-        
+    app.get('/num_mng/goldList/:id', function(req, res) {
         Numrsc.aggregate([
 
               { $match : { num_st_cd : "AV", rsv_num_cd:""+req.params.id} },
@@ -40,12 +38,11 @@ module.exports = function(app, Numrsc) {
       
         ], function (err, numrscs) {
                 if(err)return console.log("Data ERROR:",err);
-                // res.render('num_mng/gold_list',{data:numrscs});
                 res.json({numrscs});
         });
     });
     // 골드번호 서비스번호 목록
-    app.get('/num_mng/gold_list_2/:id', function(req, res) {
+    app.get('/num_mng/goldList2/:id', function(req, res) {
         Numrsc.find(
             
             { num_st_cd : "AV", rsv_num_cd:""+req.params.id.substr(0,1), line_num:""+req.params.id.substr(1) }

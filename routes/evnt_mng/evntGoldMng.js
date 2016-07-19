@@ -17,7 +17,7 @@ module.exports = function(app, Evntgold) {
       
         ], function (err, evntgolds) {
                 if(err)return console.log("Data ERROR:",err);
-                res.render('evnt_mng/gold_list_3',{data:evntgolds,data2:evntradio,data3:null});
+                res.render('evnt_mng/goldSubmit',{data:evntgolds,data2:evntradio,data3:null});
         });
           
     });
@@ -51,7 +51,7 @@ module.exports = function(app, Evntgold) {
       
         ], function (err, evntgolds) {
                 if(err)return console.log("Data ERROR:",err);
-                res.render('evnt_mng/gold_list_3',{data:null,data2:null,data3:evntgolds});
+                res.render('evnt_mng/goldSubmit',{data:null,data2:null,data3:evntgolds});
         });
           
     });

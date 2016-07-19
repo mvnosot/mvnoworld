@@ -34,12 +34,14 @@
   <script type="text/javascript">
   
     // step1. 골드번호 서비스번호 유형선택
-    // GET : /num_mng/gold_list/:id
+    // GET : /num_mng/goldList/:id
     function getLineNum(args) {
       
-      var lineTitle = "010 - ";
+      var lineTitle = "";
       
-      // 서브타이틀 세팅
+      // 서비스번호 유형 세팅
+      lineTitle += "010 - ";
+      
       switch(parseInt(args)){
         case 1:
           lineTitle += "XXXX - AAAA";
@@ -65,7 +67,8 @@
         dafault:
           lineTitle = "ERROR";
       }
-      document.getElementById("linenum_title").innerHTML = lineTitle;
+      
+      document.getElementById("linenum_title").innerHTML = "<div class=\"alert alert-warning\">" + lineTitle + "</div>";
 
       var req;
       
@@ -86,10 +89,14 @@
           innertext += "<P><ul class=\"nav nav-pills\">";
           
           if (nums.numrscs.length > 0) {
+            document.getElementById("linenum_title_div").innerHTML = "<span class=\"label label-warning\">2. 끝자리 번호 선택</span><h6></h6>";
+          
             for (var i = 0; i < nums.numrscs.length; i++) {
               innertext += "<li><a onclick=\"getFromServer('" + nums.numrscs[i]._id.rsv_num_cd + nums.numrscs[i]._id.line_num + "')\">" + nums.numrscs[i]._id.line_num + "<span class=\"badge\">" + nums.numrscs[i].count + "</span></a></li>";
             }
           } else if (nums.numrscs.length == 0){
+            document.getElementById("linenum_title_div").innerHTML = "";
+            
             innertext += "<li><P>응모 가능번호가 없습니다.<BR/>다시 선택하세요</strong></P></li>";
           }
           
@@ -98,15 +105,16 @@
           // target div
           document.getElementById("linenum_div").innerHTML = innertext;
           document.getElementById("svcnum_div").innerHTML = "";
+          document.getElementById("svcnum_title_div").innerHTML = "";
         }
       }
       
-      req.open("GET", "/num_mng/gold_list/" + args,true);
+      req.open("GET", "/num_mng/goldList/" + args,true);
       req.send();
     }
       
     // step2. 골드번호 서비스번호 목록 조회
-    // GET : /num_mng/gold_list_2/:id
+    // GET : /num_mng/goldList2/:id
     function getFromServer(args) {
       
       var lineTitle = "010 - ";
@@ -127,7 +135,7 @@
         dafault:
           lineTitle = "ERROR";
       }
-      document.getElementById("linenum_title").innerHTML = lineTitle;
+      document.getElementById("linenum_title").innerHTML = "<div class=\"alert alert-warning\">" + lineTitle + "</div>";;
       
       var req;
 
@@ -146,22 +154,23 @@
           var innertext = "";
           
           if (nums.numrscs.length > 0) {
+            document.getElementById("svcnum_title_div").innerHTML = "<p class=\"text-muted\" align=\"center\"><i class=\"fa fa-arrow-down fa-2x\" aria-hidden=\"true\"></i></p><span class=\"label label-success\">3. 골드번호 선택</span><h6></h6>";
+            
             // 라인번호로 조회한 서비스번호 목록 세팅
             for (var i = 0; i < nums.numrscs.length; i++) {
               if(i==0){
-                innertext += "<div class=\"alert alert-info\"><form name=\"evntForm\" action=\"/evnt_mng\" method=\"get\"><p class=\"text-info\">";
+                innertext += "<div><form name=\"evntForm\" action=\"/evnt_mng\" method=\"get\"><p class=\"text-success\">";
               }
               
-              innertext += "<label><input type=\"radio\" name=\"evntradio\" value=\"" + nums.numrscs[i].svc_num + "\">&nbsp\;"+ nums.numrscs[i].svc_num + "</label>";
+              innertext += "<label><input type=\"radio\" name=\"evntradio\" value=\"" + nums.numrscs[i].svc_num + "\">&nbsp\;"+ nums.numrscs[i].svc_num.substr(0,3) + "-" + nums.numrscs[i].svc_num.substr(3,4) + "-" + nums.numrscs[i].svc_num.substr(7) + "</label>";
               innertext += "&nbsp\;&nbsp\;&nbsp\;";
               
               if(i==nums.numrscs.length-1){
-                innertext += "</p></div>";
+                innertext += "</p>";
               }
-              
             }
             
-            innertext += "<p align=\"center\"><button onclick=\"process()\" class=\"btn btn-success\">선택완료</button></p></form>";
+            innertext += "<p align=\"center\"><BR/><a href=\"#\" class=\"btn btn-success\" onclick=\"process()\;\">선택하기</a></p></form></div>";
           }
           
           // target div
@@ -170,14 +179,29 @@
         }
       }
       
-      req.open("GET", "/num_mng/gold_list_2/" + args,true);
+      req.open("GET", "/num_mng/goldList2/" + args,true);
       // req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       req.send();
       
     }
     
+    // 응모요청
     function process (){
       document.evntForm.submit();
+    }
+
+    // modal세팅
+    function chkSvcNum(){
+      var msg = "1";
+      var radios = document.getElementById('evntForm').elements['evntradio'];
+      for (var i=0; i < radios.length; i++) {
+        if ( radios[i].checked ) {
+            msg = 1;//radios[i].value;
+            break;
+        }
+      }
+          
+      document.getElementById("modal_msg").innerHTML =  radios.length;
     }
 
   </script>
@@ -193,9 +217,10 @@
   <p></p>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <p class="text-danger">step1. 골드번호 선택하기</p>
+            <p class="text-danger">step1. 골드번호 고르기</p>
           </div>
           <div class="panel-body">
+            <span class="label label-primary">1. 끝자리 유형 선택</span><h6></h6>
             <div class="btn-group btn-group-justified">
               <a onclick="getLineNum('1');" class="btn btn-primary">AAAA</a>
               <a onclick="getLineNum('2');" class="btn btn-primary">AAAB</a>
@@ -209,21 +234,41 @@
             </div>
             <BR/>
             
-            <div class="well well-sm">
-              <!-- 라인번호 예시 -->
+            <div>
+              <div id="linenum_title_div"></div>
+              <!-- 라인번호 목록  -->
+              <div id="linenum_div"></div>
+              <!-- 골드번호 샘플 -->
               <p class="text-info" id="linenum_title" align="center"></p>
-              <!-- 라인번호  -->
-              <div id="linenum_div">원하는 골드번호 유형을 선택하세요</div>
             </div>
-            <div id="svcnum_div">
-              <!-- 서비스번호 -->
+            
+            <div>
+              <div id="svcnum_title_div"></div>
+              <!-- 골드번호 목록 -->
+              <div id="svcnum_div"></div>
             </div>
-
+            
           </div>  
         </div>
         
 </div>
-
+<div class="modal" id="layerpop">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">골드번호 이벤트</h4>
+      </div>
+      <div class="modal-body">
+        <p id="modal_msg"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-primary" onclick="process()" >선택하기</button>
+      </div>
+    </div>
+  </div>
+</div>
         
     <div class="section">
       <% include ../partials/footer.ejs %>
