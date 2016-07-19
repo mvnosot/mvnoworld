@@ -39,14 +39,14 @@
   <% include ../partials/navigation.ejs %>
 
         <div class="container">
-            나의 회선번호<span class="badge right">010-29**-49**</span>
+            나의 회선번호<span class="badge right"><%=data2.svc_num%></span>
             <p></p>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <p class="text-danger">이땡경 님이 사용중인 요금제</p>
+                <p class="text-danger"><%=data2.cust_name%> 님이 사용중인 요금제</p>
               </div>
               <div class="panel-body">
-                  <h2>Band 데이터 59</h2>
+                  <h2><%=data2.fee_prod_nm%></h2>
                   <div>- Data 11GB</div>
                   <div>- 집전화/이동전화 무제한</div>
                   <div>- 문자 기본제공</div>
@@ -65,7 +65,7 @@
               </tr>
             </thead>
             <tbody>
-             
+              <% if(data !=null) { %>
               <% data.forEach(function(e) { %>
               
               <tr>
@@ -75,8 +75,7 @@
                 <td><%=e.prod_vo%></td>
                 <td><%=e.prod_sms%></td>
               </tr>
-              <% }) %>
-             
+              <% })} %>
             </tbody>
           </table> 
       </div>

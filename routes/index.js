@@ -1,5 +1,5 @@
 
-module.exports = function(app, User) {
+module.exports = function(app, UserModel) {
     
     
     /* GET home page. */
@@ -7,76 +7,93 @@ module.exports = function(app, User) {
       res.render('index', { title: 'MVNO ROOM' });
     });
     
-    /* GET Login */
-    app.get('/login', function(req, res) {
-        // User.findOne({phone_number: req.body.inputPN, birthday : req.body.inputBirth}
-        //     , function(err, books){
-        //         if(err) return res.status(500).send({error: 'database failure'});
-        //         res.json(books);
-        //     })
+    // /* GET Login */
+    // app.get('/login', function(req, res) {
+    //     // UserModel.findOne({phone_number: req.body.inputPN, birthday : req.body.inputBirth}
+    //     //     , function(err, books){
+    //     //         if(err) return res.status(500).send({error: 'database failure'});
+    //     //         res.json(books);
+    //     //     })
         
-        res.redirect('main');
+    //     res.redirect('main');
         
-    });
+    // });
     
-    /* POST Login */
-    app.post('/login', function(req, res) {
-        // User.findOne({phone_number: req.body.inputPN, birthday : req.body.inputBirth}
-        //     , function(err, books){
-        //         if(err) return res.status(500).send({error: 'database failure'});
-        //         res.json(books);
-        //     })
+    // /* POST Login */
+    // app.post('/login', function(req, res) {
+    //     // UserModel.findOne({phone_number: req.body.inputPN, birthday : req.body.inputBirth}
+    //     //     , function(err, books){
+    //     //         if(err) return res.status(500).send({error: 'database failure'});
+    //     //         res.json(books);
+    //     //     })
         
-        console.log("login data : " + req.body.inputPN)
-        var pn = req.body.inputPN;
+    //     console.log("login data : " + req.body.inputPN)
+    //     var pn = req.body.inputPN;
         
-        res.redirect('/main');
-    });
+    //     res.redirect('/main');
+    // });
 /**
  * 
  * 
  * 
- *  로그인 세션 사용 시 참고 예제 * 
-    router.post('/', function(req, res, next) {
+ *  로그인 세션 사용 시 참고 예제 */
+    app.post('/login', function(req, res, next) {
     
       var user = {
-        id : req.body.userid,
-        pswd : req.body.userpswd
+        svc_num : req.body.inputPN,
+        // pswd : req.body.userpswd
       };  // 사용자 요청 정보
     
-      var db = {
-        id : "userid",
-        pswd : "userpswd"
-      };  // 사용차 요청 id 와 일치하는 정보를 데이터베이스에서 불러옴
+      UserModel.findOne({phone_number:req.body.inputPN},function(err,data){
+        if(err) return console.log("Data ERROR:",err);
+        if(!data){
+          // 비밀번호가 일치하지 않는 경우
+          res.redirect('/');
+          return;
+        }
+        // console.log("111111111111111111", req.body.inputPN);
+        // console.log("111111111111111111", data);
+        // console.log("UserModel.svc_num:", UserModel.svc_num);
+        // console.log("data.phone_number:", data.phone_number);
+        if(req.body.inputPN == data.phone_number){
+
+          // 서비스 번호 존재
+          req.session.regenerate(function (err) {
+            if(err){
+              console.log(err);
+            } else {
+              req.session.svc_num = data.phone_number;
+              req.session.name = data.name;
+              req.session.mvno_cd = data.mvno_cd;
+              req.session.mvno_nm = data.mvno_nm;
+              res.redirect('/main');
+            }
+          });
+        } else {
+
+          // 비밀번호가 일치하지 않는 경우
+          res.redirect('/');
+        }  
+
+      })    
     
-      if(user.pswd === db.pswd){
+      // var db = {
+      //   id : "userid",
+      //   pswd : "userpswd"
+      // };  // 사용차 요청 id 와 일치하는 정보를 데이터베이스에서 불러옴
     
-        // 비밀번호가 일치하는 경우
-        req.session.regenerate(function (err) {
-          if(err){
-            console.log(err);
-          } else {
-            req.session.user = user;
-            res.redirect('/login');
-          }
-        });
-    
-      } else {
-    
-        // 비밀번호가 일치하지 않는 경우
-        res.redirect('/');
-    
-      }
+
     });
     
-    router.get('/login', function(req, res, next) {
+    app.get('/login', function(req, res, next) {
     
-      console.log(req.session.user);
+      console.log(req.session.svc_num);
     
-      if(req.session.user){
+      if(req.session.svc_num){
     
         // 세션 아이디가 존재
-        res.render('login', { title: 'loginSession' });
+        // res.render('login', { title: 'loginSession' });
+        res.redirect('/main');
     
       } else {
     
@@ -86,9 +103,9 @@ module.exports = function(app, User) {
       }
     });
     
-    router.get('/logout', function(req, res, next) {
+    app.get('/logout', function(req, res, next) {
     
-      console.log(req.session.user);
+      console.log(req.session.svc_num);
     
       req.session.destroy(function(err){
         // 세션 정보 파괴
@@ -96,7 +113,7 @@ module.exports = function(app, User) {
       })
     });
     
-****** 참고 예제
+/*
     // todo get
     app.get('/api/todo', function(req, res) {
        res.end(); 

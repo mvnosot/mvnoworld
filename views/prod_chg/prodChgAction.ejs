@@ -23,12 +23,9 @@
   </style>
   
   <script type="text/javascript">
-      var confirmCheck = false;
-    
-      function authSendOnclick() {
-        alert("전송하였습니다.");
-        document.getElementById("btnConfirm").disabled = false;
-      }
+    function process (){
+      document.chgForm.submit();
+    }
   </script>
   
 </head>
@@ -46,18 +43,21 @@
   
      
         <div class="container">
-            나의 회선번호<span class="badge right">010-29**-49**</span>
+            나의 회선번호<span class="badge right"><%=data2.svc_num%></span>
             <p></p>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <p class="text-danger">이땡경 님이 사용중인 요금제</p>
+                <p class="text-danger"><%=data2.cust_name%> 님이 사용중인 요금제 : <b><%=data2.fee_prod_nm%></b></p>
               </div>
-              <div class="panel-body">
-                  <h2><%=data.prod_nm%></h2>
-                  <div>- Data <%=data.prod_data%></div>
-                  <div>- 집전화/이동전화 <%=data.prod_vo%></div>
-                  <div>- 문자 <%=data.prod_sms%></div>
-              </div>  
+              <form class = "chgForm" method = "post">
+                <div class="panel-body">
+         
+                    <h2><%=data.prod_nm%></h2>
+                    <div>- Data <%=data.prod_data%></div>
+                    <div>- 집전화/이동전화 <%=data.prod_vo%></div>
+                    <div>- 문자 <%=data.prod_sms%> <button type="button" class="btn btn-primary btn-right" onclick="process()">요금제 변경</button></div>
+                </div>  
+              </form>
             </div>
             
           <ul class="nav nav-tabs">
@@ -68,10 +68,15 @@
           <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade active in" id="intro">
               <h5><strong><%=data.prod_etc%></strong></h5>
+               <% if(data.img_url1) {%>
               <p><img src="/images/<%=data.img_url1%>.png" class="img-responsive max-width: 100px;, height: auto;, display: right-block;"></p>
+              <%}%>
+              <% if(data.img_url2) {%>
               <p><img src="/images/<%=data.img_url2%>.png" class="img-responsive max-width: 100px;, height: auto;, display: right-block;"></p>
+              <%}%>
+              <% if(data.img_url3) {%>
               <p><img src="/images/<%=data.img_url3%>.png" class="img-responsive max-width: 100px;, height: auto;, display: right-block;"></p>
-              
+              <%}%>
             </div>
             <div class="tab-pane fade" id="description">
               <p><%=data.description%></p>

@@ -6,10 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <style>
+      .container {
+        padding-bottom: 15px;
+      }
     
       .row {
         padding-left: 15px;
         padding-right: 15px;
+      }
+      
+      .col-xs-6 {
+        padding-bottom: 10px;
+      }
+      
+      .bs-callout {
+      margin: 7px 0;
+      }
+      
+      .img-responsive {
+        height: auto;
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      
+      .img-wide-responsive {
+        height: auto;
+        max-width: 100%;
+        max-height: 240px;
+      }
+      
+      .span-use-full {
+        float:right;
+        margin-top:-12px;
+        margin-bottom:10px;
+      }
+      
+      img {
+        display: inline-block;
+        height: auto;
+        max-width: 100%;
+        padding : 5px;
       }
         
     </style>
@@ -36,11 +73,14 @@
         data_prog.innerHTML = per_data_str;
         
         proc_view("data_prog", per_data);
+        
+        var data_text = use_data + ' GB 사용 | '+ <%=full_data%> + ' GB 제공';
+        document.getElementById("data_text").innerHTML = data_text;
       }
       
       function initVoiceProgress() {
         var full_voice = <%=full_voice%>
-        var use_voice = <%=full_voice%>
+        var use_voice = <%=use_voice%>
         var per_voice = Math.round(use_voice/full_voice*100);
         var per_voice_str = per_voice+'%';
         
@@ -49,6 +89,9 @@
         voice_prog.innerHTML = per_voice_str;
         
         proc_view("voice_prog", per_voice);
+        
+        var voice_text = use_voice + ' 분 사용 | '+ <%=full_voice%> + ' 분 제공';
+        document.getElementById("voice_text").innerHTML = voice_text;
       }
       
       function initSmsProgress() {
@@ -62,6 +105,9 @@
         sms_prog.innerHTML = per_sms_str;
         
         proc_view("sms_prog", per_sms);
+        
+        var sms_text = use_sms + ' 건 사용 | '+ <%=full_sms%> + ' 건 제공';
+        document.getElementById("sms_text").innerHTML = sms_text;
       }
       
       function proc_view(elementid, data) {
@@ -88,99 +134,103 @@
     <div class="section">
       
       <div class="container">
-        
         <div class="row">
           <div class="col-xs-12 col-md-8">
             <!-- 나의 서비스 정보 -->
             <div class="row">
+              <!--div class="panel panel-danger">
+                <div class="panel-heading">
+                  <h4>나의 서비스 정보</h4>
+                </div>
+                <div class="panel-body">
+                  <p><%=cust_name%> | <%=svc_num%> | <%=fee_prod_nm%></p> 
+                </div>
+              </div-->
               <div class="bs-callout bs-callout-danger" id=callout-helper-context-color-specificity> 
                 <p><h4>나의 서비스 정보</h4> <%=cust_name%> | <%=svc_num%> | <%=fee_prod_nm%></p> 
               </div>
             </div>
+            
             <!-- 공제량 조회 -->
             <div class="row">
               <div class="bs-callout bs-callout-danger" id=callout-helper-context-color-specificity>
                 <div class="row">
-                  <div class="col-xs-4">
+                  <div class="col-xs-12 col-sm-4">
                     <h5>
                       <span class="label label-default">Data</span>
                     </h5>
                     <div class="progress progress-striped active">
                       <div class="progress-bar progress-bar" id="data_prog" role="progressbar"></div>
                     </div>
+                    <small class="span-use-full" id="data_text"></small>
                   </div>
-                  <div class="col-xs-4">
+                  <div class="col-xs-12 col-sm-4">
                     <h5>
                       <span class="label label-default">Voice call</span>
                     </h5>
                     <div class="progress progress-striped active">
                       <div class="progress-bar progress-bar" id="voice_prog" role="progressbar"></div>
                     </div>
+                    <small class="span-use-full" id="voice_text"></small>
                   </div>
-                  <div class="col-xs-4">
+                  <div class="col-xs-12 col-sm-4">
                     <h5>
                       <span class="label label-default">SMS / MMS</span>
                     </h5>
                     <div class="progress progress-striped active">
                       <div class="progress-bar progress-bar" id="sms_prog" role="progressbar"></div>
                     </div>
+                    <small class="span-use-full" id="sms_text"></small>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="hidden-xs" class="col-xs-0 col-md-4">
-            <h4>이벤트 이미지(PC화면 위치)</h4>
+          <!-- 이벤트 wide 위치 -->
+          <div class="col-xs-0 col-md-4">
+            <div class="hidden-xs hidden-sm">
+              <img src="images/data_event.jpg" class="img-wide-responsive">
+            </div>    
           </div>
+          
         </div> <!-- end row -->
       </div> <!-- end container -->
       
       <!-- 업무 링크 -->
       <div class="container">
         <div class="row">
-          <div class="col-xs-12 col-sm-4" style="background-color: #eeeeee">
-            <div class="row">
-              <div class="col-xs-6 col-sm-12">
-                <h5>나의 상세정보</h5>  
-              </div>
-              <div class="col-xs-6 col-sm-12">
-                <a href="/cust_info">
-                  <img src="images/script-4-120.png" class="img-fluid" style="max-width: 100%; height: auto;">    
-                </a>  
-              </div>
-            </div>
+          <div class="col-xs-6 col-sm-3" >
+            <a href="/cust_info">
+              <img src="images/myinfo.jpg" class="img-thumbnail">    
+            </a>  
           </div>
-          <div class="col-xs-12 col-sm-4" style="background-color: #eeeeee">
-            <div class="row">
-              <div class="col-xs-6 col-sm-12">
-                <h5>요금제 조회</h5>  
-              </div>
-              <div class="col-xs-6 col-sm-12">
-                <a href="/prod_chg">
-                  <img src="images/coin-9-120.png" class="img-responsive max-width: 100px;, height: auto;, display: right-block;">    
-                </a>
-              </div>
-            </div>
+          <div class="col-xs-6 col-sm-3">
+            <a href="/prod_chg">
+              <img src="images/mycost.jpg" class="img-thumbnail">    
+            </a>
           </div>
-          <div class="col-xs-12 col-sm-4" style="background-color: #eeeeee">
-            <div class="row">
-              <div class="col-xs-6 col-sm-12">
-                <h5>골드번호이벤트</h5>  
-              </div>
-              <div class="col-xs-6 col-sm-12">
-                <a href="/num_mng/gold_list">
-                <img src="images/lock-22-120.png" class="img-responsive max-width: 100px;, height: auto;, display: right-block;">
-                </a>
-              </div> 
-            </div>
+          <div class="col-xs-6 col-sm-3">  
+            <a href="/num_mng/gold_list">
+              <img src="images/goldnum.jpg" class="img-thumbnail">
+            </a>  
+          </div>
+          <div class="col-xs-6 col-sm-3">  
+            <a href="/num_mng/gold_list">
+              <img src="images/goldnum.jpg" class="img-thumbnail">
+            </a>  
           </div>
         </div>
       </div>
       
       <!-- 이벤트(모바일 위치) -->
-      <div class="hidden-md hidden-lg" class="container">
-        <h4>이벤트 위치 모바일</h4>
+      <div class="container">
+        <div class="row">
+          <div class="hidden-md hidden-lg">
+            <img src="images/data_event.jpg" class="img-responsive">  
+          </div>
+        </div>
       </div>
+      
     </div> <!-- END Section -->  
     
     <!-- EVENT -->
