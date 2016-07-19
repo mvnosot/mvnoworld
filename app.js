@@ -78,7 +78,8 @@ var router_cust = require('./routes/cust_info/custInfo')(app, Cust);
 //var router_prod = require('./routes/prod_chg/prodChg')(app, User, Prod);
 //20160713 pyangru
 //요금제조회
-var router_prod = require('./routes/prod_chg/prodChg')(app, Prod);
+//var router_prod = require('./routes/prod_chg/prodChg')(app, Prod);
+var router_prod = require('./routes/prod_chg/prodChg')(app, Cust, Prod);
 
 
 //20160712 ljw
