@@ -1,6 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+/* 로그인 세션 */
+var session = require('express-session');     // express-session 모듈 사용
 
 var app = express();
 
@@ -12,6 +14,13 @@ var cookieParser = require('cookie-parser');
 
 //var routes = require('./routes/index');
 //var users = require('./routes/users');
+
+// express-session 모듈 사용
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));    
 
 // Configure mongoose
 var db = mongoose.connection;
@@ -55,7 +64,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // // Configure router
-var router = require('./routes')(app, User);
+var router = require('./routes/index')(app, User);
 // //20160602 wonk777
 // var router_cust = require('./routes/cust_info/custInfo')(app, Cust);
 // //20160609 pyangru
@@ -92,14 +101,8 @@ var server = app.listen(port, function() {
   console.log("Express server has startd on port " + port);
 });
 
-/* 로그인 세션 사용 시 참고
-var session = require('express-session');     // express-session 모듈 사용
 
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true
-}));    // express-session 모듈 사용
-*/
+
+
 
 module.exports = app;
