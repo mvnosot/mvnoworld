@@ -72,6 +72,7 @@ module.exports = function(app, UserModel) {
         } else {
 
           // 비밀번호가 일치하지 않는 경우
+          //res.render('/',{msg:"서비스번호를 확인하세요"});
           res.redirect('/');
         }  
 

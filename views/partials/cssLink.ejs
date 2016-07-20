@@ -1,0 +1,24 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="stylesheets/main.css">
+<link rel="stylesheet" href="/stylesheets/main.css">
+
+<link rel="stylesheet" href="stylesheets/bootstrap.css">
+<link rel="stylesheet" href="/stylesheets/bootstrap.css">
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    
+<script language="javascript">
+  //뒤로가기
+  function page_back(){
+    if (typeof goto_url == "undefined"){
+      window.location.href = "/";    
+    }else{
+      window.location.href = goto_url;    
+    } 
+  }
+  //페이지 이동
+  function goto_page(url){
+      window.location.href = url;    
+  }  
+</script>
