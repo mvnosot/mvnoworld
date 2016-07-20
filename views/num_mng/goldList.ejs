@@ -213,12 +213,15 @@
 <% include ../partials/navigation.ejs %>
 
 <div class="container">
-  골드번호 이벤트
+  
+  <!-- title -->
+  <div class="bs-callout bs-callout-danger" id=callout-helper-context-color-specificity> 
+    <p><h4>골드번호 이벤트</h4>step1. 골드번호 고르기</p> 
+  </div>
   <p></p>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <p class="text-danger">step1. 골드번호 고르기</p>
-          </div>
+  
+  <!-- body -->
+  <div class="panel panel-default">
           <div class="panel-body">
             <span class="label label-primary">1. 끝자리 유형 선택</span><h6></h6>
             <div class="btn-group btn-group-justified">
@@ -248,10 +251,11 @@
               <div id="svcnum_div"></div>
             </div>
             
-          </div>  
-        </div>
-        
+          </div>
+  </div>
+
 </div>
+
 <div class="modal" id="layerpop">
   <div class="modal-dialog">
     <div class="modal-content">

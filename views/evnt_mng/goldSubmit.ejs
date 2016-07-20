@@ -41,17 +41,21 @@
 
 <div class="container">
 <form name="achvForm" action="/evnt_mng" method="post">
-  골드번호 이벤트
-  <p></p>
-        <div class="panel panel-default">
-          <div class="panel-heading">
+  
+  <!-- title -->
+  <div class="bs-callout bs-callout-danger" id=callout-helper-context-color-specificity> 
+    
           <% if(data3==null) { %>
-            <p class="text-danger" id="pg_title">step2. 선택한 골드번호 응모하기</p>
+            <p><h4>골드번호 이벤트</h4>step2. 선택한 골드번호 응모하기</p> 
           <% } %>
           <% if(data3!=null) { %>
-            <p class="text-danger" id="pg_title">step3. 골드번호 이벤트 응모완료</p>
+            <p><h4>골드번호 이벤트</h4>step3. 골드번호 이벤트 응모완료</p> 
           <% } %>
-          </div>
+  </div>
+  <p></p>
+  
+  <!-- body -->
+  <div class="panel panel-default">
           <div class="panel-body">
             
             <% if(data!=null) { %>
@@ -128,7 +132,7 @@
                   <% })  %>
             <% } %>
           </div>
-        </div>
+  </div>
         
 </form>
 </div>
