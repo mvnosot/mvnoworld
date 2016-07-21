@@ -7010,15 +7010,15 @@ a.list-group-item-danger.active:focus {
 .popover-title {
   border: none;
 }
-.title-ci {
-  display: inline-block;
-  width: 90%;
-  padding : 5px;  
-}
-.navbar-brand {
-  float: left;
-  padding: 5.5px 10px;
-  font-size: 19px;
-  line-height: 21px;
-  height: 40px;
-}
+/*.title-ci {*/
+/*  display: inline-block;*/
+/*  width: 90%;*/
+/*  padding : 5px;  */
+/*}*/
+/*.navbar-brand {*/
+/*  float: left;*/
+/*  padding: 5.5px 10px;*/
+/*  font-size: 19px;*/
+/*  line-height: 21px;*/
+/*  height: 40px;*/
+/*}*/
