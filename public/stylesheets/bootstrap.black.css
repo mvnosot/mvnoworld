@@ -6782,7 +6782,9 @@ button.close {
 }
 .text-danger,
 .text-danger:hover {
-  color: #d9534f;
+  /*!color: #d9534f; wonk777*/
+  color: #ffffff;
+  font-weight: bold;
 }
 .text-warning,
 .text-warning:hover {
@@ -6988,7 +6990,8 @@ a.list-group-item-danger.active:focus {
   border: none;
 }
 .panel-default > .panel-heading {
-  background-color: #485563;
+  /*background-color: #485563;wonk777*/
+  background-color: #0abab5;
   color: #ebebeb;
 }
 .thumbnail {

@@ -5,9 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<% include ../partials/cssLink.ejs %>
 
   <style>
       .container {
@@ -37,18 +35,9 @@
 </head>
 
 <body>
-     
+  <% include ../partials/navigation.ejs %>
     <form class="form-inline" action="/login" method="post" onSubmit="return loginSubmit()">
 
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="./routes/cust_info/custInfo">BACK</a>
-            <span class="navbar-brand">MY이동전화 가입정보 상세</span>
-          </div>
-        </div>
-      </nav>       
-     
         <div class="container">
             나의 회선번호<span class="badge right">010-29**-49**</span>
             <p></p>
