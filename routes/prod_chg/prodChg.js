@@ -31,16 +31,12 @@ module.exports = function(app, CustModel, ProdModel) {
     }); 
     //요금제 변경
      app.post('/prod_chg', function(req, res) {
-        var prodInfo = req.body.prod;
-        var custInfo = null;
-        CustModel.findOne({svc_num:req.session.svc_num},function(err,cust){
-         //console.log("cust :",cust);
-          if(!err) custInfo = cust;
-        });
-        custInfo.fee_prod_id = prodInfo.prod_cd;
-        custInfo.fee_prod_nm = prodInfo.prod_nm;
-        CustModel.findByIdAndUpdate(custInfo._id, custInfo, function(err,cust){
+        console.log("요금제 변경시작!!");
+        console.log("post req.body.cust:",req.body.cust);
+
+        CustModel.findByIdAndUpdate(req.body.cust._id, req.body.cust, function(err,cust){
             if(err)return console.log("Update ERROR:",err);
+            console.log("post result:",cust);
             res.redirect('/prod_chg');
         });
     });
