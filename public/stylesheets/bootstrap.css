@@ -1086,7 +1086,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.42857143;
   color: #777777;
@@ -4280,7 +4280,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  padding: 19.5px 15px;
+  padding: 0.5px 10px;
   font-size: 19px;
   line-height: 21px;
   height: 60px;
@@ -6848,4 +6848,16 @@ button.close {
 .panel-danger .panel-title,
 .panel-info .panel-title {
   color: #fff;
+}
+.title-ci {
+  display: inline-block;
+  width: 80%;
+  padding : 5px;
+}
+.navbar-brand {
+  float: left;
+  padding: 0.5px 10px;
+  font-size: 19px;
+  line-height: 21px;
+  height: 60px;
 }
