@@ -1086,7 +1086,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.42857143;
   color: #777777;
@@ -5689,24 +5689,45 @@ button.list-group-item-danger.active:focus {
 .panel-group .panel-footer + .panel-collapse .panel-body {
   border-bottom: 1px solid #dddddd;
 }
+/*wonk777*/
+/*.panel-default {*/
+/*  border-color: #dddddd;*/
+/*}*/
+/*.panel-default > .panel-heading {*/
+/*  color: #777777;*/
+/*  background-color: #f5f5f5;*/
+/*  border-color: #dddddd;*/
+/*}*/
+/*.panel-default > .panel-heading + .panel-collapse > .panel-body {*/
+/*  border-top-color: #dddddd;*/
+/*}*/
+/*.panel-default > .panel-heading .badge {*/
+/*  color: #f5f5f5;*/
+/*  background-color: #777777;*/
+/*}*/
+/*.panel-default > .panel-footer + .panel-collapse > .panel-body {*/
+/*  border-bottom-color: #dddddd;*/
+/*}*/
+
 .panel-default {
-  border-color: #dddddd;
+  border-color: #ee6561;
 }
 .panel-default > .panel-heading {
-  color: #777777;
-  background-color: #f5f5f5;
-  border-color: #dddddd;
+  color: #b94a48;
+  background-color: #ee6561;
+  border-color: #ee6561;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #dddddd;
+  border-top-color: #ee6561;
 }
 .panel-default > .panel-heading .badge {
-  color: #f5f5f5;
-  background-color: #777777;
+  color: #ee6561;
+  background-color: #ffffff;
 }
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #dddddd;
+  border-bottom-color: #ee6561;
 }
+
 .panel-primary {
   border-color: #eb6864;
 }
@@ -6846,6 +6867,19 @@ button.close {
 .panel-success .panel-title,
 .panel-warning .panel-title,
 .panel-danger .panel-title,
+.panel-default .panel-title,/*wonk777*/
 .panel-info .panel-title {
   color: #fff;
+}
+.title-ci {
+  display: inline-block;
+  width: 80%;
+  padding : 5px;
+}
+.navbar-brand {
+  float: left;
+  padding: 0.5px 10px;
+  font-size: 19px;
+  line-height: 21px;
+  height: 60px;
 }

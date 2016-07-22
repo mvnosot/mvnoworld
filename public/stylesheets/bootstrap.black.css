@@ -6783,6 +6783,7 @@ button.close {
 .text-danger,
 .text-danger:hover {
   color: #d9534f;
+  font-weight: bold;
 }
 .text-warning,
 .text-warning:hover {
@@ -6988,7 +6989,8 @@ a.list-group-item-danger.active:focus {
   border: none;
 }
 .panel-default > .panel-heading {
-  background-color: #485563;
+  /*background-color: #485563;wonk777*/
+  background-color: #0abab5;
   color: #ebebeb;
 }
 .thumbnail {
@@ -7007,3 +7009,15 @@ a.list-group-item-danger.active:focus {
 .popover-title {
   border: none;
 }
+/*.title-ci {*/
+/*  display: inline-block;*/
+/*  width: 90%;*/
+/*  padding : 5px;  */
+/*}*/
+/*.navbar-brand {*/
+/*  float: left;*/
+/*  padding: 5.5px 10px;*/
+/*  font-size: 19px;*/
+/*  line-height: 21px;*/
+/*  height: 40px;*/
+/*}*/

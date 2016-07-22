@@ -3,9 +3,10 @@
   
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% include ../partials/cssLink.ejs %>
 
   <style>
       .container {
@@ -43,7 +44,7 @@
             <p></p>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <p class="text-danger"><%=data2.cust_name%> 님이 사용중인 요금제</p>
+                <p class="panel-title"><%=data2.cust_name%> 님이 사용중인 요금제</p>
               </div>
               <div class="panel-body">
                   <h2><%=data2.fee_prod_nm%></h2>
