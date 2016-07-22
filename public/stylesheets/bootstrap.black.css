@@ -6782,8 +6782,7 @@ button.close {
 }
 .text-danger,
 .text-danger:hover {
-  /*!color: #d9534f; wonk777*/
-  color: #ffffff;
+  color: #d9534f;
   font-weight: bold;
 }
 .text-warning,
