@@ -3,7 +3,7 @@ module.exports = function(app, UserModel) {
     
     
     /* GET home page. */
-    app.get('/', function(req, res) {
+    app.get('/login', function(req, res) {
       res.render('index', { title: 'MVNO ROOM' });
     });
     
