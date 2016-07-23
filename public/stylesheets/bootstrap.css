@@ -5710,22 +5710,22 @@ button.list-group-item-danger.active:focus {
 /*}*/
 
 .panel-default {
-  border-color: #ee6561;
+  border-color: #ee2624;
 }
 .panel-default > .panel-heading {
   color: #b94a48;
-  background-color: #ee6561;
-  border-color: #ee6561;
+  background-color: #ee2624;
+  border-color: #ee2624;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #ee6561;
+  border-top-color: #ee2624;
 }
 .panel-default > .panel-heading .badge {
-  color: #ee6561;
+  color: #ee2624;
   background-color: #ffffff;
 }
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #ee6561;
+  border-bottom-color: #ee2624;
 }
 
 .panel-primary {
@@ -6882,4 +6882,20 @@ button.close {
   font-size: 19px;
   line-height: 21px;
   height: 60px;
+}
+.navbar {
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.panel {
+  border: none;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.panel-heading {
+  border-bottom: none;
+}
+.panel-footer {
+  border-top: none;
 }

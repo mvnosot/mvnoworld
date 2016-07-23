@@ -43,9 +43,9 @@
         <p></p>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <p class="panel-title" >가입정보<span class="badge right" onclick="goto_page('/cust_info/custInfoViewdtl');">MORE</span></p>
+            <p class="panel-title" >가입정보<span class="right" onclick="goto_page('/cust_info/custInfoViewdtl');">상세보기 <i class="fa fa-angle-double-right" aria-hidden="true"></i></span></p>
           </div>
-          <div class="panel-body">
+          <div class="panel-body"> 
               <div>고객명<span class="right"><%=data.cust_name%></span></div>
               <div>최종개통유형<span class="right"><%=data.last_scrb_type%></span></div>
               <div>최종개통일자<span class="right"><%=data.last_sctb_dt.substr(0,4)+'/'+data.last_sctb_dt.substr(4,2)+'/'+data.last_sctb_dt.substr(6,2)%></span></div>
@@ -64,7 +64,7 @@
         
         <div class="panel panel-default">
           <div class="panel-heading">
-            <p class="panel-title">부가서비스 (신청일자)<span class="badge right" onclick="goto_page('/cust_info/vas_list');">MORE</span></p>
+            <p class="panel-title">부가서비스 (신청일자)<span class="right" onclick="goto_page('/cust_info/vas_list');">상세보기 <i class="fa fa-angle-double-right" aria-hidden="true"></i></span></p>
           </div>
           <div class="panel-body">
               <!--부가서비스목록-->
@@ -92,8 +92,9 @@
           </li>
         </ul>    
       </div>
+
+</body>
     <div class="section">
       <% include ../partials/footer.ejs %>
     </div>
-</body>
 </html>
