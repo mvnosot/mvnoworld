@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+  
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<% include ../partials/cssLink.ejs %>
+  <style>
+      .container {
+
+      }
+      
+      .row {
+        
+      }
+      
+      .right{
+        float:right;
+        text-align:right;
+
+      }
+  </style>
+  
+  <script type="text/javascript">
+      var confirmCheck = false;
+    
+      function authSendOnclick() {
+        alert("전송하였습니다.");
+        document.getElementById("btnConfirm").disabled = false;
+      }
+  </script>
+
+</head>
+
+<body>
+
+<% include ../partials/navigation.ejs %>
+
+
+
+<div class="container">
+<form name="achvForm" action="/evnt_mng" method="post">
+  
+  <!-- title -->
+  <div class="bs-callout bs-callout-danger" id=callout-helper-context-color-specificity> 
+    
+          <% if(data3==null) { %>
+            <p><h4>골드번호 이벤트</h4>step2. 선택한 골드번호 응모하기</p> 
+          <% } %>
+          <% if(data3!=null) { %>
+            <p><h4>골드번호 이벤트</h4>step3. 골드번호 이벤트 응모완료</p> 
+          <% } %>
+  </div>
+  <p></p>
+  
+  <!-- body -->
+  <div class="panel panel-default">
+          <div class="panel-body">
+            
+            <% if(data!=null) { %>
+              <% data.forEach(function(e){ %>
+              
+                <div class="well">
+                  <h2 class="text-danger"><%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %></h2>
+                  <h3>
+                    이 번호로 <font class="text-danger"><%= e.count %></font>명 응모 중
+                  </h3>
+                </div>
+                
+                <input name="gold_svc_num" type="hidden" value="<%= e._id.gold_svc_num %>">
+                
+              <% })  %>
+            <% } %>
+                  
+            <% if(data!=null && data.length==0 && data2!=null && data2.length > 0) { %>
+                
+                <div class="well">
+                  <h2 class="text-danger"><%= data2.substr(0,3) %> - <%= data2.substr(3,4) %> - <%= data2.substr(7) %></h2>
+                  <h3>
+                    현재 이 번호로 <font class="text-danger">0</font>명 응모하였습니다.
+                  </h3>
+                </div>
+                
+                <input name="gold_svc_num" type="hidden" value="<%= data2 %>">
+                
+            <% } %>
+            
+            <% if(data2!=null && data2.length > 0) { %>
+            
+                <span class="label label-primary">취득유형 선택</span>
+                <p "text-info">
+                  <h3>
+                    골드번호 당첨 시 취득 유형을 선택하여 주세요.
+                  </h3>
+                  <label>
+                    <input type="radio" name="achvradio" value="1">&nbsp;010신규
+                    <input type="radio" name="achvradio" value="2">&nbsp;번호이동
+                    <input type="radio" name="achvradio" value="3">&nbsp;기기변경
+                    <input type="radio" name="achvradio" value="4">&nbsp;번호변경
+                  </label>
+                </p>
+                <p "text-danger">
+                  <h5>
+                    - 응모한 취득 유형으로만 골드번호를 취득할수 있습니다.<br>
+                    - 선불(PPS)고객은 프로모션 응모는 가능하지만, 당첨된 골드번호는 후불번호로만 취득 가능합니다.<br>
+                  </h5>
+                </p>
+              <button type="submit" class="btn btn-success">응모하기</button>
+              <a class="btn btn-primary" href="/num_mng/goldList" >다른번호선택</a>
+            
+            <% } %>
+            
+            <% if(data3!=null) { %>
+                  <% data3.forEach(function(e){ %>
+                  
+                    <div>
+                      <div class="well">
+                        <h2 class="text-danger"><%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %></h2>
+                        <h3>
+                          번호로 응모 하셨습니다.<br>
+                        </h3>
+                        <h3>
+                          현재 이 번호로 <font class="text-danger"><%= e.count %></font>명 응모하였습니다.
+                        </h3>
+                      </div>
+                      
+                      <p align="center"><a class="btn btn-primary" href="/num_mng/goldList" >응모결과 조회</a></p>
+                      
+                    </div>
+                    
+                  <% })  %>
+            <% } %>
+          </div>
+  </div>
+        
+</form>
+</div>
+        
+        
+    <div class="section">
+      <% include ../partials/footer.ejs %>
+    </div>
+    
+</body>
+</html>

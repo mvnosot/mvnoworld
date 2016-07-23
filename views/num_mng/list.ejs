@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <style>
+      .container {
+
+      }
+      
+      .row {
+        
+      }
+      
+      .right{
+        float:right;
+        text-align:right;
+
+      }
+  </style>
+  
+  <script type="text/javascript">
+      var confirmCheck = false;
+    
+      function authSendOnclick() {
+        alert("전송하였습니다.");
+        document.getElementById("btnConfirm").disabled = false;
+      }
+  </script>
+  
+</head>
+
+<body>
+  
+<% include ../partials/navigation.ejs %>
+
+<div class="container">
+  <p>
+    <h3>서비스번호 자원 목록</h3>
+    <!--svc_num :{type:String, required:true},          //서비스번호-->
+    <!--mvno_co_cd : {type:String, required:true},      //사업자코드-->
+    <!--mvno_nm : {type:String, required:true},         //사업자명-->
+    <!--idnt_num_cd : {type:String, required:true},     //식별번호-->
+    <!--exg_num : {type:String, required:true},         //국번-->
+    <!--line_num : {type:String, required:true},        //라인번호-->
+    <!--num_st_cd : {type:String, required:true},       //번호상태코드-->
+    <!--rsv_num : {type:String},                        //예약번호-->
+    <!--rsv_num_cd : {type:String},                     //예약번호코드-->
+    <!--create_dt : {type:Date, default:Date.now},      //생성일시-->
+    <!--audit_dt : {type:Date},                         //변경일시-->
+  <ul>
+    <% data.forEach(function(e){ %>
+      <li>
+        <a href="/num_mng/<%= e._id %>"><%= e.svc_num %></a><br>
+        <%= e.num_st_cd %>
+        <%= e.rsv_num_cd %><br>
+        <%= e.create_dt.toLocaleDateString() %>
+        <%= e.create_dt.toLocaleTimeString() %><br>
+        <% if(e.audit_dt){ %>
+          <%= e.audit_dt.toLocaleDateString() %>
+          <%= e.audit_dt.toLocaleTimeString() %><br>
+        <% } %>
+      </li>
+    <% })  %>
+  </ul>
+  </p>
+  <a href="/num_mng/new"><button>신규등록</button></a>
+</div>
+    <div class="section">
+      <% include ../partials/footer.ejs %>
+    </div>
+</body>
+</html>

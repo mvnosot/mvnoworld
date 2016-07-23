@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<% include ../partials/cssLink.ejs %>
+
+  <style>
+      .container {
+   
+      }
+      
+      .row {
+        
+      }
+      
+      .right{
+        float:right;
+        text-align:right;
+
+      }
+  </style>
+  
+  <script type="text/javascript">
+      var confirmCheck = false;
+    
+      function authSendOnclick() {
+        alert("전송하였습니다.");
+        document.getElementById("btnConfirm").disabled = false;
+      }
+  </script>
+  
+</head>
+
+<body>
+  <% include ../partials/navigation.ejs %>
+        <div class="container">
+            나의 회선번호<span class="badge right"><%=data.svc_num%></span>
+            <p></p>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <p class="panel-title">SK MVNO 서비스를 사용하시는 고객님의 기본 가입정보 입니다.</p>
+              </div>
+              <div class="panel-body">
+              <table class="table table-striped table-hover ">
+                <tbody>
+                  <tr>
+                    <td>고객명</td>
+                    <td><%=data.cust_name%></td>
+                  </tr>
+                  <tr>
+                    <td>최종개통유형</td>
+                    <td><%=data.last_scrb_type%></td>
+                  </tr>
+                  <tr>
+                    <td>최종개통일자</td>
+                    <td><%=data.last_sctb_dt%></td>
+                  </tr>
+                  <tr>
+                    <td>단말정보</td>
+                    <td><%=data.eqp_mdl_nm%></td>
+                  </tr>
+                  <tr>
+                    <td>최종개통대리점</td>
+                    <td><%=data.last_scrb_spot%></td>
+                  </tr>
+                  <tr>
+                    <td>가입비</td>
+                    <td><%=data.scrb_fee%></td>
+                  </tr>
+                </tbody>
+              </table> 
+              </div>  
+            </div>
+      </div>
+    <div class="section">
+      <% include ../partials/footer.ejs %>
+    </div>    
+</body>
+</html>

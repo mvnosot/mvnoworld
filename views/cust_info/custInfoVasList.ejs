@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<% include ../partials/cssLink.ejs %>
+
+  <style>
+      .container {
+
+      }
+      
+      .row {
+        
+      }
+      
+      .right{
+        float:right;
+        text-align:right;
+
+      }
+  </style>
+  
+  <script type="text/javascript">
+      var goto_url = "/cust_info";
+      var confirmCheck = false;
+    
+      function authSendOnclick() {
+        alert("전송하였습니다.");
+        document.getElementById("btnConfirm").disabled = false;
+      }
+  </script>
+  
+</head>
+
+<body>
+ 
+      <% include ../partials/navigation.ejs %>
+    
+      <script>
+        var doc = document.querySelector('link[rel="import"]').import;
+        // Grab DOM from doc.html's document.
+        var text = doc.querySelector('.navbar navbar-default');
+        document.body.appendChild(text.cloneNode(true));
+      </script>
+     
+      
+      <div class="container">
+        나의 회선번호<span class="badge right"><%=data.svc_num%></span>
+        <p></p>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <p class="panel-title" >가입 부가서비스 정보<span class="badge right"><%=data.vas_list.length%></span></p>
+          </div>
+          <div class="panel-body">
+            <table class="table table-striped table-hover ">
+              <thead>
+                <tr>
+                  <th>서비스명 / 가입일</th>
+                  <th class="text-center">이용금액</th>
+                </tr>
+              </thead>
+              <tbody>
+              <!--부가서비스목록-->
+              <%
+              var vas_scrb_dt;
+              for(var i=0; i<data.vas_list.length; i++){
+                vas_scrb_dt = data.vas_list[i].vas_scrb_dt.substr(0,4)+'/'+data.vas_list[i].vas_scrb_dt.substr(4,2)+'/'+data.vas_list[i].vas_scrb_dt.substr(6,2);
+              %>
+                <tr>
+                  <td><%=data.vas_list[i].vas_nm%> <span class="badge">?</span><br/><%=data.vas_scrb_dt%></td>
+                  <td class="text-center""><%=data.vas_list[i].vas_amt%>원</td>
+                </tr>
+              <%}%>
+              </tbody>
+            </table> 
+          </div>  
+        </div>  
+      </div>
+    <!-- footer -->
+    <div class="section">
+      <% include ../partials/footer.ejs %>
+    </div>
+</body>
+</html>

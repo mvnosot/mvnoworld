@@ -1,0 +1,317 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% include ./partials/cssLink.ejs %>
+    
+    <style>
+    
+      .container-fluid {
+        margin-bottom: 15px;
+      }
+      
+      @media (min-width: 600px) {
+        .container-fluid {
+          margin-bottom: 20px;
+          border-top-right-radius: 20px;
+          border-bottom-right-radius: 20px;
+          border-bottom-left-radius: 20px;
+          border-top-left-radius: 20px;
+        }
+      }
+      
+      .img-responsive {
+        height: auto;
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      
+      .img-wide-responsive {
+        height: auto;
+        max-width: 100%;
+        max-height: 240px;
+      }
+      
+      .span-use-full {
+        float:right;
+        margin-top:-12px;
+        margin-bottom:10px;
+      }
+      
+      img {
+        display: inline-block;
+        height: auto;
+        max-width: 100%;
+        padding : 5px;
+      }
+      
+      .main_info_box {
+        background: #ee6561; 
+        height: 250px;
+      }
+      
+      .cust_div {
+        padding-left: 3%;
+        padding-right: 3%;
+        padding-top: 2px;
+      }
+      
+      .mvno_info {
+        color: #ffffff;
+      }
+      
+      .cust_info {
+        color: #ffffff;
+      }
+      
+      .cust_info > a {
+        color: #0e0d30;
+      }
+      
+      .ibox {
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+      }
+      
+      .cust_progbar_box {
+        width: 32%;
+        padding-top: 60px;
+        padding-right: 12px;
+      }
+      
+      @media (max-width: 600px) {
+        .cust_progbar_box {
+          padding-top: 0px;
+          width: 100%;
+        }
+      }
+      
+      .progress-bar-info {
+        background-color: #0e0d30;/*#0e0d30;*/
+      }
+      
+      .prog_data {
+        float: right;
+        margin-top: -19px;
+      }
+      
+      
+      .showmobile {
+        display: none;
+      }
+      
+      @media (max-width: 600px) {
+        .hidemobile {
+          display: none;
+        }
+        .showmobile {
+          display: block;
+        }
+      }
+      
+      
+    </style>
+    
+    <script>
+      window.onload = function(){
+        initProgress();
+      }
+      
+      function initProgress() {
+        initDataProgress();
+        initVoiceProgress();
+        initSmsProgress();
+      }
+      
+      function initDataProgress() {
+        var full_data = <%=full_data%>;
+        var use_data = <%=use_data%>;
+        var per_data = Math.round(use_data/full_data*100);
+        var per_data_str = per_data+'%';
+        
+        var data_prog = document.getElementById("data_prog");
+        data_prog.style.width = per_data_str;
+        data_prog.innerHTML = per_data_str;
+        
+        var data_prog_mo = document.getElementById("data_prog_mo");
+        data_prog_mo.style.width = per_data_str;
+        data_prog_mo.innerHTML = per_data_str;
+        
+        var data_text = use_data + ' GB 사용 | '+ <%=full_data%> + ' GB 제공';
+        document.getElementById("data_text").innerHTML = data_text;
+        document.getElementById("data_text_mo").innerHTML = data_text;
+      }
+      
+      function initVoiceProgress() {
+        var full_voice = <%=full_voice%>
+        var use_voice = <%=use_voice%>
+        var per_voice = Math.round(use_voice/full_voice*100);
+        var per_voice_str = per_voice+'%';
+        
+        var voice_prog = document.getElementById("voice_prog");
+        voice_prog.style.width = per_voice_str;
+        voice_prog.innerHTML = per_voice_str;
+        
+        var voice_prog_mo = document.getElementById("voice_prog_mo");
+        voice_prog_mo.style.width = per_voice_str;
+        voice_prog_mo.innerHTML = per_voice_str;
+        
+        var voice_text = use_voice + ' 분 사용 | '+ <%=full_voice%> + ' 분 제공';
+        document.getElementById("voice_text").innerHTML = voice_text;
+        document.getElementById("voice_text_mo").innerHTML = voice_text;
+      }
+      
+      function initSmsProgress() {
+        var full_sms = <%=full_sms%>;
+        var use_sms = <%=use_sms%>;
+        var per_sms = Math.round(use_sms/full_sms*100);
+        var per_sms_str = per_sms+'%';
+        
+        var sms_prog = document.getElementById("sms_prog");
+        sms_prog.style.width = per_sms_str;
+        sms_prog.innerHTML = per_sms_str;
+        
+        var sms_prog_mo = document.getElementById("sms_prog_mo");
+        sms_prog_mo.style.width = per_sms_str;
+        sms_prog_mo.innerHTML = per_sms_str;
+        
+        var sms_text = use_sms + ' 건 사용 | '+ <%=full_sms%> + ' 건 제공';
+        document.getElementById("sms_text").innerHTML = sms_text;
+        document.getElementById("sms_text_mo").innerHTML = sms_text;
+      }
+    </script>
+    
+  </head>
+  
+  <body>
+  
+  <div class="section">
+    
+    <!-- header navigation -->
+    <% include ./partials/navigation.ejs %>
+      
+    <div class="container-fluid main_info_box"> 
+      <div class="cust_div">
+        <h5 class="mvno_info"><%=mvno_nm%> World</h5>
+      </div>
+      <div class="cust_div">
+        <h6 class="cust_info"><%=cust_name%> 고객님의 현재 요금제는 <a href="/prod_chg"><%=fee_prod_nm%></a> 입니다.</h6>  
+      </div>
+      
+      <!-- Data조회 PC용-->
+      <div class="cust_div hidemobile">
+        <div class="ibox cust_progbar_box ">
+          <h6 class="cust_info">Data</h6>
+          <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-info" id="data_prog" role="progressbar"></div>
+          </div>
+          <h6 class="cust_info prog_data" id="data_text"></h6> 
+        </div>
+        <div class="ibox cust_progbar_box">
+          <h6 class="cust_info">Voice call</h6>
+          <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-info" id="voice_prog" role="progressbar"></div>
+          </div>
+          <h6 class="cust_info prog_data" id="voice_text"></h6> 
+        </div>
+        <div class="ibox cust_progbar_box">
+          <h6 class="cust_info">SMS / MMS</h6>
+          <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-info" id="sms_prog" role="progressbar"></div>
+          </div>
+          <h6 class="cust_info prog_data" id="sms_text"></h6>
+        </div>  
+      </div>
+      
+      <!-- Data조회 mobile용-->
+      <div class="cust_div showmobile">
+        <div class="ibox cust_progbar_box">
+          <div class="col-xs-3">
+            <h6 class="cust_info">Data</h6>  
+          </div>
+          <div class="col-xs-9">
+            <div class="progress progress-striped active">
+              <div class="progress-bar progress-bar-info" id="data_prog_mo" role="progressbar"></div>
+            </div>  
+            <h6 class="cust_info prog_data" id="data_text_mo"></h6> 
+          </div>
+        </div>
+        <div class="ibox cust_progbar_box">
+          <div class="col-xs-3">
+            <h6 class="cust_info">Voice call</h6>
+          </div>
+          <div class="col-xs-9">
+            <div class="progress progress-striped active">
+              <div class="progress-bar progress-bar-info" id="voice_prog_mo" role="progressbar"></div>
+            </div>
+            <h6 class="cust_info prog_data" id="voice_text_mo"></h6> 
+          </div>
+        </div>
+        <div class="ibox cust_progbar_box">
+          <div class="col-xs-3">
+            <h6 class="cust_info">SMS / MMS</h6>
+          </div>
+          <div class="col-xs-9">
+            <div class="progress progress-striped active">
+              <div class="progress-bar progress-bar-info" id="sms_prog_mo" role="progressbar"></div>
+            </div>
+            <h6 class="cust_info prog_data" id="sms_text_mo"></h6>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+    
+        <!-- 이벤트 wide 위치 >
+        <div class="col-xs-0 col-md-4">
+          <div class="hidden-xs hidden-sm">
+            <img src="images/data_event.jpg" class="img-wide-responsive">
+          </div>    
+        </div-->
+    
+    <!-- 업무 링크 -->
+    <div class="container-fluid">
+        <div class="col-xs-6 col-sm-3" >
+          <a href="/cust_info">
+            <img src="images/myinfo.jpg" class="img-thumbnail">    
+          </a>  
+        </div>
+        <div class="col-xs-6 col-sm-3">
+          <a href="/prod_chg">
+            <img src="images/mycost.jpg" class="img-thumbnail">    
+          </a>
+        </div>
+        <div class="col-xs-6 col-sm-3">  
+          <a href="/num_mng/gold_list">
+            <img src="images/goldnum.jpg" class="img-thumbnail">
+          </a>  
+        </div>
+        <div class="col-xs-6 col-sm-3">  
+          <a href="/num_mng/gold_list">
+            <img src="images/goldnum.jpg" class="img-thumbnail">
+          </a>  
+        </div>
+    </div>
+    
+    <!-- 이벤트(모바일 위치) -->
+    <div class="container">
+      <div class="row">
+        <div class="hidden-md hidden-lg">
+          <img src="images/data_event.jpg" class="img-responsive">  
+        </div>
+      </div>
+    </div>
+    
+  </div>  
+  
+  <!-- footer -->
+  <%- include ./partials/footer.ejs %>
+    
+  </body>
+
+</html>

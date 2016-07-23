@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<% include ../partials/cssLink.ejs %>
+
+  <style>
+      .container {
+
+      }
+      
+      .row {
+        
+      }
+      
+      .right{
+        float:right;
+        text-align:right;
+
+      }
+  </style>
+  
+  <script type="text/javascript">
+      var confirmCheck = false;
+    
+      function authSendOnclick() {
+        alert("전송하였습니다.");
+        document.getElementById("btnConfirm").disabled = false;
+      }
+  </script>
+  
+</head>
+
+<body>
+ 
+  <% include ../partials/navigation.ejs %>
+
+      <div class="container">
+        나의 회선번호<span class="badge right"><%=data.svc_num%></span>
+        <p></p>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <p class="panel-title" >가입정보<span class="right" onclick="goto_page('/cust_info/custInfoViewdtl');">상세보기 <i class="fa fa-angle-double-right" aria-hidden="true"></i></span></p>
+          </div>
+          <div class="panel-body"> 
+              <div>고객명<span class="right"><%=data.cust_name%></span></div>
+              <div>최종개통유형<span class="right"><%=data.last_scrb_type%></span></div>
+              <div>최종개통일자<span class="right"><%=data.last_sctb_dt.substr(0,4)+'/'+data.last_sctb_dt.substr(4,2)+'/'+data.last_sctb_dt.substr(6,2)%></span></div>
+              <div>단말정보<span class="right"><%=data.eqp_mdl_nm%></span></div>
+          </div>  
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <p class="panel-title">요금 상품</p>
+          </div>
+          <div class="panel-body">
+              <div>요금제명<span class="right"><%=data.fee_prod_nm%></span></div>
+              <div>신청일자<span class="right"><%=data.fee_prod_scrb_dt.substr(0,4)+'/'+data.fee_prod_scrb_dt.substr(4,2)+'/'+data.fee_prod_scrb_dt.substr(6,2)%></span></div>
+          </div>  
+        </div>
+        
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <p class="panel-title">부가서비스 (신청일자)<span class="right" onclick="goto_page('/cust_info/vas_list');">상세보기 <i class="fa fa-angle-double-right" aria-hidden="true"></i></span></p>
+          </div>
+          <div class="panel-body">
+              <!--부가서비스목록-->
+              <%
+              var vas_scrb_dt;
+              for(var i=0; i<data.vas_list.length; i++){
+                vas_scrb_dt = data.vas_list[i].vas_scrb_dt.substr(0,4)+'/'+data.vas_list[i].vas_scrb_dt.substr(4,2)+'/'+data.vas_list[i].vas_scrb_dt.substr(6,2);
+              %>
+                <div><%=data.vas_list[i].vas_nm%><span class="right"><%=data.vas_scrb_dt%></span></div>
+              <%}%>
+          </div> 
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <span class="badge">2</span>
+            단말할부정보
+          </li>
+          <li class="list-group-item">
+            <span class="badge">2</span>
+            요금할인정보
+          </li>
+          <li class="list-group-item">
+            <span class="badge">1</span>
+            할인혜택정보
+          </li>
+        </ul>    
+      </div>
+
+</body>
+    <div class="section">
+      <% include ../partials/footer.ejs %>
+    </div>
+</html>
