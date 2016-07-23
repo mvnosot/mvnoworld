@@ -11,7 +11,7 @@ module.exports = function(app, CustModel, ProdModel) {
         ProdModel.find({},function(err,prods){
           if(err) return res.json({success:false,message:err});
           //console.log("custInfo List2:",custInfo);
-          res.render('prod_chg/prodChgView', {data:prods, data2:custInfo});
+          res.render('prod_chg/prodChgView', {data:prods, data2:custInfo, user_session:req.session});
         });
          
     });
@@ -26,7 +26,7 @@ module.exports = function(app, CustModel, ProdModel) {
         ProdModel.findById(req.params.id, function(err,prod){
         console.log("Prod_info:",prod);
         if(err) return res.json({success:false,message:err});
-        res.render("prod_chg/prodChgAction",{data:prod, data2:custInfo});
+        res.render("prod_chg/prodChgAction",{data:prod, data2:custInfo, user_session:req.session});
         });
     }); 
     //요금제 변경

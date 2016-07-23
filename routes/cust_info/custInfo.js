@@ -32,10 +32,11 @@ module.exports = function(app, CustModel) {
     /* GET home page. */
     app.get('/cust_info', function(req, res) {
       
-      // console.log("session svc_num:",req.session.svc_num);
       CustModel.findOne({svc_num:req.session.svc_num},function(err,data){
         if(err)return console.log("Data ERROR:",err);
-        res.render('cust_info/custInfoView',data);
+        console.log("session:",data);
+        // res.render('cust_info/custInfoView',data,{user_session:req.session.mvno_cd});
+        res.render('cust_info/custInfoView',{data:data, user_session:req.session});
       })
     });
 
@@ -43,7 +44,7 @@ module.exports = function(app, CustModel) {
     app.get('/cust_info/vas_list', function(req, res) {
       CustModel.findOne({svc_num:req.session.svc_num},function(err,data){
         if(err)return console.log("Data ERROR:",err);
-        res.render('cust_info/custInfoVasList',data);
+        res.render('cust_info/custInfoVasList',{data:data, user_session:req.session});
       })
       
       //res.render('cust_info/custInfoVasList', { title: 'MVNO ROOM' });
@@ -53,7 +54,7 @@ module.exports = function(app, CustModel) {
     app.get('/cust_info/custInfoViewdtl', function(req, res) {
       CustModel.findOne({svc_num:req.session.svc_num},function(err,data){
         if(err)return console.log("Data ERROR:",err);
-        res.render('cust_info/custInfoViewdtl',data);
+        res.render('cust_info/custInfoViewdtl',{data:data, user_session:req.session});
       })
       
       //res.render('cust_info/custInfoVasList', { title: 'MVNO ROOM' });

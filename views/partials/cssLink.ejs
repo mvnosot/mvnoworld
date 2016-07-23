@@ -1,11 +1,9 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<%
-%>
-<%
-%>
-
+<%if(locals.user_session && user_session.mvno_co_cd != 'M00035'){%>  
+<link rel="stylesheet" href="/stylesheets/bootstrap.black.css">
+<%}else{%>
 <link rel="stylesheet" href="/stylesheets/bootstrap.css">
-
+<%}%>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 

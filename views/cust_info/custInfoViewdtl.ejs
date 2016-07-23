@@ -36,10 +36,8 @@
 
 <body>
   <% include ../partials/navigation.ejs %>
-    <form class="form-inline" action="/login" method="post" onSubmit="return loginSubmit()">
-
         <div class="container">
-            나의 회선번호<span class="badge right">010-29**-49**</span>
+            나의 회선번호<span class="badge right"><%=data.svc_num%></span>
             <p></p>
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -50,35 +48,35 @@
                 <tbody>
                   <tr>
                     <td>고객명</td>
-                    <td><%=cust_name%></td>
+                    <td><%=data.cust_name%></td>
                   </tr>
                   <tr>
                     <td>최종개통유형</td>
-                    <td><%=last_scrb_type%></td>
+                    <td><%=data.last_scrb_type%></td>
                   </tr>
                   <tr>
                     <td>최종개통일자</td>
-                    <td><%=last_sctb_dt%></td>
+                    <td><%=data.last_sctb_dt%></td>
                   </tr>
                   <tr>
                     <td>단말정보</td>
-                    <td><%=eqp_mdl_nm%></td>
+                    <td><%=data.eqp_mdl_nm%></td>
                   </tr>
                   <tr>
                     <td>최종개통대리점</td>
-                    <td><%=last_scrb_spot%></td>
+                    <td><%=data.last_scrb_spot%></td>
                   </tr>
                   <tr>
                     <td>가입비</td>
-                    <td><%=scrb_fee%></td>
+                    <td><%=data.scrb_fee%></td>
                   </tr>
                 </tbody>
               </table> 
               </div>  
             </div>
+      </div>
     <div class="section">
       <% include ../partials/footer.ejs %>
     </div>    
-    </form>
 </body>
 </html>
