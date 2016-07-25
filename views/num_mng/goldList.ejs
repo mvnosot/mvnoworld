@@ -68,7 +68,7 @@
           lineTitle = "ERROR";
       }
       
-      document.getElementById("linenum_title").innerHTML = "<div class=\"alert alert-warning\">" + lineTitle + "</div>";
+      document.getElementById("linenum_title").innerHTML = "<div class=\"alert alert-danger\">" + lineTitle + "</div>";
 
       var req;
       
@@ -89,7 +89,7 @@
           innertext += "<P><ul class=\"nav nav-pills\">";
           
           if (nums.numrscs.length > 0) {
-            document.getElementById("linenum_title_div").innerHTML = "<span class=\"label label-warning\">2. 끝자리 번호 선택</span><h6></h6>";
+            document.getElementById("linenum_title_div").innerHTML = "<span class=\"label label-default\">2. 끝자리 번호 선택</span><h6></h6>";
           
             for (var i = 0; i < nums.numrscs.length; i++) {
               innertext += "<li><a onclick=\"getFromServer('" + nums.numrscs[i]._id.rsv_num_cd + nums.numrscs[i]._id.line_num + "')\">" + nums.numrscs[i]._id.line_num + "<span class=\"badge\">" + nums.numrscs[i].count + "</span></a></li>";
@@ -135,7 +135,7 @@
         dafault:
           lineTitle = "ERROR";
       }
-      document.getElementById("linenum_title").innerHTML = "<div class=\"alert alert-warning\">" + lineTitle + "</div>";;
+      document.getElementById("linenum_title").innerHTML = "<div class=\"alert alert-danger\">" + lineTitle + "</div>";;
       
       var req;
 
@@ -154,12 +154,12 @@
           var innertext = "";
           
           if (nums.numrscs.length > 0) {
-            document.getElementById("svcnum_title_div").innerHTML = "<p class=\"text-muted\" align=\"center\"><i class=\"fa fa-arrow-down fa-2x\" aria-hidden=\"true\"></i></p><span class=\"label label-success\">3. 골드번호 선택</span><h6></h6>";
+            document.getElementById("svcnum_title_div").innerHTML = "<p class=\"text-muted\" align=\"center\"><i class=\"fa fa-arrow-down fa-2x\" aria-hidden=\"true\"></i></p><span class=\"label label-default\">3. 골드번호 선택</span><h6></h6>";
             
             // 라인번호로 조회한 서비스번호 목록 세팅
             for (var i = 0; i < nums.numrscs.length; i++) {
               if(i==0){
-                innertext += "<div><form name=\"evntForm\" action=\"/evnt_mng\" method=\"get\"><p class=\"text-success\">";
+                innertext += "<div><form name=\"evntForm\" action=\"/evnt_mng\" method=\"get\"><p class=\"text-default\">";
               }
               
               innertext += "<label><input type=\"radio\" name=\"evntradio\" value=\"" + nums.numrscs[i].svc_num + "\">&nbsp\;"+ nums.numrscs[i].svc_num.substr(0,3) + "-" + nums.numrscs[i].svc_num.substr(3,4) + "-" + nums.numrscs[i].svc_num.substr(7) + "</label>";
@@ -170,7 +170,7 @@
               }
             }
             
-            innertext += "<p align=\"center\"><BR/><a href=\"#\" class=\"btn btn-success\" onclick=\"process()\;\">선택하기</a></p></form></div>";
+            innertext += "<p align=\"center\"><BR/><a href=\"#\" class=\"btn btn-primary\" onclick=\"process()\;\">선택하기</a></p></form></div>";
           }
           
           // target div
@@ -223,7 +223,7 @@
   <!-- body -->
   <div class="panel panel-default">
           <div class="panel-body">
-            <span class="label label-primary">1. 끝자리 유형 선택</span><h6></h6>
+            <span class="label label-default">1. 끝자리 유형 선택</span><h6></h6>
             <div class="btn-group btn-group-justified">
               <a onclick="getLineNum('1');" class="btn btn-primary">AAAA</a>
               <a onclick="getLineNum('2');" class="btn btn-primary">AAAB</a>

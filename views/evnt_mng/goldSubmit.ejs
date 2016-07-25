@@ -88,11 +88,11 @@
             
             <% if(data2!=null && data2.length > 0) { %>
             
-                <span class="label label-primary">취득유형 선택</span>
-                <p "text-info">
+                <span class="label label-default">취득유형 선택</span>
                   <h3>
                     골드번호 당첨 시 취득 유형을 선택하여 주세요.
                   </h3>
+                <p class="text-danger">
                   <label>
                     <input type="radio" name="achvradio" value="1">&nbsp;010신규
                     <input type="radio" name="achvradio" value="2">&nbsp;번호이동
@@ -100,14 +100,12 @@
                     <input type="radio" name="achvradio" value="4">&nbsp;번호변경
                   </label>
                 </p>
-                <p "text-danger">
                   <h5>
                     - 응모한 취득 유형으로만 골드번호를 취득할수 있습니다.<br>
                     - 선불(PPS)고객은 프로모션 응모는 가능하지만, 당첨된 골드번호는 후불번호로만 취득 가능합니다.<br>
                   </h5>
-                </p>
-              <button type="submit" class="btn btn-success">응모하기</button>
-              <a class="btn btn-primary" href="/num_mng/goldList" >다른번호선택</a>
+              <a class="btn btn-default" href="/num_mng/goldList" >다른번호선택</a>
+              <button type="submit" class="btn btn-primary">응모하기</button>
             
             <% } %>
             
@@ -116,7 +114,7 @@
                   
                     <div>
                       <div class="well">
-                        <h2 class="text-danger"><%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %></h2>
+                        <h2 class="text-primary"><%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %></h2>
                         <h3>
                           번호로 응모 하셨습니다.<br>
                         </h3>
