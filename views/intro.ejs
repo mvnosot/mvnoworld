@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
 <% include partials/cssLink.ejs %>
+
 <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <style>
 .alert {
@@ -1863,10 +1864,10 @@ input[type="checkbox"].disabled {
 }
 
 .container {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 0.9375rem;
-  padding-right: 0.9375rem;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 .container::after {
   content: "";
@@ -1881,6 +1882,8 @@ input[type="checkbox"].disabled {
 @media (min-width: 768px) {
   .container {
     max-width: 720px;
+  padding-left: 0;
+  padding-right: 0;
   }
 }
 @media (min-width: 992px) {
@@ -1895,8 +1898,8 @@ input[type="checkbox"].disabled {
 }
 
 .container-fluid {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 0;
+  margin-right: 0;
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
 }
@@ -5949,7 +5952,8 @@ a.text-danger:focus, a.text-danger:hover {
 }
 
 .section {
-  position: relative;
+  position: absolute;
+  width: 100%;
 }
 
 .section-fill-height {
