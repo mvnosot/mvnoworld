@@ -20,7 +20,7 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true
-}));    
+}));   
 
 // Configure mongoose
 var db = mongoose.connection;

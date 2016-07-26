@@ -20,7 +20,7 @@ module.exports = function(app, CustModel, ProdModel) {
         //console.log("prod_id:",req.params.id);
         var custInfo = null;
         CustModel.findOne({svc_num:req.session.svc_num},function(err,cust){
-         //console.log("cust :",cust);
+         console.log("cust :",cust);
           if(!err) custInfo = cust;
         });
         ProdModel.findById(req.params.id, function(err,prod){

@@ -1,243 +1,153 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-<style>
-/*
- * Globals
- */
+<!doctype html>
+<html>
+  
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-/* Links */
-a,
-a:focus,
-a:hover {
-  color: #fff;
-}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/stylesheets/bootstrap.css">
 
-/* Custom default button */
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-  color: #333;
-  text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
-  border: .05rem solid #fff;
-}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 
-/*
- * Base structure
- */
 
-html,
-body {
-  height: 100%;
-  background-color: #333;
-}
-body {
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
-}
-
-/* Extra markup and styles for table-esque vertical and horizontal centering */
-.site-wrapper {
-  display: table;
-  width: 100%;
-  height: 100%; /* For at least Firefox */
-  min-height: 100%;
-  -webkit-box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
-          box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
-}
-.site-wrapper-inner {
-  display: table-cell;
-  vertical-align: top;
-}
-.cover-container {
-  margin-right: auto;
-  margin-left: auto;
-}
-
-/* Padding for spacing */
-.inner {
-  padding: 2rem;
-}
-
-
-/*
- * Header
- */
-
-.masthead {
-  margin-bottom: 2rem;
-}
-
-.masthead-brand {
-  margin-bottom: 0;
-}
-
-.nav-masthead .nav-link {
-  padding: .25rem 0;
-  font-weight: bold;
-  color: rgba(255,255,255,.5);
-  background-color: transparent;
-  border-bottom: .25rem solid transparent;
-}
-
-.nav-masthead .nav-link:hover,
-.nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255,255,255,.25);
-}
-
-.nav-masthead .nav-link + .nav-link {
-  margin-left: 1rem;
-}
-
-.nav-masthead .active {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
-@media (min-width: 48em) {
-  .masthead-brand {
-    float: left;
+<script language="javascript">
+  //뒤로가기
+  function page_back(){
+    if (typeof goto_url == "undefined"){
+      window.location.href = "/";    
+    }else{
+      window.location.href = goto_url;    
+    } 
   }
-  .nav-masthead {
-    float: right;
+  //페이지 이동
+  function goto_page(url){
+      window.location.href = url;    
   }
-}
+</script>
 
 
-/*
- * Cover
- */
+  <style>
+      .container {
 
-.cover {
-  padding: 0 1.5rem;
-}
-.cover .btn-lg {
-  padding: .75rem 1.25rem;
-  font-weight: bold;
-}
+      }
+      
+      .row {
+        
+      }
+      
+      .right{
+        float:right;
+        text-align:right;
 
-.cover .background-image {
-  z-index: -1;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-}
+      }
+  </style>
 
-/*
- * Footer
- */
+  
+</head>
 
-.mastfoot {
-  color: rgba(255,255,255,.5);
-}
+<body>
+  
+<% include partials/navigation.ejs %>
 
+<div class="container">
 
-/*
- * Affix and center
- */
+<h3>[bootstrap.css 샘플]</h3>
+<p></p>
+<a href="#" class="btn btn-default">btn btn-default</a>
+<a href="#" class="btn btn-primary">btn btn-primary</a>
 
-@media (min-width: 40em) {
-  /* Pull out the header and footer */
-  .masthead {
-    position: fixed;
-    top: 0;
-  }
-  .mastfoot {
-    position: fixed;
-    bottom: 0;
-  }
-  /* Start the vertical centering */
-  .site-wrapper-inner {
-    vertical-align: middle;
-  }
-  /* Handle the widths */
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 100%; /* Must be percentage or pixels for horizontal alignment */
-  }
-}
+<p></p>
+<div class="btn-group btn-group-justified">
+  <a href="#" class="btn btn-default">btn-group btn-group-justified btn btn-default</a>
+  <a href="#" class="btn btn-default">btn-group btn-group-justified btn btn-default</a>
+  <a href="#" class="btn btn-default">btn-group btn-group-justified btn btn-default</a>
+</div>
 
-@media (min-width: 62em) {
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 42rem;
-  }
-}
+<p></p>
+<div class="btn-group btn-group-justified">
+  <a href="#" class="btn btn-primary">btn-group btn-group-justified btn btn-primary</a>
+  <a href="#" class="btn btn-primary">btn-group btn-group-justified btn btn-primary</a>
+  <a href="#" class="btn btn-primary">btn-group btn-group-justified btn btn-primary</a>
+</div>
+
+<p></p>
+<h2 class="text-dafualt">h2 text-dafualt</h2>
+<h2 class="text-primary">h2 text-primary</h2>
+<p class="text-muted">text-muted</p>
+<p class="text-primary">text-primary</p>
 
 
-</style>
-    <title>Cover Template for Bootstrap</title>
+<p></p>
+<div class="alert alert-primary">
+  <strong>div alert-primary</strong> <a href="#" class="alert-link">alert-link</a> and try submitting again.
+</div>
+<div class="alert alert-danger">
+  <strong>div alert-danger</strong> <a href="#" class="alert-link">alert-link</a> and try submitting again.
+</div>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+<p></p>
+<ul class="nav nav-pills">
+  <li class="active"><a href="#">nav nav-pills active<span class="badge">badge</span></a></li>
+  <li><a href="#">nav nav-pills<span class="badge">badge</span></a></li>
+</ul>
 
-    <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
-  </head>
+<p></p>
+<span class="label label-dafualt">label label-dafualt</span>
+<span class="label label-primary">label label-primary</span>
 
-  <body>
+<p></p>
+<div class="progress progress-striped active">
+  progress-bar
+  <div class="progress-bar" style="width: 45%"></div>
+</div>
 
-    <div class="site-wrapper">
+<ul class="list-group">
+  <li class="list-group-item">
+    <span class="badge">badge</span>
+    list-group
+  </li>
+  <li class="list-group-item">
+    <span class="badge">badge</span>
+    list-group
+  </li>
+  <li class="list-group-item">
+    <span class="badge">badge</span>
+    list-group
+  </li>
+</ul>
 
-      <div class="site-wrapper-inner">
+<div class="panel panel-default">
+  <div class="panel-heading">panel panel-default</div>
+  <div class="panel-body">
+    Panel content
+  </div>
+</div>
 
-        <div class="cover-container">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">panel panel-primary</h3>
+  </div>
+  <div class="panel-body">
+    Panel content
+  </div>
+</div>
 
-          <div class="masthead clearfix">
-            <div class="inner">
-              <!--<h3 class="masthead-brand">Cover</h3>-->
-              <nav class="nav nav-masthead">
-                <a class="nav-link active" href="#">Sign in</a>
-                <!--<a class="nav-link" href="#">Features</a>-->
-                <!--<a class="nav-link" href="#">Contact</a>-->
-              </nav>
-            </div>
-          </div>
+<div class="well">
+  well
+</div>
 
-          <div class="inner cover">
-            <div class="background-image" style="background-image : url('/pic/photo-1.jpg')"></div>
-            <h1 class="cover-heading">Cover your page.</h1>
-            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-            <p class="lead">
-              <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-            </p>
-          </div>
 
-          <div class="mastfoot">
-            <div class="inner">
-              <p>&copy; 2016 <a href="#">SK C&C</a>, Inc. Terms Privacy Security Status Help</p>
-            </div>
-          </div>
 
-        </div>
 
-      </div>
+</div>
 
+    <div class="section">
+      <% include partials/footer.ejs %>
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+</body>
 </html>
