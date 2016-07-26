@@ -32,11 +32,14 @@ module.exports = function(app, CustModel, ProdModel) {
     //요금제 변경
      app.post('/prod_chg', function(req, res) {
         console.log("요금제 변경시작!!");
-        console.log("post req.body.cust:",req.body.cust);
+        var custInfo = req.body.cust; 
+        console.log("post custInfo:", custInfo);
 
-        CustModel.findByIdAndUpdate(req.body.cust._id, req.body.cust, function(err,cust){
+        
+        //res.json(custInfo[1]._id);
+        CustModel.findOneAndUpdate({svc_num:req.session.svc_num}, custInfo, function(err,cust){
             if(err)return console.log("Update ERROR:",err);
-            console.log("post result:",cust);
+
             res.redirect('/prod_chg');
         });
     });
