@@ -42,7 +42,7 @@
         <div class="container">
             나의 회선번호<span class="badge right"><%=data2.svc_num%></span>
             <p></p>
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
               <div class="panel-heading">
                 <p class="panel-title"><%=data2.cust_name%> 님이 사용중인 요금제</p>
               </div>
@@ -51,7 +51,7 @@
                    <% data.forEach(function(e) { %>
                     <% if(data2.fee_prod_id == e.prod_cd){%>
                   <div>- Data <%=e.prod_data%></div>
-                  <div>- <%=e.prod_vo%></div>
+                  <div>- 음성 <%=e.prod_vo%></div>
                   <div>- 문자 <%=e.prod_sms%></div>
                   <%}})%>
               </div>  
