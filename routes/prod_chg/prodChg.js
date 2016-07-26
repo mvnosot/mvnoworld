@@ -33,13 +33,13 @@ module.exports = function(app, CustModel, ProdModel) {
      app.post('/prod_chg', function(req, res) {
         console.log("요금제 변경시작!!");
         var custInfo = req.body.cust; 
-        console.log("post custInfo:", custInfo);
 
+        console.log("post custInfo:", custInfo);
         
         //res.json(custInfo[1]._id);
         CustModel.findOneAndUpdate({svc_num:req.session.svc_num}, custInfo, function(err,cust){
             if(err)return console.log("Update ERROR:",err);
-
+            console.log("post cust:", cust);
             res.redirect('/prod_chg');
         });
     });
