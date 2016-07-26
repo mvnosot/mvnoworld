@@ -65,6 +65,12 @@
         height: 250px;
       }
       
+      .border0 {
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+      }
+      
       .cust_div {
         padding-left: 3%;
         padding-right: 3%;
@@ -121,6 +127,10 @@
           padding-top: 0px;
           width: 100%;
         }
+        
+        .progress {
+          margin-bottom: 5px;
+        }
       }
       
       .progress-bar-info {
@@ -130,6 +140,10 @@
       .prog_data {
         float: right;
         margin-top: -19px;
+      }
+      
+      .prog_mo_align {
+        float: left;
       }
       
       .task_box_holder {
@@ -156,6 +170,7 @@
         height: 0px;
         font-size: 0px;
         line-height: 0px;
+        
       }
       
       .box_bg {
@@ -376,7 +391,7 @@
         
         var data_text = use_data + ' GB 사용 | '+ <%=full_data%> + ' GB 제공';
         document.getElementById("data_text").innerHTML = data_text;
-        document.getElementById("data_text_mo").innerHTML = data_text;
+        document.getElementById("data_text_mo").innerHTML += data_text;
       }
       
       function initVoiceProgress() {
@@ -498,36 +513,27 @@
       <!-- Data조회 mobile용-->
       <div class="cust_div showmobile">
         <div class="ibox cust_progbar_box">
-          <div class="col-xs-3">
-            <h6 class="cust_info">Data</h6>  
-          </div>
-          <div class="col-xs-9">
+          <div class="col-xs-12">
+            <h6 class="cust_info">DATA <span id="data_text_mo" style="float: right"></span></h6>
             <div class="progress progress-striped active">
               <div class="progress-bar progress-bar-info" id="data_prog_mo" role="progressbar"></div>
             </div>  
-            <h6 class="cust_info prog_data" id="data_text_mo"></h6> 
           </div>
         </div>
         <div class="ibox cust_progbar_box">
-          <div class="col-xs-3">
-            <h6 class="cust_info">Voice call</h6>
-          </div>
-          <div class="col-xs-9">
+          <div class="col-xs-12">
+            <h6 class="cust_info">Voice call <span id="voice_text_mo" style="float: right"></span></h6> 
             <div class="progress progress-striped active">
               <div class="progress-bar progress-bar-info" id="voice_prog_mo" role="progressbar"></div>
             </div>
-            <h6 class="cust_info prog_data" id="voice_text_mo"></h6> 
           </div>
         </div>
         <div class="ibox cust_progbar_box">
-          <div class="col-xs-3">
-            <h6 class="cust_info">SMS / MMS</h6>
-          </div>
-          <div class="col-xs-9">
+          <div class="col-xs-12">
+            <h6 class="cust_info">SMS/MMS <span id="sms_text_mo" style="float: right"></span></h6>
             <div class="progress progress-striped active">
               <div class="progress-bar progress-bar-info" id="sms_prog_mo" role="progressbar"></div>
             </div>
-            <h6 class="cust_info prog_data" id="sms_text_mo"></h6>
           </div>
         </div>
       </div>

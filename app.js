@@ -23,14 +23,25 @@ app.use(session({
 }));   
 
 // Configure mongoose
+
 var db = mongoose.connection;
 db.on("error", console.error);
+
 db.once("open", function() {
   console.log("DB connected");
 });
 
-mongoose.connect("mongodb://scott:tiger@ds019633.mlab.com:19633/mvnoworld");
-// mongoose.connect("mongodb://scott:tiger@ds011963.mlab.com:11963/testmg");
+mongoose.connect('mongodb://localhost/admin', function(err) {
+    if (err) {
+      mongoose.connect("mongodb://scott:tiger@ds019633.mlab.com:19633/mvnoworld");
+      console.log("cloud db connet");
+    }else {
+      console.log("local db connet");
+    }
+});
+
+//mongoose.connect("mongodb://scott:tiger@ds019633.mlab.com:19633/mvnoworld");
+
 
 // load models
 var User = require('./models/user');
