@@ -29,10 +29,6 @@
   
   <script type="text/javascript">
     function setData (){
-       console.log(data);
-      req.body.cust.fee_prod_nm = data.prod_nm;
-      req.body.cust.fee_prod_id = data.prod_id;
-      req.body.cust.fee_prod_scrb_dt = "20160721";
       document.chgForm.submit();
       
     }
@@ -61,7 +57,8 @@
               </div>
               <form class = "chgForm" action="/prod_chg" method = "post">
                 <div class="panel-body">
-                    <input name="cust" type="hidden" value="<%= data2 %>">
+                    <input name="cust[fee_prod_id]" type="hidden" value="<%= data.prod_cd %>">
+                    <input name="cust[fee_prod_nm]" type="hidden" value="<%= data.prod_nm %>">
                     <h2><%=data.prod_nm%></h2>
                     <div>- Data <%=data.prod_data%></div>
                     <div>- 집전화/이동전화 <%=data.prod_vo%></div>
