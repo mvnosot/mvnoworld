@@ -31,6 +31,7 @@ module.exports = function(app, CustModel) {
 
     /* GET home page. */
     app.get('/cust_info', function(req, res) {
+      //if (!req.session.svc_num) res.redirect('/login');
       
       CustModel.findOne({svc_num:req.session.svc_num},function(err,data){
         if(err)return console.log("Data ERROR:",err);
