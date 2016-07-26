@@ -376,8 +376,8 @@
       }
       
       function initDataProgress() {
-        var full_data = <%=full_data%>;
-        var use_data = <%=use_data%>;
+        var full_data = <%=data.full_data%>;
+        var use_data = <%=data.use_data%>;
         var per_data = Math.round(use_data/full_data*100);
         var per_data_str = per_data+'%';
         
@@ -389,14 +389,14 @@
         data_prog_mo.style.width = per_data_str;
         data_prog_mo.innerHTML = per_data_str;
         
-        var data_text = use_data + ' GB 사용 | '+ <%=full_data%> + ' GB 제공';
+        var data_text = use_data + ' GB 사용 | '+ <%=data.full_data%> + ' GB 제공';
         document.getElementById("data_text").innerHTML = data_text;
         document.getElementById("data_text_mo").innerHTML += data_text;
       }
       
       function initVoiceProgress() {
-        var full_voice = <%=full_voice%>
-        var use_voice = <%=use_voice%>
+        var full_voice = <%=data.full_voice%>
+        var use_voice = <%=data.use_voice%>
         var per_voice = Math.round(use_voice/full_voice*100);
         var per_voice_str = per_voice+'%';
         
@@ -408,14 +408,14 @@
         voice_prog_mo.style.width = per_voice_str;
         voice_prog_mo.innerHTML = per_voice_str;
         
-        var voice_text = use_voice + ' 분 사용 | '+ <%=full_voice%> + ' 분 제공';
+        var voice_text = use_voice + ' 분 사용 | '+ <%=data.full_voice%> + ' 분 제공';
         document.getElementById("voice_text").innerHTML = voice_text;
         document.getElementById("voice_text_mo").innerHTML = voice_text;
       }
       
       function initSmsProgress() {
-        var full_sms = <%=full_sms%>;
-        var use_sms = <%=use_sms%>;
+        var full_sms = <%=data.full_sms%>;
+        var use_sms = <%=data.use_sms%>;
         var per_sms = Math.round(use_sms/full_sms*100);
         var per_sms_str = per_sms+'%';
         
@@ -427,7 +427,7 @@
         sms_prog_mo.style.width = per_sms_str;
         sms_prog_mo.innerHTML = per_sms_str;
         
-        var sms_text = use_sms + ' 건 사용 | '+ <%=full_sms%> + ' 건 제공';
+        var sms_text = use_sms + ' 건 사용 | '+ <%=data.full_sms%> + ' 건 제공';
         document.getElementById("sms_text").innerHTML = sms_text;
         document.getElementById("sms_text_mo").innerHTML = sms_text;
       }
@@ -479,10 +479,10 @@
       
     <div class="container-fluid main_info_box sitew"> 
       <div class="cust_div">
-        <h5 class="mvno_info"><%=mvno_nm%> World</h5>
+        <h5 class="mvno_info"><%=data.mvno_nm%> World</h5>
       </div>
       <div class="cust_div">
-        <h6 class="cust_info"><%=cust_name%> 고객님의 현재 요금제는 <a href="/prod_chg"><%=fee_prod_nm%></a> 입니다.</h6>  
+        <h6 class="cust_info"><%=data.cust_name%> 고객님의 현재 요금제는 <a href="/prod_chg"><%=data.fee_prod_nm%></a> 입니다.</h6>  
       </div>
       
       <!-- Data조회 PC용-->

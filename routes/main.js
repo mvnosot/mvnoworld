@@ -12,7 +12,7 @@ module.exports = function(app, Cust) {
                  if(err) return res.status(500).send({error: 'database failure'});
                  console.log(data);
                 //  res.render('main', {data:data, user_session:req.session});
-                 res.render('main', data);
+                 res.render('main', {data:data, user_session:req.session});
              })
     });
 }
