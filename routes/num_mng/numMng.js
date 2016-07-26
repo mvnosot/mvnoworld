@@ -18,6 +18,12 @@ module.exports = function(app, Numrsc) {
             res.redirect('/num_mng');
         });
     });
+    app.put('/num_mng/:id', function(req, res) {
+        Numrsc.findByIdAndUpdate(req.params.id, req.body.numrsc, function(err,numrsc){
+            if(err)return console.log("Data ERROR:",err);
+            res.json({success:true, message:numrsc._id + " update."});
+        });
+    });
     
     
     // 골드번호 유형 선택
@@ -57,9 +63,11 @@ module.exports = function(app, Numrsc) {
         
     // show
     app.get('/num_mng/:id', function(req, res) {
+        
          Numrsc.findById(req.params.id, function(err,numrscs){
             if(err)return console.log("Data ERROR:",err);
             res.render('num_mng/show',{data:numrscs, user_session:req.session});
+            // res.json({numrscs});
          });
     });
     
