@@ -92,7 +92,7 @@
             document.getElementById("linenum_title_div").innerHTML = "<span class=\"label label-default\">2. 끝자리 번호 선택</span><h6></h6>";
           
             for (var i = 0; i < nums.numrscs.length; i++) {
-              innertext += "<li><a onclick=\"getFromServer('" + nums.numrscs[i]._id.rsv_num_cd + nums.numrscs[i]._id.line_num + "')\">" + nums.numrscs[i]._id.line_num + "<span class=\"badge\">" + nums.numrscs[i].count + "</span></a></li>";
+              innertext += "<li><a href=\"#\" onclick=\"getFromServer('" + nums.numrscs[i]._id.rsv_num_cd + nums.numrscs[i]._id.line_num + "')\">" + nums.numrscs[i]._id.line_num + "<span class=\"badge\">" + nums.numrscs[i].count + "</span></a></li>";
             }
           } else if (nums.numrscs.length == 0){
             document.getElementById("linenum_title_div").innerHTML = "";
