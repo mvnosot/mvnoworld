@@ -5710,22 +5710,22 @@ button.list-group-item-danger.active:focus {
 /*}*/
 
 .panel-default {
-  border-color: #ee2624;
+  border-color: #eb6864;
 }
 .panel-default > .panel-heading {
   color: #b94a48;
-  background-color: #ee2624;
-  border-color: #ee2624;
+  background-color: #eb6864;
+  border-color: #eb6864;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #ee2624;
+  border-top-color: #eb6864;
 }
 .panel-default > .panel-heading .badge {
-  color: #ee2624;
+  color: #eb6864;
   background-color: #ffffff;
 }
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #ee2624;
+  border-bottom-color: #eb6864;
 }
 
 .panel-primary {
