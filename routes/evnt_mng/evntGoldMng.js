@@ -27,7 +27,17 @@ module.exports = function(app, Evntgold) {
         
         Evntgold.create(
             {
+                evnt_cd:'gold',
+                // req_dt:'20160701',
+                svc_num:req.session.svc_num,
+                mvno_co_cd:req.session.mvno_cd,
+                mvno_nm:req.session.mvno_nm,
+                cust_name:req.session.name,
                 gold_svc_num:req.body.gold_svc_num,
+                gold_idnt_num_cd:req.body.gold_svc_num.substr(0,3),
+                gold_exg_num:req.body.gold_svc_num.substr(3,4),
+                gold_line_num:req.body.gold_svc_num.substr(7),
+                // rsv_num_cd:'1',
                 achv_cd:req.body.achvradio
                 
             },function(err,evntgolds){
@@ -41,7 +51,7 @@ module.exports = function(app, Evntgold) {
         
         Evntgold.aggregate([
 
-              { $match : { gold_svc_num:req.params.id} },
+              { $match : { gold_svc_num:req.params.id,svc_num:req.session.svc_num} },
               { $group : {
                   _id : { gold_svc_num: "$gold_svc_num"},
                   count: { $sum: 1 }
