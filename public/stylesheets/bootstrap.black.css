@@ -7017,10 +7017,11 @@ a.list-group-item-danger.active:focus {
 .popover-title {
   border: none;
 }
-.black-title-ci {
+.title-ci {
   display: inline-block;
-  width: 75%;
-
+  width: 80%;
+  padding: 0px;
+  padding-top: 7px;
 }
 /*.navbar-brand {*/
 /*  float: left;*/

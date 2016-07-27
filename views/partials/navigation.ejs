@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
+  <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -9,9 +9,9 @@
       </button>
       <!--사업자 브랜드명 -->
       <%if(locals.user_session && user_session.mvno_cd != "M00035"){%>  
-      <a class="navbar-brand" href="/main"><img src="/images/header/Logo_CI_Emart.png" class="black-title-ci"></a>
+      <a class="navbar-brand" href="/main"><img src="/images/header/Logo_CI_Emart.png" class="title-ci"></a>
       <%}else{%>
-      <a class="navbar-brand" href="/main"><img src="/images/header/ico_logo.png"></a>
+      <a class="navbar-brand" href="/main"><img src="/images/header/Logo_CI_SKTL.png" class="title-ci"></a>
       <%}%>      
     </div>
 
@@ -21,17 +21,17 @@
         <li><a href="/cust_info"><i class="fa fa-user fa-fw"></i> 고객상세정보</a></li>
         <li><a href="/prod_chg"><i class="fa fa-tags fa-fw"></i> 요금제변경</a></li>
         <li><a href="/num_mng/goldList"><i class="fa fa-calendar-o fa-fw"></i> 골드번호이벤트</a></li>
-        
         <li><a href="/css"><i class="fa fa-instagram fa-fw"></i> CSS</a></li>
-        <li><a href="/css.black"><i class="fa fa-instagram fa-fw"></i> CSS_black</a></li>
-        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+        <li><a href="/css.black"><i class="fa fa-instagram fa-fw"></i> CSS_BLACK</a></li>
+        <!--<li><a href="/css.black"><i class="fa fa-instagram fa-fw"></i> 알뜰폰소개</a></li>-->
+        <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> LOGOUT</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">조회</button>
-      </form>
+      <!--<form class="navbar-form navbar-left" role="search">-->
+      <!--  <div class="form-group">-->
+      <!--    <input type="text" class="form-control" placeholder="Search">-->
+      <!--  </div>-->
+      <!--  <button type="submit" class="btn btn-default">조회</button>-->
+      <!--</form>-->
     </div>
   </div>
 </nav>
