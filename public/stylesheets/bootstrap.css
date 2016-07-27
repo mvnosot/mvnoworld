@@ -6873,8 +6873,9 @@ button.close {
 }
 .title-ci {
   display: inline-block;
-  width: 80%;
-  padding : 5px;
+  width: 100%;
+  padding-top: 20px;
+  vertical-align: 3px;
 }
 .navbar-brand {
   float: left;
