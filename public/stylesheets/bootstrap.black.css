@@ -7019,8 +7019,9 @@ a.list-group-item-danger.active:focus {
 }
 .title-ci {
   display: inline-block;
-  width: 100%;
-  padding : 0px;
+  width: 80%;
+  padding: 0px;
+  padding-top: 7px;
 }
 /*.navbar-brand {*/
 /*  float: left;*/
