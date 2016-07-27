@@ -6064,7 +6064,13 @@ a.text-danger:focus, a.text-danger:hover {
   }
 }*/
 </style>
-
+<%if(locals.msg){%>  
+<script language="javascript">
+alert('<%=msg%>');
+</script>
+<%
+}
+%>
 <script type="text/javascript">
       var confirmCheck = false;
       function authSendOnclick() {

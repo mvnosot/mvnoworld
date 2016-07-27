@@ -3,6 +3,8 @@ module.exports = function(app, Cust) {
     
     app.get('/main',function(req, res) {
         
+        if (!req.session.svc_num) res.render('intro',{msg:'Termination Session! Try Login.'});        
+        
         //var user_session = req.session.user
         //var phone_number = user_session.phone_number
         // var phone_number = '01029644930' // 테스트
