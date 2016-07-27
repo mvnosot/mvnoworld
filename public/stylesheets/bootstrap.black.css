@@ -7019,7 +7019,7 @@ a.list-group-item-danger.active:focus {
 }
 .title-ci {
   display: inline-block;
-  width: 75%;
+  width: 100%;
   padding : 0px;
 }
 /*.navbar-brand {*/
