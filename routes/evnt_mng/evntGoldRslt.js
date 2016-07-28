@@ -5,6 +5,8 @@ module.exports = function(app, Evntgold) {
     app.get('/evnt_mng/evnt_rslt', function(req, res, next) {
         if (!req.session.svc_num) res.render('intro',{msg:'Termination Session! Try Login.'});
         
+        console.log(">>>");
+        
         var evntradio = req.query.evntradio;
         Evntgold.aggregate([
 

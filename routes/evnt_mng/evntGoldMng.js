@@ -3,7 +3,10 @@ module.exports = function(app, Evntgold) {
 
     // 응모건수 조회
     app.get('/evnt_mng', function(req, res, next) {
-        if (!req.session.svc_num) res.render('intro',{msg:'Termination Session! Try Login.'});
+        if (!req.session.svc_num) {
+            res.render('intro',{msg:'Termination Session! Try Login.'});
+            return;
+        }
         
         var evntradio = req.query.evntradio;
         
@@ -26,7 +29,10 @@ module.exports = function(app, Evntgold) {
     
     // 응모 요청
     app.post('/evnt_mng', function(req, res) {
-        if (!req.session.svc_num) res.render('intro',{msg:'Termination Session! Try Login.'});
+        if (!req.session.svc_num)  {
+            res.render('intro',{msg:'Termination Session! Try Login.'});
+            return;
+        }
         
         Evntgold.create(
             {
@@ -51,7 +57,10 @@ module.exports = function(app, Evntgold) {
 
     // 응모완료
     app.get('/evnt_mng/:id', function(req, res, next) {
-        if (!req.session.svc_num) res.render('intro',{msg:'Termination Session! Try Login.'});
+        if (!req.session.svc_num) {
+            res.render('intro',{msg:'Termination Session! Try Login.'});
+            return;
+        }
         
         Evntgold.aggregate([
 
