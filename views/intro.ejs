@@ -6088,7 +6088,7 @@ alert('<%=msg%>');
           }
         }
         
-        req.open("GET", "/cust_info/getSN/" + svcNum,true);
+        req.open("GET", "/getSN/" + svcNum,true);
         req.send();
       }
 
@@ -6129,7 +6129,7 @@ alert('<%=msg%>');
 
           }
         }
-        req.open("GET", "/cust_info/chkSN/" + inputPN + inputSN, true);
+        req.open("GET", "/chkSN/" + inputPN + inputSN, true);
         req.send();
       }
       

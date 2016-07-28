@@ -6,7 +6,7 @@ module.exports = function(app, User) {
 // });
 
     /* singin : 인증Key 생성 */
-    app.get('/cust_info/getSN/:id', function(req, res) {
+    app.get('/getSN/:id', function(req, res) {
       
       // generate inputSN
       var inputSN = (Math.random() + "").substr(2);
@@ -22,7 +22,7 @@ module.exports = function(app, User) {
     });
     
     /* signin : 인증Key 체크 */
-    app.get('/cust_info/chkSN/:id', function(req, res) {
+    app.get('/chkSN/:id', function(req, res) {
       
       var inputPN = req.params.id.substr(0,11);
       var inputSN = req.params.id.substr(11);

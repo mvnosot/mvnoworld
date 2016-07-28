@@ -16,7 +16,8 @@ var userSchema = new Schema({
     mvno_cd : String,
     mvno_nm : String,
     phone_number : String,
-    birthday : String
+    birthday : String,
+    input_sn : String
 })
 
 // module model

@@ -43,7 +43,6 @@ var custSchema = new Schema({
             }
         ]
         ,
-    input_sn : String,     // inputSN
     audit_dt : String
 })
 
