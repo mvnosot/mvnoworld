@@ -6054,45 +6054,71 @@ alert('<%=msg%>');
 }
 %>
 <script type="text/javascript">
-      var confirmCheck = false;
-      function authSendOnclick() {
-        alert("전송하였습니다.");
-        document.getElementById("btnConfirm").disabled = false;
-      }
-      
-      function authConfirmOnclick() {
-        confirmCheck = true;
-        alert("인증 확인!!");
-      }
-      
-      function loginSubmit() {
-        if(confirmCheck) {
-          return true;
-          
-        }else {
-          return true; /// TEST
-          
-          // alert("인증하세요:D");
-          // return false;  
+
+      function chkPN (svcNum){
+        // 서비스번호 11자리 입력시 인증Key 요청
+        if(svcNum != "" && svcNum != null && svcNum.length >= 11){
+          getSNFromServer(svcNum);
         }
       }
       
-      /*
-      document.getElementById("confirmButton").addEventListener("click", function() {
-        confirmCheck = true;
-        alert("인증 확인!!");
-      });
-      
-      document.getElementById("loginButton").addEventListener("click", function() {
+      function getSNFromServer(svcNum){
+        var req;
         
-        if(confirmCheck) {
-          this.submit();
-          
-        }else {
-          alert("인증하세요:D");
+        if(window.XMLHttpRequest) {
+          req = new XMLHttpRequest();
+        } else {
+          req = new ActiveObject("Microsoft.XMLHTTP");
         }
-      });
-      */
+  
+        req.onreadystatechange = function () {
+          if(req.readyState == 4 && req.status == 200) {
+            
+            var jsontext = req.responseText;
+            var sn = JSON.parse(jsontext);
+
+            alert("SMS: 고객님의 로그인 인증번호는 [" + sn.inputSN + "] 입니다.");
+            document.getElementById("inputSN").value = sn.inputSN; 
+          }
+        }
+        
+        req.open("GET", "/cust_info/getSN/" + svcNum,true);
+        req.send();
+      }
+
+      // 로그인
+      function loginSubmit(){
+        var req;
+        
+        var inputPN = document.getElementById("inputPN").value;
+        var inputSN = document.getElementById("inputSN").value;
+        
+        if(window.XMLHttpRequest) {
+          req = new XMLHttpRequest();
+        } else {
+          req = new ActiveObject("Microsoft.XMLHTTP");
+        }
+  
+        req.onreadystatechange = function () {
+          if(req.readyState == 4 && req.status == 200) {
+            
+            var jsontext = req.responseText;
+            var sn = JSON.parse(jsontext);
+            
+            if(sn.cust == null){
+              alert("인증번호가 올바르지 않습니다. 다시 입력해주세요.");
+              return false;
+            } else {
+              document.signInForm.submit();
+            }
+
+          }
+        }
+        
+        req.open("GET", "/cust_info/chkSN/" + inputPN + inputSN, true);
+        req.send();
+      }
+      
 </script>
 
 </head>
@@ -6103,7 +6129,6 @@ alert('<%=msg%>');
 <!-- bg -->
 <div class="section section-fill-height section-opaque-light text-xs-center" style="">
   <div class="background-image" style="background-image : url('/images/intro_mobile.jpg');"></div>
-          <h1>SKT <strong>MVNO</strong></h1>
 </div>
 
 
@@ -6126,14 +6151,14 @@ alert('<%=msg%>');
                 </div>
                             <div id="collapse1" class="panel-collapse collapse" style="display:block;">
                                 <div class="row">
-                                    <form class="form-signin" action="/login" method="post" onSubmit="return loginSubmit()">
+                                    <form class="form-signin" name="signInForm" action="/login" method="post">
                                       <div>
                                           <label for="inputPN">휴대전화번호</label>
-                                          <input type="text" name="inputPN" class="form-control" placeholder="EX) 01098761111" required autofocus>
-                                          <label for="inputBirth">인증Key</label></label>
-                                          <input type="text" name="inputBirth" class="form-control" placeholder="EX) 820805" required>
+                                          <input type="text" name="inputPN" id="inputPN" maxLength="11" class="form-control" placeholder="EX) 01098761111" required autofocus onkeypress="chkPN(this.value);" onpaste="chkPN(this.value);" oninput="chkPN(this.value);">
+                                          <label for="inputSN">인증Key</label></label>
+                                          <input type="text" name="inputSN" id="inputSN" class="form-control" placeholder="EX) 인증번호" required>
                                           <br>
-                                          <button class="btn btn-primary" type="submit">LOG IN</button>
+                                          <button type="button" class="btn btn-primary" onClick="loginSubmit();">LOG IN</button>
                                       </div>
                                     </form>
                                 </div>

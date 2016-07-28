@@ -67,5 +67,35 @@ module.exports = function(app, CustModel) {
       
       //res.render('cust_info/custInfoVasList', { title: 'MVNO ROOM' });
     });
+
+    /* singin : 인증Key 생성 */
+    app.get('/cust_info/getSN/:id', function(req, res) {
+      
+      // generate inputSN
+      var inputSN = (Math.random() + "").substr(2);
+      
+      // update inputSN
+      CustModel.findOneAndUpdate({svc_num:req.params.id}, {input_sn: inputSN}, function(err,cust){
+          if(err)return console.log("Update ERROR:",err);
+          console.log(">>>inputSN : " + inputSN);
+      });
+      
+      // response
+      res.json({inputSN});
+    });
+    
+    /* signin : 인증Key 체크 */
+    app.get('/cust_info/chkSN/:id', function(req, res) {
+      
+      var inputPN = req.params.id.substr(0,11);
+      var inputSN = req.params.id.substr(11);
+      
+      CustModel.findOne({svc_num:inputPN, input_sn:inputSN},function(err,cust){
+        if(err)return console.log("Data ERROR:",err);
+        else console.log(">>>chkSN: inputPN=" + inputPN + ",inputSN=" + inputSN);
+        res.json({cust});
+      });
+      
+    });
     
 }
