@@ -49,7 +49,7 @@ module.exports = function(app, Evntgold) {
         });
     });
 
-    // 응모결과 조회
+    // 응모완료
     app.get('/evnt_mng/:id', function(req, res, next) {
         if (!req.session.svc_num) res.render('intro',{msg:'Termination Session! Try Login.'});
         

@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+  
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<% include ../partials/cssLink.ejs %>
+  <style>
+      .container {
+
+      }
+      
+      .row {
+        
+      }
+      
+      .right{
+        float:right;
+        text-align:right;
+
+      }
+  </style>
+  
+  <script type="text/javascript">
+      var confirmCheck = false;
+    
+      function authSendOnclick() {
+        alert("전송하였습니다.");
+        document.getElementById("btnConfirm").disabled = false;
+      }
+  </script>
+
+</head>
+
+<body>
+
+<% include ../partials/navigation.ejs %>
+
+
+
+<div class="container">
+<form name="achvForm" action="/evnt_mng" method="post">
+  
+  <!-- title -->
+  <div class="bs-callout bs-callout-danger" id=callout-helper-context-color-specificity> 
+    
+          <% if(data2==null) { %>
+            <p><h4>골드번호 이벤트</h4>응모현황 조회</p>
+          <% } else if(data==null) { %>
+            <p><h4>골드번호 이벤트</h4>당첨결과 확인하기</p>
+          <% } %>
+  </div>
+  <p></p>
+  
+  <!-- body -->
+  <div class="panel panel-default">
+          <div class="panel-body">
+
+            <% if(data!=null) { %>
+                  <% data.forEach(function(e){ %>
+                  
+                    <div>
+                      <div class="well">
+                        <h4 class="text-primary">
+                          <%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %>
+                        </h4>
+                        <h4>
+                          현재 <font class="text-danger"><%= e.count %></font>명 응모
+                        </h4>
+                      </div>
+                      
+                    </div>
+                    
+                  <% })  %>
+                  
+                  <p align="center"><a class="btn btn-primary" href="/num_mng/goldList" >당첨결과 확인하기</a></p>
+            <% } %>
+          </div>
+  </div>
+        
+</form>
+</div>
+        
+        
+    <div class="section">
+      <% include ../partials/footer.ejs %>
+    </div>
+    
+</body>
+</html>
