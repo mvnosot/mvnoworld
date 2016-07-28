@@ -8,7 +8,7 @@
     
 <% include partials/cssLink.ejs %>
 
-<link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <style>
 .alert {
   padding: 15px;
@@ -6055,7 +6055,9 @@ alert('<%=msg%>');
 %>
 <script type="text/javascript">
 
-      function chkPN (svcNum){
+      function chkPN (){
+        var svcNum = document.signInForm.inputPN.value;
+        
         // 서비스번호 11자리 입력시 인증Key 요청
         if(svcNum != "" && svcNum != null && svcNum.length >= 11){
           getSNFromServer(svcNum);
@@ -6064,6 +6066,10 @@ alert('<%=msg%>');
       
       function getSNFromServer(svcNum){
         var req;
+        
+        var delay = 2000; //2초
+        var start = new Date().getTime();
+        while(new Date().getTime()<start+delay); // delay;
         
         if(window.XMLHttpRequest) {
           req = new XMLHttpRequest();
@@ -6088,6 +6094,7 @@ alert('<%=msg%>');
 
       // 로그인
       function loginSubmit(){
+
         var req;
         
         var inputPN = document.getElementById("inputPN").value;
@@ -6114,7 +6121,6 @@ alert('<%=msg%>');
 
           }
         }
-        
         req.open("GET", "/cust_info/chkSN/" + inputPN + inputSN, true);
         req.send();
       }
@@ -6147,34 +6153,54 @@ alert('<%=msg%>');
             
           <div class="col-md-12" style="margin-top:9rem">
                 <div id="signin_btn">
-                    <a class="btn btn-3 btn-primary-outline m-y-lg" data-toggle="collapse" href="#collapse1"><i class="fa fa-mobile fa-lg" aria-hidden="true"></i> 전화번호로 시작하기</a>
+                    <button type="button" class="btn btn-3 btn-primary-outline m-y-lg" data-toggle="modal" data-target="#myModal"><i class="fa fa-mobile fa-lg" aria-hidden="true"></i> 전화번호로 시작하기</button>
                 </div>
-                            <div id="collapse1" class="panel-collapse collapse" style="display:block;">
-                                <div class="row">
-                                    <form class="form-signin" name="signInForm" action="/login" method="post">
-                                      <div>
-                                          <label for="inputPN">휴대전화번호</label>
-                                          <input type="text" name="inputPN" id="inputPN" maxLength="11" class="form-control" placeholder="EX) 01098761111" required autofocus onkeypress="chkPN(this.value);" onpaste="chkPN(this.value);" oninput="chkPN(this.value);">
-                                          <label for="inputSN">인증Key</label></label>
-                                          <input type="text" name="inputSN" id="inputSN" class="form-control" placeholder="EX) 인증번호" required>
-                                          <br>
-                                          <button type="button" class="btn btn-primary" onClick="loginSubmit();">LOG IN</button>
-                                      </div>
-                                    </form>
-                                </div>
-                            </div>
-
-                            
           </div>
 
+          <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog" style="text-align:left">
+              <div class="modal-dialog">
+              
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <i class="fa fa-mobile fa-lg" aria-hidden="true"></i> SKT MVNO Login
+                  </div>
+                  <div class="modal-body">
+                    <div id="collapse1" class="panel-collapse collapse" style="display:block;">
+                        <div>
+                            <form class="form-signin" name="signInForm" action="/login" method="post">
+                              <div>
+                                  <label for="inputPN">서비스번호</label>
+                                  <input type="text" name="inputPN" id="inputPN" maxLength="11" class="form-control" placeholder="EX) 01098761111" required autofocus >
+                                  <div class="form-group">
+                                    <p></p>
+                                    <label class="control-label">인증번호</label>
+                                    <div class="input-group">
+                                      <input type="text" name="inputSN" id="inputSN" class="form-control" placeholder="EX) 인증번호" required>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" style="height:39px" onClick="chkPN();">인증번호받기</button>
+                                      </span>
+                                    </div>
+                                  </div>   
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onClick="loginSubmit();">LOG IN</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
       </div>
     </div>
-
-    
   </div>
 </div>
-
-
 
 </body>
 
