@@ -73,7 +73,7 @@
               for(var i=0; i<data.vas_list.length; i++){
                 vas_scrb_dt = data.vas_list[i].vas_scrb_dt.substr(0,4)+'/'+data.vas_list[i].vas_scrb_dt.substr(4,2)+'/'+data.vas_list[i].vas_scrb_dt.substr(6,2);
               %>
-                <div><%=data.vas_list[i].vas_nm%><span class="right"><%=data.vas_scrb_dt%></span></div>
+                <div><%=data.vas_list[i].vas_nm%><span class="right"><%=data.vas_list[i].vas_scrb_dt.substr(0,4)+'/'+data.vas_list[i].vas_scrb_dt.substr(4,2)+'/'+data.vas_list[i].vas_scrb_dt.substr(6,2)%></span></div>
               <%}%>
           </div> 
         </div>

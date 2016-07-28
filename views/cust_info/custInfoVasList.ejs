@@ -71,8 +71,8 @@
                 vas_scrb_dt = data.vas_list[i].vas_scrb_dt.substr(0,4)+'/'+data.vas_list[i].vas_scrb_dt.substr(4,2)+'/'+data.vas_list[i].vas_scrb_dt.substr(6,2);
               %>
                 <tr>
-                  <td><%=data.vas_list[i].vas_nm%> <span class="badge">?</span><br/><%=data.vas_scrb_dt%></td>
-                  <td class="text-center""><%=data.vas_list[i].vas_amt%>원</td>
+                  <td><%=data.vas_list[i].vas_nm%> <span class="badge">?</span><br/><%=data.vas_list[i].vas_scrb_dt.substr(0,4)+'/'+data.vas_list[i].vas_scrb_dt.substr(4,2)+'/'+data.vas_list[i].vas_scrb_dt.substr(6,2)%></td>
+                  <td class="text-center"><%=data.vas_list[i].vas_amt%>원</td>
                 </tr>
               <%}%>
               </tbody>
