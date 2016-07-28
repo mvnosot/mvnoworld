@@ -20,7 +20,24 @@
         <!--<li class="active"><a href="#">고객계정번호</a></li>-->
         <li><a href="/cust_info"><i class="fa fa-user fa-fw"></i> 고객상세정보</a></li>
         <li><a href="/prod_chg"><i class="fa fa-tags fa-fw"></i> 요금제변경</a></li>
-        <li><a href="/num_mng/goldList"><i class="fa fa-calendar-o fa-fw"></i> 골드번호이벤트</a></li>
+        <!--<li><a href="/num_mng/goldList"><i class="fa fa-calendar-o fa-fw"></i> 골드번호이벤트</a></li>-->
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-calendar-o fa-fw"></i> 이벤트<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+      <%if(locals.user_session && user_session.mvno_cd != "M00035"){%>  
+            <li><a href="/num_mng/goldList">GOLD번호 응모</a></li>
+            <li><a class="disabled">쿠폰받고 E마트로</a></li>
+            <li class="divider"></li>
+            <li><a class="disabled">이벤트 응모결과</a></li>
+      <%}else{%>
+            <li><a href="/num_mng/goldList">골드번호 EVENT</a></li>
+            <li><a class="disabled">데이터쿠폰 받기</a></li>
+            <li class="divider"></li>
+            <li><a class="disabled">이벤트 응모결과</a></li>
+      <%}%>      
+          </ul>
+        </li>
+
         <li><a href="/css"><i class="fa fa-instagram fa-fw"></i> CSS</a></li>
         <li><a href="/css.black"><i class="fa fa-instagram fa-fw"></i> CSS_BLACK</a></li>
         <!--<li><a href="/css.black"><i class="fa fa-instagram fa-fw"></i> 알뜰폰소개</a></li>-->
