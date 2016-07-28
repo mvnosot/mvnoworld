@@ -6043,34 +6043,9 @@ a.text-danger:focus, a.text-danger:hover {
   }
 }
 
-@media (min-width: 34em) {
-  .section-half-height .container {
-    width: 34rem;
-    max-width: 34rem;
-  }
-}
 
-@media (min-width: 48em) {
-  .section-half-height .container {
-    width: 45rem;
-    max-width: 45rem;
-  }
-}
-
-@media (min-width: 62em) {
-  .section-half-height .container {
-    width: 60rem;
-    max-width: 60rem;
-  }
-}
-
-@media (min-width: 75em) {
-  .section-half-height .container {
-    width: 72.25rem;
-    max-width: 72.25rem;
-  }
-}
 </style>
+
 <%if(locals.msg){%>  
 <script language="javascript">
 alert('<%=msg%>');
@@ -6126,13 +6101,14 @@ alert('<%=msg%>');
 
 
 <!-- bg -->
-<div class="section section-fill-height section-opaque-light text-xs-center">
+<div class="section section-fill-height section-opaque-light text-xs-center" style="">
   <div class="background-image" style="background-image : url('/images/intro_mobile.jpg');"></div>
+          <h1>SKT <strong>MVNO</strong></h1>
 </div>
 
 
 <!-- content -->
-<div class="section section-half-height text-xs-center z-index:0;">
+<div class="section section-half-height text-xs-center z-index:1;">
   <div class="container">
     
     <!-- logo -->
@@ -6142,13 +6118,13 @@ alert('<%=msg%>');
             <i class="fa fa-twitch fa-3x" aria-hidden="true"></i>
           </div>
           <h1>SKT <strong>MVNO</strong></h1>
+
             
           <div class="col-md-12" style="margin-top:9rem">
                 <div id="signin_btn">
                     <a class="btn btn-3 btn-primary-outline m-y-lg" data-toggle="collapse" href="#collapse1"><i class="fa fa-mobile fa-lg" aria-hidden="true"></i> 전화번호로 시작하기</a>
                 </div>
-                             <!--hidden -->
-                            <div id="collapse1" class="panel-collapse collapse">
+                            <div id="collapse1" class="panel-collapse collapse" style="display:block;">
                                 <div class="row">
                                     <form class="form-signin" action="/login" method="post" onSubmit="return loginSubmit()">
                                       <div>
