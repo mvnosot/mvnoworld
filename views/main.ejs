@@ -323,37 +323,12 @@
       <div class="ibox task_box_holder">
         <div class="bbox task_box_padding border20 hb_anim">
           <div class="bbox_pos box_bg home_block_sug border20 home_suggesties">
-            <div class="baboxfull sug_item border20 si_0">
-        			<div class="bbox sug_item_block border20" style="background-color:#d4b124;">
-        			  <table class='xabfull_tbl sug_tbl'>
-        			    <tr>
-        			      <td>
-        					    <div class='bbox sug_subtitle'>응모하라!!</div> 
-        					    <div class='bbox sug_title'>골드번호 EVENT<br/>
-        					      <i class="fa fa-diamond fa-2x" aria-hidden="true"></i>
-      					      </div>
-        					   </td>
-      				    </tr>
-    				    </table>
-        			  <div class="babox evpng sug_event_holder"></div>
-      			 	</div>
-      		  </div>
-         		<div class='baboxfull sug_item border20 si_1' style='display:none;'>
-        			<div class="bbox sug_item_block border20" style="background-color:#ff829b;">
-        			  <table class='xabfull_tbl sug_tbl'>
-        			    <tr>
-        			      <td>
-        					    <div class='bbox sug_subtitle'>Data Dream</div> 
-        					    <div class='bbox sug_title'>데이터쿠폰 받기<br/>
-        					      <i class="fa fa-ticket fa-2x" aria-hidden="true"></i>
-      					      </div>
-        				    </td>
-      				    </tr>
-    				    </table>
-        			  <div class="babox evpng sug_event_holder"></div>
-      			 	</div>		
-        		</div>
-        		<a href='#' onclick='return false;' class='babox lapng sug_nav sug_prev'>&nbsp;</a>
+            <% if(data.mvno_co_cd == "M00035") { %>
+                <% include ./event_slide/event_M00035.ejs %>
+            <% }else{ %>
+                <% include ./event_slide/event_M00145.ejs %>
+            <% } %>
+          	<a href='#' onclick='return false;' class='babox lapng sug_nav sug_prev'>&nbsp;</a>
 			      <a href='#' onclick='return false;' class='babox rapng sug_nav sug_next'>&nbsp;</a>
 			    </div>
         </div>
