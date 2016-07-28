@@ -5,369 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <% include ./partials/cssLink.ejs %>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <script type="text/javascript" src="/javascripts/velocity.js"></script>
     
     <style>
     
-      .container-fluid {
-        margin-bottom: 15px;
-      }
-      
-      .sitew {
-        max-width: 1180px;
-        padding: 0px 0px;
-        margin: auto;
-      }
-      .sitew_big {
-        max-width: 1200px;
-        padding: 0px;
-        margin: auto;
-      }
-      
-      @media (min-width: 600px) {
-        .container-fluid {
-          margin-bottom: 20px;
-          border-top-right-radius: 20px;
-          border-bottom-right-radius: 20px;
-          border-bottom-left-radius: 20px;
-          border-top-left-radius: 20px;
-        }
-        
-      }
-      
-      .img-responsive {
-        height: auto;
-        max-width: 100%;
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-      
-      .img-wide-responsive {
-        height: auto;
-        max-width: 100%;
-        max-height: 240px;
-      }
-      
-      .span-use-full {
-        float:right;
-        margin-top:-12px;
-        margin-bottom:10px;
-      }
-      
-      img {
-        display: inline-block;
-        height: auto;
-        max-width: 100%;
-        padding : 5px;
-      }
-      
-      .main_info_box {
-        background: #ee6561; 
-        height: 250px;
-      }
-      
-      .border0 {
-        border-style: solid;
-        border-color: black;
-        border-width: 2px;
-      }
-      
-      .cust_div {
-        padding-left: 3%;
-        padding-right: 3%;
-        padding-top: 2px;
-      }
-      
-      .mvno_info {
-        color: #ffffff;
-      }
-      
-      .cust_info {
-        color: #ffffff;
-      }
-      
-      .cust_info > a {
-        color: #0e0d30;
-      }
-      
-      .ibox {
-        display: inline-block;
-        vertical-align: top;
-        position: relative;
-      }
-      
-      .bbox {
-        display: block;
-        position: relative;
-      }
-      
-      .babox {
-        display: block;
-        position: absolute;
-      }
-      
-      .baboxfull {
-        display: block;
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        bottom: 0px;
-        left: 0px;
-        margin: 0px;
-        padding: 0px;
-      }
-      
-      .cust_progbar_box {
-        width: 32%;
-        padding-top: 60px;
-        padding-right: 12px;
-      }
-      
-      @media (max-width: 600px) {
-        .cust_progbar_box {
-          padding-top: 0px;
-          width: 100%;
-        }
-        
-        .progress {
-          margin-bottom: 5px;
-        }
-      }
-      
-      .progress-bar-info {
-        background-color: #0e0d30;/*#0e0d30;*/
-      }
-      
-      .prog_data {
-        float: right;
-        margin-top: -19px;
-      }
-      
-      h6 {
-        margin-top: 8.5px;
-        margin-bottom: 5.5px;
-      }
-      
-      .task_box_holder {
-        width: 33%;
-      }
-      
-      .task_box_padding {
-        padding: 10px;  
-      }
-      
-      @media(max-width : 600px){
-        .task_box_holder {
-          width: 100%;
-        }
-        .task_box_padding {
-          padding: 0px;  
-        }
-      
-      }
-      
-      .bbox_pos {
-        display: block;
-        position: relative;
-        height: 0px;
-        font-size: 0px;
-        line-height: 0px;
-        
-      }
-      
-      .box_bg {
-        background: no-repeat center center;
-        background-size: cover;
-      }
-      
-      .home_block {
-        padding-top: 100%;
-        -moz-opacity: 0;
-        -khtml-opacity: 0;
-        /*-webkit-opacity: 0;
-        opacity: 0;*/
-        -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
-        filter: alpha(opacity=0);
-        background-color: #f5f5f5;
-      }
-      
-      .border20 {
-        -webkit-border-top-right-radius: 20px;
-        -webkit-border-bottom-right-radius: 20px;
-        -webkit-border-bottom-left-radius: 20px;
-        -webkit-border-top-left-radius: 20px;
-        -moz-border-radius-topright: 20px;
-        -moz-border-radius-bottomright: 20px;
-        -moz-border-radius-bottomleft: 20px;
-        -moz-border-radius-topleft: 20px;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-        border-bottom-left-radius: 20px;
-        border-top-left-radius: 20px;
-        -moz-background-clip: padding-box;
-        -webkit-background-clip: padding-box;
-        background-clip: padding-box;
-      }
-      
-      @media (max-width: 600px) {
-        .home_block {
-          padding-top: 0%;
-          height: 200px;
-          border-bottom: 2px solid black;
-        }
-        
-        .border20 {
-          -webkit-border-top-right-radius: 0px;
-          -webkit-border-bottom-right-radius: 0px;
-          -webkit-border-bottom-left-radius: 0px;
-          -webkit-border-top-left-radius: 0px;
-          -moz-border-radius-topright: 0px;
-          -moz-border-radius-bottomright: 0px;
-          -moz-border-radius-bottomleft: 0px;
-          -moz-border-radius-topleft: 0px;
-          border-top-right-radius: 0px;
-          border-bottom-right-radius: 0px;
-          border-bottom-left-radius: 0px;
-          border-top-left-radius: 0px;
-          -moz-background-clip: padding-box;
-          -webkit-background-clip: padding-box;
-          background-clip: padding-box;
-        }
-      }
-      
-      .home_link {
-        display: block;
-        height: 34px;
-        width: 190px;
-        left: 50%;
-        margin-left: -95px;
-        bottom: 5%;
-        -moz-opacity: 0;
-        -khtml-opacity: 0;
-        /*-webkit-opacity: 0;
-        opacity: 0;*/
-        -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
-        filter: alpha(opacity=0);
-        -webkit-transition: all 0.2s ease-out;
-        -moz-transition: all 0.2s ease-out;
-        -o-transition: all 0.2s ease-out;
-        transition: all 0.2s ease-out;
-      }
-      
-      .home_link_txt {
-        background: white;
-        color: black;
-        -webkit-border-top-right-radius: 20px;
-        -webkit-border-bottom-right-radius: 20px;
-        -webkit-border-bottom-left-radius: 20px;
-        -webkit-border-top-left-radius: 20px;
-        -moz-border-radius-topright: 20px;
-        -moz-border-radius-bottomright: 20px;
-        -moz-border-radius-bottomleft: 20px;
-        -moz-border-radius-topleft: 20px;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-        border-bottom-left-radius: 20px;
-        border-top-left-radius: 20px;
-        -moz-background-clip: padding-box;
-        -webkit-background-clip: padding-box;
-        background-clip: padding-box;
-        width: 190px;
-        text-align: center;
-        font-family: 'Oswald_reg';
-        text-transform: uppercase;
-        line-height: 34px;
-        font-size: 16px;
-        -webkit-transition: all 0.2s ease-out;
-        -moz-transition: all 0.2s ease-out;
-        -o-transition: all 0.2s ease-out;
-        transition: all 0.2s ease-out;
-      }
-      
-      .home_link.over {
-        margin-bottom: 2%;
-      }
-      .home_link.over .home_link_txt {
-        background: black;
-        color: white;
-        margin-bottom: 2%;
-      }
-      
-      .hl_block {
-        width: 32px;
-        height: 32px;
-        line-height: 32px;
-      }
-      
-      .hl_white {
-        background: white;
-        top: 16px;
-        left: 16px;
-        width: 0px;
-        height: 0px;
-        -webkit-border-top-right-radius: 20px;
-        -webkit-border-bottom-right-radius: 20px;
-        -webkit-border-bottom-left-radius: 20px;
-        -webkit-border-top-left-radius: 20px;
-        -moz-border-radius-topright: 20px;
-        -moz-border-radius-bottomright: 20px;
-        -moz-border-radius-bottomleft: 20px;
-        -moz-border-radius-topleft: 20px;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-        border-bottom-left-radius: 20px;
-        border-top-left-radius: 20px;
-        -moz-background-clip: padding-box;
-        -webkit-background-clip: padding-box;
-        background-clip: padding-box;
-      }
-      
-      .hl_white.over {
-        top: 2px;
-        left: 2px;
-        width: 28px;
-        height: 28px;
-      }
-      
-      .hl_txt {
-        top: 0px;
-        left: 0px;
-        height: 32px;
-        width: 32px;
-        line-height: 32px;
-        text-align: center;
-        color: white;
-        font-family: 'Clarendon_Light';
-        text-transform: lowercase;
-        font-size: 13px;
-        letter-spacing: 1px;
-      }
-      
-      .hl_txt.black {
-        color: black;
-        font-size: 13px;
-        font-family: 'Clarendon_Medium';
-      }
-      
-      .showmobile {
-        display: none;
-      }
-      
-      @media (max-width: 600px) {
-        .hidemobile {
-          display: none;
-        }
-        .showmobile {
-          display: block;
-        }
-      }
-      
-      
     </style>
     
     <script>
+      var curr_slide = 0;
+  	  var curr_z = 200;
+  	  var enterfr = 0;
+  	  var totalslides = 0;
+  	  
       window.onload = function(){
         initProgress();
         initTaskMouseEvent();
+        initSlide();
       }
       
       function initProgress() {
@@ -464,8 +118,61 @@
           }, false);
         }
         */
+      } 
+      
+      function initSlide() {
+        totalslides = $('.sug_item').length;
+        //console.log('totalslides : ' + totalslides);
         
+        $('.sug_next').click(function(){
+    			nextslide();
+    		});
+    		$('.sug_prev').click(function(){
+    			prevslide();
+    		});
+    		
+    		setInterval(function() {
+    			enterframe();
+    		}, 1000);
+    		
+    		$('.sug_nav').css('z-index',curr_z); curr_z++;
       }
+      
+      function nextslide(){
+  			var next_slide = curr_slide+1;
+  			//var totalslides = parseFloat($('.si_total:eq(0)').html());
+  			if (next_slide >= totalslides){next_slide = 0;}
+  			slideshow_goto(next_slide);
+  		}
+    		
+  		function prevslide(){
+  			var next_slide = curr_slide-1;
+  			//var totalslides = parseFloat($('.si_total:eq(0)').html());
+  			if (next_slide < 0){next_slide = totalslides-1;}
+  			slideshow_goto(next_slide);
+  		}
+    		
+    	function slideshow_goto(id){
+  			console.log('slide : ' + id);
+  			if (curr_slide != id){
+  				//console.log(id);	
+  				$('.sug_item').stop(true,false).delay(300).velocity({opacity:0},{duration: 700, easing: "easeInOutCubic"});	
+  				$('.si_'+id).stop(true,false).css('opacity',0).css('z-index',curr_z).css('display','block');
+  				$('.si_'+id).stop(true,false).velocity({opacity:1},{duration: 700, easing: "easeInOutCubic"});	
+  				curr_z++;
+  				$('.sug_nav').css('z-index',curr_z); curr_z++;
+  				enterfr = 0;			
+  				curr_slide = id;
+  			}
+  		}
+    		
+  		function enterframe(){
+  			enterfr++;
+  			if (enterfr == 5){
+  				nextslide();
+  				enterfr = 0;
+  			}
+  		}
 
     </script>
     
@@ -601,20 +308,6 @@
       
       <div class="ibox task_box_holder">
         <div class="bbox task_box_padding hb_anim">
-          <div class="bbox_pos box_bg home_block border20" style="background-image:url('images/event_example.jpg');">
-            &nbsp;
-            <div class='babox home_link hl'>
-              <div class='bbox home_link_txt'>
-                EVENT
-              </div>
-            </div>
-            <a href='/prod_chg' class="baboxfull">&nbsp;</a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="ibox task_box_holder">
-        <div class="bbox task_box_padding hb_anim">
           <div class="bbox_pos box_bg home_block border20" style="background-image:url('images/bill.jpg');">
             &nbsp;
             <div class='babox home_link hl'>
@@ -627,7 +320,44 @@
         </div>
       </div>
       
-    </div>
+      <div class="ibox task_box_holder">
+        <div class="bbox task_box_padding border20 hb_anim">
+          <div class="bbox_pos box_bg home_block_sug border20 home_suggesties">
+            <div class="baboxfull sug_item border20 si_0">
+        			<div class="bbox sug_item_block border20" style="background-color:#d4b124;">
+        			  <table class='xabfull_tbl sug_tbl'>
+        			    <tr>
+        			      <td>
+        					    <div class='bbox sug_subtitle'>응모하라!!</div> 
+        					    <div class='bbox sug_title'>골드번호 EVENT<br/>
+        					      <i class="fa fa-diamond fa-2x" aria-hidden="true"></i>
+      					      </div>
+        					   </td>
+      				    </tr>
+    				    </table>
+        			  <div class="babox evpng sug_event_holder"></div>
+      			 	</div>
+      		  </div>
+         		<div class='baboxfull sug_item border20 si_1' style='display:none;'>
+        			<div class="bbox sug_item_block border20" style="background-color:#ff829b;">
+        			  <table class='xabfull_tbl sug_tbl'>
+        			    <tr>
+        			      <td>
+        					    <div class='bbox sug_subtitle'>Data Dream</div> 
+        					    <div class='bbox sug_title'>데이터쿠폰 받기<br/>
+        					      <i class="fa fa-ticket fa-2x" aria-hidden="true"></i>
+      					      </div>
+        				    </td>
+      				    </tr>
+    				    </table>
+        			  <div class="babox evpng sug_event_holder"></div>
+      			 	</div>		
+        		</div>
+        		<a href='#' onclick='return false;' class='babox lapng sug_nav sug_prev'>&nbsp;</a>
+			      <a href='#' onclick='return false;' class='babox rapng sug_nav sug_next'>&nbsp;</a>
+			    </div>
+        </div>
+      </div>
     
   </div>  
   
