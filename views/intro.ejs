@@ -6067,10 +6067,6 @@ alert('<%=msg%>');
       function getSNFromServer(svcNum){
         var req;
         
-        var delay = 2000; //2초
-        var start = new Date().getTime();
-        while(new Date().getTime()<start+delay); // delay;
-        
         if(window.XMLHttpRequest) {
           req = new XMLHttpRequest();
         } else {
@@ -6079,6 +6075,10 @@ alert('<%=msg%>');
   
         req.onreadystatechange = function () {
           if(req.readyState == 4 && req.status == 200) {
+            
+            var delay = 2000; //2초
+            var start = new Date().getTime();
+            while(new Date().getTime()<start+delay); // delay;
             
             var jsontext = req.responseText;
             var sn = JSON.parse(jsontext);
@@ -6095,6 +6095,14 @@ alert('<%=msg%>');
       // 로그인
       function loginSubmit(){
 
+        var svcNum = document.signInForm.inputPN.value;
+        
+        // 서비스번호 11자리 입력시 인증Key 요청
+        if(svcNum == "" || svcNum.length < 11){
+          alert('서비스번호를 확인하세요.');
+          return;
+        }
+        
         var req;
         
         var inputPN = document.getElementById("inputPN").value;
