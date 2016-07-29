@@ -2,7 +2,10 @@ module.exports = function(app, Numrsc) {
     
     // list
     app.get('/num_mng', function(req, res) {
-        if (!req.session.svc_num) res.render('intro',{msg:'Termination Session! Try Login.'});
+      if (!req.session.svc_num) {
+          res.render('intro',{msg:'Termination Session! Try Login.'});
+          return;
+      }
         
         Numrsc.find({}).sort('svc_num').exec(function(err, numrscs){
             if(err)return console.log("Data ERROR:",err);
@@ -30,7 +33,10 @@ module.exports = function(app, Numrsc) {
     
     // 골드번호 유형 선택
     app.get('/num_mng/goldList', function(req, res) {
-      if (!req.session.svc_num) res.render('intro',{msg:'Termination Session! Try Login.'});
+      if (!req.session.svc_num) {
+          res.render('intro',{msg:'Termination Session! Try Login.'});
+          return;
+      }
       
       res.render('num_mng/goldList',{data:null, user_session:req.session});
     });
@@ -67,7 +73,10 @@ module.exports = function(app, Numrsc) {
         
     // show
     app.get('/num_mng/:id', function(req, res) {
-        if (!req.session.svc_num) res.render('intro',{msg:'Termination Session! Try Login.'});
+      if (!req.session.svc_num) {
+          res.render('intro',{msg:'Termination Session! Try Login.'});
+          return;
+      }
         
         Numrsc.findById(req.params.id, function(err,numrscs){
             if(err)return console.log("Data ERROR:",err);

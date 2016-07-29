@@ -3,7 +3,10 @@ module.exports = function(app, Evntgold) {
 
     // 이벤트 응모현황 조회
     app.get('/evnt_mng/evnt_rslt', function(req, res, next) {
-        if (!req.session.svc_num) res.render('intro',{msg:'Termination Session! Try Login.'});
+      if (!req.session.svc_num) {
+          res.render('intro',{msg:'Termination Session! Try Login.'});
+          return;
+      }
         
         console.log(">>>");
         
@@ -28,7 +31,10 @@ module.exports = function(app, Evntgold) {
 
     // // 이벤트 당첨결과 조회
     // app.get('/evnt_rslt', function(req, res, next) {
-    //     if (!req.session.svc_num) res.render('intro',{msg:'Termination Session! Try Login.'});
+    //   if (!req.session.svc_num) {
+    //       res.render('intro',{msg:'Termination Session! Try Login.'});
+    //       return;
+    //   }
         
     //     var evntradio = req.query.evntradio;
         
