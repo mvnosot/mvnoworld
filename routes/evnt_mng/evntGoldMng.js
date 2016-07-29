@@ -1,6 +1,28 @@
 module.exports = function(app, Evntgold) {
 
-
+    // 이벤트 응모현황 조회
+    app.get('/evnt_mng/evnt_rslt', function(req, res, next) {
+      if (!req.session.svc_num) {
+          res.render('intro',{msg:'Termination Session! Try Login.'});
+          return;
+      }
+        
+        var evntradio = req.query.evntradio;
+        Evntgold.aggregate([
+                { $match : {} },
+                { $group : {
+                    _id : { gold_svc_num: "$gold_svc_num"},
+                    count: { $sum: 1 }
+                    }
+                },
+                { $sort : {count:-1} }
+            ], function (err, evntgolds) {
+            if(err)return console.log("Data ERROR:",err);
+            res.render('evnt_mng/goldView',{data:evntgolds,data2:null, user_session:req.session});
+        });
+          
+    });
+    
     // 응모건수 조회
     app.get('/evnt_mng', function(req, res, next) {
         if (!req.session.svc_num) {
@@ -78,5 +100,7 @@ module.exports = function(app, Evntgold) {
         });
           
     });
+
+
     
 }

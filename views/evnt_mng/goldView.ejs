@@ -46,9 +46,9 @@
   <div class="bs-callout bs-callout-danger" id=callout-helper-context-color-specificity> 
     
           <% if(data2==null) { %>
-            <h5 class="text-primary"><i class="fa fa-calendar-o fa-fw"></i> 골드번호 이벤트 응모현황 조회</h5>
+            <h5 class="text-primary"><i class="fa fa-calendar-o fa-fw"></i> 골드번호 이벤트 > 응모현황 조회</h5>
           <% } else if(data==null) { %>
-            <h5 class="text-primary"><i class="fa fa-calendar-o fa-fw"></i> 골드번호 이벤트 당첨결과 확인하기</h5>
+            <h5 class="text-primary"><i class="fa fa-calendar-o fa-fw"></i> 골드번호 이벤트 > 당첨결과 확인하기</h5>
           <% } %>
   </div>
   <p></p>
@@ -58,23 +58,18 @@
           <div class="panel-body">
 
             <% if(data!=null) { %>
+              <div>
+                <div class="well">
+                <ul class="list-group">
                   <% data.forEach(function(e){ %>
-                  
-                    <div>
-                      <div class="well">
-                        <h4 class="text-primary">
-                          <%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %>
-                        </h4>
-                        <h4>
-                          현재 <font class="text-danger"><%= e.count %></font>명 응모
-                        </h4>
-                      </div>
-                      
-                    </div>
-                    
+                        <li class="list-group-item"><span class="badge"><%= e.count %>명 응모</span><%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %></li>
                   <% })  %>
-                  
-                  <p align="center"><a class="btn btn-primary" href="/num_mng/goldList" >당첨결과 확인하기</a></p>
+                </ul>
+                </div>
+              </div>
+              
+              <p align="center"><a class="btn btn-primary" href="/num_mng/goldList" >당첨결과 확인하기</a></p>
+              
             <% } %>
           </div>
   </div>

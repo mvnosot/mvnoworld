@@ -15,12 +15,12 @@ module.exports = function(app, Numrsc) {
     
     // new
     app.get('/num_mng/new', function(req, res) {
-      res.render('num_mng/new');
+      res.render('num_mng/new', {user_session:req.session});
     });
     app.post('/num_mng', function(req, res) {
         Numrsc.create(req.body.numrsc,function(err,numrsc){
             if(err)return console.log("Data ERROR:",err);
-            res.redirect('/num_mng');
+            res.redirect('/num_mng', {user_session:req.session});
         });
     });
     app.put('/num_mng/:id', function(req, res) {
