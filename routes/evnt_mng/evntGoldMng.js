@@ -12,7 +12,7 @@ module.exports = function(app, Evntgold) {
                 { $match : {} },
                 { $group : {
                     _id : { gold_svc_num: "$gold_svc_num"},
-                    count: { $sum: 1 }
+                    count: { $sum: 1 },
                     }
                 },
                 { $sort : {count:-1} }

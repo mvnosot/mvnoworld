@@ -23,12 +23,9 @@
   </style>
   
   <script type="text/javascript">
-      var confirmCheck = false;
-    
-      function authSendOnclick() {
-        alert("전송하였습니다.");
-        document.getElementById("btnConfirm").disabled = false;
-      }
+
+
+      
   </script>
 
 </head>
@@ -60,15 +57,29 @@
             <% if(data!=null) { %>
               <div>
                 <div class="well">
-                <ul class="list-group">
+                  <%
+                    var total = 0;  // 총건수
+                    var avg = 0.0;  // 건수/총건수 * 100
+                  %>
                   <% data.forEach(function(e){ %>
-                        <li class="list-group-item"><span class="badge"><%= e.count %>명 응모</span><%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %></li>
+                        <% total += e.count; %>
                   <% })  %>
-                </ul>
+                  <% data.forEach(function(e){ %>
+                            <% avg = e.count/total*100 %>
+                            <h4>
+                              <%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %>
+                              <% if(avg >= 50) { %>
+                                &nbsp;&nbsp;<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                              <% } %>
+                            </h4>
+                            <div class="progress">
+                              <div class="progress-bar" style="width:<%= avg.toFixed(1) %>%;"><%= e.count %>명 응모</div>
+                            </div>
+                  <% })  %>
                 </div>
               </div>
               
-              <p align="center"><a class="btn btn-primary" href="/num_mng/goldList" >당첨결과 확인하기</a></p>
+              <p align="center"><a class="btn btn-primary" data-toggle="modal" data-target="#myModal" >당첨결과 확인하기</a></p>
               
             <% } %>
           </div>
@@ -76,7 +87,24 @@
         
 </form>
 </div>
-        
+
+<!-- modal -->
+ <div class="modal fade" id="myModal" role="dialog" style="text-align:left">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">골드번호 이벤트</h4>
+      </div>
+      <div class="modal-body">
+        <p>당첨여부 결과는 <strong>9월 1일 오전 10시</strong> 이후 확인하실수 있습니다!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
         
     <div class="section">
       <% include ../partials/footer.ejs %>
