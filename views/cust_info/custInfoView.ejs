@@ -39,7 +39,7 @@
   <% include ../partials/navigation.ejs %>
 
       <div class="container">
-        나의 회선번호<span class="badge right"><%=data.svc_num%></span>
+        <h5 class="text-primary"><i class="fa fa-user fa-fw"></i> my Info<span class="badge right"><%=data.svc_num%></span></h5>
         <p></p>
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -54,7 +54,7 @@
         </div>
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <p class="panel-title">요금 상품</p>
+            <p class="panel-title">요금제</p>
           </div>
           <div class="panel-body">
               <div>요금제명<span class="right"><%=data.fee_prod_nm%></span></div>
@@ -64,7 +64,7 @@
         
         <div class="panel panel-default">
           <div class="panel-heading">
-            <p class="panel-title">부가서비스 (신청일자)<span class="right" onclick="goto_page('/cust_info/vas_list');">상세보기 <i class="fa fa-angle-double-right" aria-hidden="true"></i></span></p>
+            <p class="panel-title">부가서비스<span class="right" onclick="goto_page('/cust_info/vas_list');">상세보기 <i class="fa fa-angle-double-right" aria-hidden="true"></i></span></p>
           </div>
           <div class="panel-body">
               <!--부가서비스목록-->
