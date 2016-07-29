@@ -66,15 +66,22 @@
                   <% })  %>
                   <% data.forEach(function(e){ %>
                             <% avg = e.count/total*100 %>
-                            <h4>
-                              <%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %>
-                              <% if(avg >= 50) { %>
-                                &nbsp;&nbsp;<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                              <% } %>
-                            </h4>
-                            <div class="progress">
-                              <div class="progress-bar" style="width:<%= avg.toFixed(1) %>%;"><%= e.count %>명 응모</div>
-                            </div>
+                            <% if(avg >= 50) { %>
+                              <h4>
+                                <%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %>
+                                  &nbsp;&nbsp;<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                              </h4>
+                              <div class="progress">
+                                <div class="progress-bar" style="width:<%= avg.toFixed(1) %>%;"><%= e.count %>명 응모</div>
+                              </div>
+                            <% } else { %>
+                              <h4>
+                                <%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %>
+                              </h4>
+                              <div class="progress">
+                                <div class="progress-bar progress-bar-info" style="width:<%= avg.toFixed(1) %>%;"><%= e.count %>명 응모</div>
+                              </div>
+                            <% } %>
                   <% })  %>
                 </div>
               </div>
