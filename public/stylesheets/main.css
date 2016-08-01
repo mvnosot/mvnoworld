@@ -420,7 +420,8 @@ h6 {
   .sug_subtitle {
     font-size: 23px;
     line-height: 50px;
-    padding-bottom: 10%;
+    top:15%;
+    padding-bottom: 15%;
   }
 }
 @media (max-width: 600px) {
@@ -431,6 +432,8 @@ h6 {
   .sug_subtitle {
     font-size: 28px;
     line-height: 60px;
+    top: 10%;
+    padding-bottom: 5%;
   } 
 }
 
