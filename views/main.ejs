@@ -177,13 +177,15 @@
     </script>
     
     <% 
-      var reco_prod_id, reco_prod_nm;
+      var reco_prod_id, reco_prod_nm, event_text;
       if(locals.user_session && user_session.mvno_cd == 'M00035') {
         reco_prod_id = '578c7f62f36d287f8a9a7bba';
         reco_prod_nm = 'Band Data Ting28';
+        event_text = '[당첨확인] SK텔링크가 선사하는 DATA쿠폰 DREAM 이벤트에 당첨!!';
       }else {
         reco_prod_id = '5785911bdcba0f3bf61995dd';
         reco_prod_nm = 'Band데이터85';
+        event_text = '[이벤트] SUMMER SPECIAL 이마트 쿠폰 이벤트가 2일 후 종료합니다.';
       }
         
     %>
@@ -204,11 +206,7 @@
         <h6 class="cust_info"><%=data.mvno_nm%>에서 고객님의 사용량 데이터를 분석한 결과 <a href="/prod_chg/<%=reco_prod_id%>"><%=reco_prod_nm%></a> 요금제를 추천해드립니다.</h6>  
       </div>
       <div class="cust_div hidemobile">
-        <%if(locals.user_session && user_session.mvno_cd == 'M00035') { %>
-          <h6 class="cust_info">[당첨확인] SK텔링크가 선사하는 DATA쿠폰 DREAM 이벤트에 당첨!! </h6>
-        <% }else { %>
-          <h6 class="cust_info">[이벤트] SUMMER SPECIAL 이마트 쿠폰 이벤트가 2일 후 종료합니다. </h6>
-        <% } %>
+          <h6 class="cust_info"><%=event_text%></h6>
       </div>
       
       <!-- Data조회 PC용-->
