@@ -20,4 +20,5 @@ module.exports = function(app, Cust) {
                  res.render('main', {data:data, user_session:req.session});
              })
     });
+    
 }
