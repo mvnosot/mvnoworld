@@ -37,7 +37,9 @@
 <body>
   <% include ../partials/navigation.ejs %>
         <div class="container">
-            <h5 class="text-primary"><i class="fa fa-user fa-fw"></i> My Info > 가입 상세정보<span class="badge right"><%=data.svc_num%></span></h5>
+            <h5 class="text-primary"><i class="fa fa-user fa-fw"></i> My Info > 가입 상세정보<span class="badge right">
+            <script>document.write("<%=data.svc_num%>".formatTel());</script>
+            </span></h5>
             <p></p>
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -56,7 +58,7 @@
                   </tr>
                   <tr>
                     <td>최종개통일자</td>
-                    <td><%=data.last_sctb_dt%></td>
+                    <td><script>document.write("<%=data.last_sctb_dt%>".formatDate());</script></td>
                   </tr>
                   <tr>
                     <td>단말정보</td>
@@ -68,7 +70,7 @@
                   </tr>
                   <tr>
                     <td>가입비</td>
-                    <td><%=data.scrb_fee%></td>
+                    <td><script>document.write("<%=data.scrb_fee%>".formatCommas());</script></td>
                   </tr>
                 </tbody>
               </table> 
