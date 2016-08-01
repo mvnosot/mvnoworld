@@ -28,10 +28,8 @@
   </style>
   
   <script type="text/javascript">
-    function setData (){
-      alert("변경되었습니다.");
+    function chgProd (){
       document.chgForm.submit();
-      
     }
   </script>
   
@@ -50,22 +48,45 @@
   
      
         <div class="container">
-            나의 회선번호<span class="badge right"><%=data2.svc_num%></span>
+            <h5 class="text-primary"><i class="fa fa-tags fa-fw"></i> 요금제 > 요금제 변경하기<span class="badge right"><%=data2.svc_num%></span></h5>
             <p></p>
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <p class="panel-title"><%=data2.cust_name%> 님이 사용중인 요금제 : <b><%=data2.fee_prod_nm%></b></p>
               </div>
-              <form class = "chgForm" action="/prod_chg" method = "post">
+              <form name = "chgForm" action="/prod_chg" method = "post">
                 <div class="panel-body">
                     <input name="cust[fee_prod_id]" type="hidden" value="<%= data.prod_cd %>">
                     <input name="cust[fee_prod_nm]" type="hidden" value="<%= data.prod_nm %>">
                     <h2><%=data.prod_nm%></h2>
                     <div>- Data <%=data.prod_data%></div>
                     <div>- 음성 <%=data.prod_vo%></div>
-                    <div>- 문자 <%=data.prod_sms%> <button id ="button"class="btn btn-primary btn-right" onclick ="setData()">요금제 변경</button></div>
-                </div>  
+                    <div>- 문자 <%=data.prod_sms%>
+                    <% if(data.prod_nm != data2.fee_prod_nm){ %>
+                      <button id ="button" type="button" class="btn btn-primary btn-right" data-toggle="modal" data-target="#myModal">요금제 변경</button>
+                    <% } %>
+                    </div>
+                </div>
               </form>
+            </div>
+            
+            <!-- modal -->
+             <div class="modal fade" id="myModal" role="dialog" style="text-align:left">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">요금제 변경</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>요금제를 변경하시겠습니까? <br><br>변경전 : <strong><%=data2.fee_prod_nm%><br><font class="text-primary">변경후: <%= data.prod_nm %></font></strong></p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                    <button type="button" class="btn btn-primary" onClick ="chgProd();">요금제 변경</button>
+                  </div>
+                </div>
+              </div>
             </div>
             
           <ul class="nav nav-tabs">

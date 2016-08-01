@@ -3153,7 +3153,7 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary.active.focus,
 .open > .dropdown-toggle.btn-primary.focus {
   color: #ffffff;
-  background-color: #914411;
+  background-color: #008080;
   border-color: rgba(0, 0, 0, 0);
 }
 .btn-primary:active,
@@ -6822,7 +6822,7 @@ button.close {
 }
 table,
 .table {
-  font-size: 12px;
+  font-size: 14px;
 }
 table a:not(.btn),
 .table a:not(.btn) {

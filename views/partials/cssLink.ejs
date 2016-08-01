@@ -22,4 +22,36 @@
   function goto_page(url){
       window.location.href = url;    
   }
+  
+  //전화번호 포맷
+  String.prototype.formatTel = function(){
+    var nStr = this;
+    if (nStr != "" && nStr.length == 11) {
+      nStr = nStr.substring(0,3) + "-" + nStr.substring(3,7) + "-" + nStr.substring(7, 11);
+    }
+    return nStr;
+  }
+  
+  //날짜 포맷 YYYYMMDD
+  String.prototype.formatDate = function(){
+    var nStr = this;    
+    if (nStr != "" && nStr.length == 8) {
+      nStr = nStr.substring(0,4) + "/" + nStr.substring(4,6) + "/" + nStr.substring(6, 8);
+    }
+    return nStr;
+  }   
+  
+  //숫자 포맷
+  String.prototype.formatCommas = function(){
+    var nStr = this;      
+  	nStr += '';
+  	x = nStr.split('.');
+  	x1 = x[0];
+  	x2 = x.length > 1 ? '.' + x[1] : '';
+  	var rgx = /(\d+)(\d{3})/;
+  	while (rgx.test(x1)) {
+  		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+  	}
+  	return x1 + x2;
+  }   
 </script>

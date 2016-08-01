@@ -209,13 +209,16 @@
 
 <body>
   
+<div class="section" style="height:100%;">
+  
 <% include ../partials/navigation.ejs %>
 
+  
 <div class="container">
   
   <!-- title -->
   <div class="bs-callout bs-callout-danger" id=callout-helper-context-color-specificity> 
-    <p><h4>골드번호 이벤트</h4>step1. 골드번호 고르기</p> 
+    <h5 class="text-primary"><i class="fa fa-calendar-o fa-fw"></i> 골드번호 이벤트 > step1. 골드번호 고르기</h5>
   </div>
   <p></p>
   
@@ -255,27 +258,11 @@
 
 </div>
 
-<div class="modal" id="layerpop">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">골드번호 이벤트</h4>
-      </div>
-      <div class="modal-body">
-        <p id="modal_msg"></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-        <button type="button" class="btn btn-primary" onclick="process()" >선택하기</button>
-      </div>
-    </div>
-  </div>
-</div>
         
     <div class="section">
       <% include ../partials/footer.ejs %>
     </div>
-    
+
+</div>
 </body>
 </html>

@@ -35,6 +35,8 @@
 
 <body>
 
+<div class="section" style="height:100%;">
+  
 <% include ../partials/navigation.ejs %>
 
 
@@ -46,10 +48,10 @@
   <div class="bs-callout bs-callout-danger" id=callout-helper-context-color-specificity> 
     
           <% if(data3==null) { %>
-            <p><h4>골드번호 이벤트</h4>step2. 선택한 골드번호 응모하기</p> 
+            <h5 class="text-primary"><i class="fa fa-calendar-o fa-fw"></i> 골드번호 이벤트 > step2. 선택한 골드번호 응모하기</h5>
           <% } %>
           <% if(data3!=null) { %>
-            <p><h4>골드번호 이벤트</h4>step3. 골드번호 이벤트 응모완료</p> 
+            <h5 class="text-primary"><i class="fa fa-calendar-o fa-fw"></i> 골드번호 이벤트 > step3. 골드번호 이벤트 응모완료</h5>
           <% } %>
   </div>
   <p></p>
@@ -92,7 +94,7 @@
                   <h3>
                     골드번호 당첨 시 취득 유형을 선택하여 주세요.
                   </h3>
-                <p class="text-danger">
+                <p class="text-primary">
                   <label>
                     <input type="radio" name="achvradio" value="1">&nbsp;010신규
                   </label>
@@ -110,7 +112,7 @@
                     - 응모한 취득 유형으로만 골드번호를 취득할수 있습니다.<br>
                     - 선불(PPS)고객은 프로모션 응모는 가능하지만, 당첨된 골드번호는 후불번호로만 취득 가능합니다.<br>
                   </h5>
-              <a class="btn btn-default" href="/num_mng/goldList" >다른번호선택</a>
+              <a class="btn btn-default" href="/num_mng/goldList" style="background-color: #708498;">다른번호선택</a>
               <button type="submit" class="btn btn-primary">응모하기</button>
             
             <% } %>
@@ -129,7 +131,7 @@
                         </h3>
                       </div>
                       
-                      <p align="center"><a class="btn btn-primary" href="/num_mng/goldList" >응모결과 조회</a></p>
+                      <p align="center"><a class="btn btn-primary" href="/evnt_mng/evnt_rslt" >응모현황 조회</a></p>
                       
                     </div>
                     
@@ -146,5 +148,6 @@
       <% include ../partials/footer.ejs %>
     </div>
     
+</div>
 </body>
 </html>

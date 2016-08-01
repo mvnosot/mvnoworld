@@ -28,6 +28,7 @@ var evntgoldSchema = new Schema({
     gold_line_num : {type:String},       // 골드번호_라인번호
     rsv_num_cd : {type:String},                         // 예약번호코드
     achv_cd : {type:String},                            // 취득유형코드
+    achv_yn : {type:String, default:"N"},               // 당첨여부
     create_dt : {type:Date, default:Date.now},          // 생성일시
     audit_dt : {type:Date}                              // 변경일시
 });

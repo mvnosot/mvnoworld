@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<% include ../partials/cssLink.ejs %>
+  <style>
+      .container {
+
+      }
+      
+      .row {
+        
+      }
+      
+      .right{
+        float:right;
+        text-align:right;
+
+      }
+  </style>
+  
+  <script type="text/javascript">
+
+
+      
+  </script>
+
+</head>
+
+<body>
+
+<div class="section" style="height:100%;">
+  
+<% include ../partials/navigation.ejs %>
+
+
+
+<div class="container">
+<form name="achvForm" action="/evnt_mng" method="post">
+  
+  <!-- title -->
+  <div class="bs-callout bs-callout-danger" id=callout-helper-context-color-specificity> 
+    
+          <% if(data2==null) { %>
+            <h5 class="text-primary"><i class="fa fa-calendar-o fa-fw"></i> 골드번호 이벤트 > 응모현황 조회</h5>
+          <% } else if(data==null) { %>
+            <h5 class="text-primary"><i class="fa fa-calendar-o fa-fw"></i> 골드번호 이벤트 > 당첨결과 확인하기</h5>
+          <% } %>
+  </div>
+  <p></p>
+  
+  <!-- body -->
+  <div class="panel panel-default">
+          <div class="panel-body">
+
+            <% if(data!=null) { %>
+              <div>
+                <div class="well">
+                  <%
+                    var total = 0;  // 총건수
+                    var avg = 0.0;  // 건수/총건수 * 100
+                  %>
+                  <% data.forEach(function(e){ %>
+                        <% total += e.count; %>
+                  <% })  %>
+                  <% data.forEach(function(e){ %>
+                            <% avg = e.count/total*100 %>
+                            <% if(avg >= 50) { %>
+                              <h4>
+                                <%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %>
+                                  &nbsp;&nbsp;<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                              </h4>
+                              <div class="progress">
+                                <div class="progress-bar" style="width:<%= avg.toFixed(1) %>%;"><%= e.count %>명 응모</div>
+                              </div>
+                            <% } else { %>
+                              <h4>
+                                <%= e._id.gold_svc_num.substr(0,3) %> - <%= e._id.gold_svc_num.substr(3,4) %> - <%= e._id.gold_svc_num.substr(7) %>
+                              </h4>
+                              <div class="progress">
+                                <div class="progress-bar progress-bar-info" style="width:<%= avg.toFixed(1) %>%;"><%= e.count %>명 응모</div>
+                              </div>
+                            <% } %>
+                  <% })  %>
+                </div>
+              </div>
+              
+              <p align="center"><a class="btn btn-primary" data-toggle="modal" data-target="#myModal" >당첨결과 확인하기</a></p>
+              
+            <% } %>
+          </div>
+  </div>
+        
+</form>
+</div>
+
+<!-- modal -->
+ <div class="modal fade" id="myModal" role="dialog" style="text-align:left">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">골드번호 이벤트</h4>
+      </div>
+      <div class="modal-body">
+        <p>당첨여부 결과는 <strong>9월 1일 오전 10시</strong> 이후 확인하실수 있습니다!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+        
+    <div class="section">
+      <% include ../partials/footer.ejs %>
+    </div>
+    
+</div>
+</body>
+</html>

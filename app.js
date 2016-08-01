@@ -77,7 +77,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // // Configure router
 // 20160723 zzihi
 var router = require('./routes/intro')(app, User);
+var router_user = require('./routes/users')(app, User);
 var router_login = require('./routes/index')(app, User);
+
 // //20160602 wonk777
 // var router_cust = require('./routes/cust_info/custInfo')(app, Cust);
 // //20160609 pyangru

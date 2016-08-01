@@ -37,11 +37,13 @@
 <body>
   <% include ../partials/navigation.ejs %>
         <div class="container">
-            나의 회선번호<span class="badge right"><%=data.svc_num%></span>
+            <h5 class="text-primary"><i class="fa fa-user fa-fw"></i> My Info > 가입 상세정보<span class="badge right">
+            <script>document.write("<%=data.svc_num%>".formatTel());</script>
+            </span></h5>
             <p></p>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <p class="panel-title">SK MVNO 서비스를 사용하시는 고객님의 기본 가입정보 입니다.</p>
+                <p class="panel-title">가입정보</p>
               </div>
               <div class="panel-body">
               <table class="table table-striped table-hover ">
@@ -56,7 +58,7 @@
                   </tr>
                   <tr>
                     <td>최종개통일자</td>
-                    <td><%=data.last_sctb_dt%></td>
+                    <td><script>document.write("<%=data.last_sctb_dt%>".formatDate());</script></td>
                   </tr>
                   <tr>
                     <td>단말정보</td>
@@ -68,7 +70,7 @@
                   </tr>
                   <tr>
                     <td>가입비</td>
-                    <td><%=data.scrb_fee%></td>
+                    <td><script>document.write("<%=data.scrb_fee%>".formatCommas());</script></td>
                   </tr>
                 </tbody>
               </table> 

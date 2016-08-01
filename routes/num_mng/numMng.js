@@ -4,18 +4,18 @@ module.exports = function(app, Numrsc) {
     app.get('/num_mng', function(req, res) {
         Numrsc.find({}).sort('svc_num').exec(function(err, numrscs){
             if(err)return console.log("Data ERROR:",err);
-            res.render('num_mng/list',{data:numrscs, user_session:req.session});
+            res.render('num_mng/list',{data:numrscs});
         });
     });
     
     // new
     app.get('/num_mng/new', function(req, res) {
-      res.render('num_mng/new');
+      res.render('num_mng/new', {});
     });
     app.post('/num_mng', function(req, res) {
         Numrsc.create(req.body.numrsc,function(err,numrsc){
             if(err)return console.log("Data ERROR:",err);
-            res.redirect('/num_mng');
+            res.redirect('num_mng');
         });
     });
     app.put('/num_mng/:id', function(req, res) {
@@ -28,6 +28,11 @@ module.exports = function(app, Numrsc) {
     
     // 골드번호 유형 선택
     app.get('/num_mng/goldList', function(req, res) {
+      if (!req.session.svc_num) {
+          res.render('intro',{msg:'Termination Session! Try Login.'});
+          return;
+      }
+      
       res.render('num_mng/goldList',{data:null, user_session:req.session});
     });
     // 골드번호 라인번호 선택
@@ -40,7 +45,7 @@ module.exports = function(app, Numrsc) {
                   count: { $sum: 1 }
                 }
               },
-              { $sort : { exg_num : 1} }
+              { $sort : { line_num : 1} }
       
         ], function (err, numrscs) {
                 if(err)return console.log("Data ERROR:",err);
@@ -63,12 +68,16 @@ module.exports = function(app, Numrsc) {
         
     // show
     app.get('/num_mng/:id', function(req, res) {
+      if (!req.session.svc_num) {
+          res.render('intro',{msg:'Termination Session! Try Login.'});
+          return;
+      }
         
-         Numrsc.findById(req.params.id, function(err,numrscs){
+        Numrsc.findById(req.params.id, function(err,numrscs){
             if(err)return console.log("Data ERROR:",err);
             res.render('num_mng/show',{data:numrscs, user_session:req.session});
             // res.json({numrscs});
-         });
+        });
     });
     
 }
