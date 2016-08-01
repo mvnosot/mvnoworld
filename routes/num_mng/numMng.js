@@ -2,25 +2,20 @@ module.exports = function(app, Numrsc) {
     
     // list
     app.get('/num_mng', function(req, res) {
-      if (!req.session.svc_num) {
-          res.render('intro',{msg:'Termination Session! Try Login.'});
-          return;
-      }
-        
         Numrsc.find({}).sort('svc_num').exec(function(err, numrscs){
             if(err)return console.log("Data ERROR:",err);
-            res.render('num_mng/list',{data:numrscs, user_session:req.session});
+            res.render('num_mng/list',{data:numrscs});
         });
     });
     
     // new
     app.get('/num_mng/new', function(req, res) {
-      res.render('num_mng/new', {user_session:req.session});
+      res.render('num_mng/new', {});
     });
     app.post('/num_mng', function(req, res) {
         Numrsc.create(req.body.numrsc,function(err,numrsc){
             if(err)return console.log("Data ERROR:",err);
-            res.redirect('/num_mng', {user_session:req.session});
+            res.redirect('num_mng');
         });
     });
     app.put('/num_mng/:id', function(req, res) {
@@ -50,7 +45,7 @@ module.exports = function(app, Numrsc) {
                   count: { $sum: 1 }
                 }
               },
-              { $sort : { exg_num : 1} }
+              { $sort : { line_num : 1} }
       
         ], function (err, numrscs) {
                 if(err)return console.log("Data ERROR:",err);
