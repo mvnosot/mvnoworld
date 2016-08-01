@@ -67,6 +67,11 @@ img {
   padding-top: 2px;
 }
 
+.first {
+  margin-top:20px; 
+  margin-bottom:10px
+}
+
 .mvno_info {
   color: #ffffff;
 }
@@ -108,13 +113,13 @@ img {
 
 .cust_progbar_box {
   width: 32%;
-  padding-top: 60px;
+  padding-top: 30px;
   padding-right: 12px;
 }
 
 @media (max-width: 600px) {
   .cust_progbar_box {
-    padding-top: 0px;
+    padding-top: 3px;
     width: 100%;
   }
   
