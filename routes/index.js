@@ -44,32 +44,33 @@ module.exports = function(app, UserModel) {
         // pswd : req.body.userpswd
       };  // 사용자 요청 정보
     
-      UserModel.findOne({phone_number:req.body.inputPN},function(err,data){
-        if(err) return console.log("Data ERROR:",err);
-        if(!data){
-          // 비밀번호가 일치하지 않는 경우
-          res.redirect('/');
-          return;
-        }
-        // console.log("111111111111111111", req.body.inputPN);
-        // console.log("111111111111111111", data);
-        // console.log("UserModel.svc_num:", UserModel.svc_num);
-        // console.log("data.phone_number:", data.phone_number);
-        if(req.body.inputPN == data.phone_number){
-
-          // 서비스 번호 존재
-          req.session.regenerate(function (err) {
-            if(err){
-              console.log(err);
-            } else {
-              req.session.svc_num = data.phone_number;
-              req.session.name = data.name;
-              req.session.mvno_cd = data.mvno_cd;
-              req.session.mvno_nm = data.mvno_nm;
-              res.redirect('/main');
-            }
-          });
-        } else {
+      UserModel.findOne({phone_number:req.body.inputPN},
+        function(err,data){
+          if(err) return console.log("Data ERROR:",err);
+          if(!data){
+            // 비밀번호가 일치하지 않는 경우
+            res.redirect('/');
+            return;
+          }
+          // console.log("111111111111111111", req.body.inputPN);
+          // console.log("111111111111111111", data);
+          // console.log("UserModel.svc_num:", UserModel.svc_num);
+          // console.log("data.phone_number:", data.phone_number);
+          if(req.body.inputPN == data.phone_number){
+  
+            // 서비스 번호 존재
+            req.session.regenerate(function (err) {
+              if(err){
+                console.log(err);
+              } else {
+                req.session.svc_num = data.phone_number;
+                req.session.name = data.name;
+                req.session.mvno_cd = data.mvno_cd;
+                req.session.mvno_nm = data.mvno_nm;
+                res.redirect('/main');
+              }
+            }          );
+          } else {
 
           // 비밀번호가 일치하지 않는 경우
           //res.render('/',{msg:"서비스번호를 확인하세요"});

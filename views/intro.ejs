@@ -6066,6 +6066,11 @@ a.text-danger:focus, a.text-danger:hover {
 </style>
 
 <script type="text/javascript">
+     var generateRandom = function (min, max) {
+     var ranNum = Math.floor(Math.random()*max) + min;
+      return ranNum;
+
+
       var confirmCheck = false;
       function authSendOnclick() {
         alert("전송하였습니다.");
@@ -6151,32 +6156,7 @@ a.text-danger:focus, a.text-danger:hover {
                             </div>
                         </div>
 
-          <!--<div class="col-md-12 text-xs-center">-->
-          <!--  <div class="section">-->
-          <!--    <div class="container">-->
-          <!--        <div class="col-md-5"></div>-->
-          <!--        <div class="col-md-2">-->
-                        <!-- hidden -->
-          <!--              <div id="collapse1" class="panel-collapse collapse">-->
-          <!--                  <div class="row">-->
-          <!--                      <form class="form-signin" action="/login" method="post" onSubmit="return loginSubmit()">-->
-          <!--                        <div>-->
-          <!--                            <label for="inputPN">휴대전화번호</label>-->
-          <!--                            <input type="text" name="inputPN" class="form-control" placeholder="EX) 01098761111" required autofocus>-->
-          <!--                            <label for="inputBirth">인증Key</label></label>-->
-          <!--                            <input type="text" name="inputBirth" class="form-control" placeholder="EX) 820805" required>-->
-          <!--                        </div>-->
-          <!--                        <div class="text-xs-center" style="margin-top:1rem">-->
-          <!--                            <button class="btn btn-primary" type="submit">LOG IN</button>-->
-          <!--                        </div>-->
-          <!--                      </form>-->
-          <!--                  </div>-->
-          <!--              </div>-->
-          <!--        </div>-->
-          <!--        <div class="col-md-5"></div>  -->
-          <!--    </div>-->
-          <!--  </div>-->
-          <!--</div>-->
+         
 
     </div>
   </div>
