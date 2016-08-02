@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/earlyaccess/jejugothic.css");
+
 .container-fluid {
   margin-bottom: 15px;
 }
@@ -285,7 +287,7 @@ h6 {
   background-clip: padding-box;
   width: 190px;
   text-align: center;
-  font-family: 'Oswald_reg';
+  font-family: 'Jeju Gothic', sans-serif;
   text-transform: uppercase;
   line-height: 34px;
   font-size: 16px;
