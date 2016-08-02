@@ -33,7 +33,7 @@
       function initDataProgress() {
         var full_data = <%=data.full_data%>;
         var use_data = <%=data.use_data%>;
-        var per_data = Math.round(use_data/full_data*100);
+        var per_data = Math.round((full_data - use_data)/full_data*100);
         var per_data_str = per_data+'%';
         
         var data_prog = document.getElementById("data_prog");
@@ -52,7 +52,7 @@
       function initVoiceProgress() {
         var full_voice = <%=data.full_voice%>
         var use_voice = <%=data.use_voice%>
-        var per_voice = Math.round(use_voice/full_voice*100);
+        var per_voice = Math.round((full_voice - use_voice)/full_voice*100);
         var per_voice_str = per_voice+'%';
         
         var voice_prog = document.getElementById("voice_prog");
@@ -71,7 +71,7 @@
       function initSmsProgress() {
         var full_sms = <%=data.full_sms%>;
         var use_sms = <%=data.use_sms%>;
-        var per_sms = Math.round(use_sms/full_sms*100);
+        var per_sms = Math.round((full_sms - use_sms)/full_sms*100);
         var per_sms_str = per_sms+'%';
         
         var sms_prog = document.getElementById("sms_prog");

@@ -14,7 +14,7 @@ module.exports = function(app, User) {
       // update inputSN
       User.findOneAndUpdate({phone_number:req.params.id}, {input_sn: inputSN}, function(err,cust){
           if(err)return console.log("Update ERROR:",err);
-          console.log(">>>inputSN : " + inputSN);
+          console.log(">>>phone_number: " + req.params.id +", inputSN : " + inputSN);
       });
       
       // response
