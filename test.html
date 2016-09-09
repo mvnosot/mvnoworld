@@ -69,11 +69,16 @@
             function onLoad() {
                 document.addEventListener('deviceready', onDeviceReady, false);
 
+                showMain();
+                
                 $('.menu .item').tab();
             }
 
             function onDeviceReady() {
                 println('onDeviceReady 호출됨.');
+                doOpenDatabase();
+                doCreateTable();
+                
             }
 
             function doCapture(){
@@ -203,7 +208,7 @@
                     var dtm = results.rows.item(i).dtm;
                     
                     $('#cont_list').append("<div class='item'>");
-                    $('#cont_list').append("<img src='" + uri + "' width=30 height=30 />");
+                    $('#cont_list').append("<img src='" + uri + "' onclick='showPreview(uri)' width=30 height=30 />");
                     $('#cont_list').append("<div class='content'>");
                     $('#cont_list').append("<a class='header'>" + title +" (" + dtm + ")</a>");
                     $('#cont_list').append("<div class='description'>" + content + "</div>");
@@ -224,11 +229,21 @@
             function onTransactionError() {
 
             }
-
-            function println(data) {
-                $('#results').append('<p>' + data + '</p>');
+        
+            function showMain(){
+                $('#container').show();
+                $('#card_preview').hide();
+            }
+        
+            function showPreview(img_uri){
+                $('#container').hide();
+                $('#card_preview').show();
+                $('#card_preview_img').html("<p>aaa</p><img src='" + img_uri + "' width=500 height=500 />");
             }
 
+            function println(data) {
+//                $('#results').append('<p>' + data + '</p>');
+            }
         </script>
 
 </head>
@@ -254,7 +269,7 @@
                             <div class="cont_row">
                                 <div class="cont_col"></div>
                                 <div class="cont_col">
-                                    <div class="ui label" id="cont_cnt">Total 23</div>
+                                    <div class="ui label" id="cont_cnt"></div>
                                 </div>
                             </div>
                         </div>
@@ -271,10 +286,10 @@
                         <div class="cont_table">
                             <div class="cont_row">
                                 <div class="ui fluid input">
-                                    제목 : <input type="text" id="data_title">
+                                    제목&nbsp;<input type="text" id="data_title">
                                 </div>
                                 <div class="ui fluid input">
-                                    내용 : <input type="text" id="data_content">
+                                    내용&nbsp;<input type="text" id="data_content">
                                 </div>
                                 <input type="hidden" id="data_uri">
                                 <input type="hidden" id="data_createdAt">
@@ -282,6 +297,7 @@
                             <div class="cont_row">
                                 <div class="cont_col_pic">
                                     <div id="canvasContainer" onclick="doCapture()">
+                                        클릭하여 사진찍기
                                     </div>
                                 </div>
                             </div>
@@ -320,20 +336,27 @@
                 </div>
 
                 <hr>
-                <p>Debugging:</p>
-                <input type="button" class="ui primary button" value="1.db connect" onclick="doOpenDatabase()">
-                <input type="button" class="ui primary button" value="2.create table" onclick="doCreateTable()">
-                <div>
                     <!-- hidden -->
-                    <input type="text" value="picture5.db" id="database_name">
-                    <input type="text" value="picture5" id="table_name">
-                </div>
+                    <input type="hidden" value="picture5.db" id="database_name">
+                    <input type="hidden" value="picture5" id="table_name">
                 <div id="results"></div>
             </div>
         </div>
     </div>
 
 
+</div>
+    
+<div id="card_preview" class="ui raised segment widthset">
+    <div class="ui raised segment widthset">
+        <a class="ui blue ribbon label">Preview</a>
+        <div class="ui blue fluid card widthset">
+            <div class="content widthset">
+                <div id="card_preview_img" ></div>
+                <input type="button" class="ui primary button" value="닫기" onclick="showMain()">
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="cordova.js"></script>
