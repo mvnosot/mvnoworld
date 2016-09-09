@@ -149,7 +149,13 @@
                 var data_title = $('#data_title').val();
                 var data_content = $('#data_content').val();
                 var data_uri = uri;
-                var data_createdAt = '20160908';
+                
+                var date = new Date(Date.UTC(2013, 1, 1, 14, 0, 0));
+                var options = {
+                    weekday: "long", year: "numeric", month: "short",
+                    day: "numeric", hour: "2-digit", minute: "2-digit"
+                };
+                var data_createdAt = date.toLocaleTimeString("en-us", options);
 
                 var sql = 'INSERT INTO ' + table_name + ' VALUES(?,?,?,?)';
                 tx.executeSql(sql, [data_title, data_content, data_uri, data_createdAt], onSqlSuccess, onSqlError);
@@ -188,15 +194,24 @@
             function onSelectSuccess(tx, results) {
                 var cnt = results.rows.length;
                 println('onSelectSuccess: 조회한 레코드 수: ' + cnt);
+                $('#cont_cnt').html('Total ' + cnt);
 
                 for(var i = 0; i < cnt; i++) {
-                    var a = results.rows.item(i).title;
-                    var b = results.rows.item(i).content;
-                    var c = results.rows.item(i).uri;
-                    var d = results.rows.item(i).dtm;
+                    var title = results.rows.item(i).title;
+                    var content = results.rows.item(i).content;
+                    var uri = results.rows.item(i).uri;
+                    var dtm = results.rows.item(i).dtm;
                     
-//                    $('#cont_list').append('#' + i + ':' + a + ',' + b + ',' + c + ',' + d);
-                    println('결과: ' + a+b+c+d);
+                    $('#cont_list').append("<div class='item'>");
+                    $('#cont_list').append("<img src='" + uri + "' width=30 height=30 />");
+                    $('#cont_list').append("<div class='content'>");
+                    $('#cont_list').append("<a class='header'>" + title +" (" + dtm + ")</a>");
+                    $('#cont_list').append("<div class='description'>" + content + "</div>");
+                    $('#cont_list').append("</div>");
+                    $('#cont_list').append("</div>");
+
+                    
+                    println('결과: ' + title + "," + uri);
                 }
             }
             function onSelectError() {
@@ -244,33 +259,8 @@
                             </div>
                         </div>
                         <!-- list -->
-                        <div id="cont_list">
-                        </div>
-<!--
                         <div class="ui relaxed divided list" id="cont_list">
-                            <div class="item">
-                                <i class="large github middle aligned icon"></i>
-                                <div class="content">
-                                    <a class="header">Semantic-Org/Semantic-UI</a>
-                                    <div class="description">Updated 10 mins ago</div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <i class="large github middle aligned icon"></i>
-                                <div class="content">
-                                    <a class="header">Semantic-Org/Semantic-UI-Docs</a>
-                                    <div class="description">Updated 22 mins ago</div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <i class="large github middle aligned icon"></i>
-                                <div class="content">
-                                    <a class="header">Semantic-Org/Semantic-UI-Meteor</a>
-                                    <div class="description">Updated 34 mins ago</div>
-                                </div>
-                            </div>
                         </div>
--->
 
                     </div>
                 </div>
@@ -335,8 +325,8 @@
                 <input type="button" class="ui primary button" value="2.create table" onclick="doCreateTable()">
                 <div>
                     <!-- hidden -->
-                    <input type="text" value="picture2.db" id="database_name">
-                    <input type="text" value="picture2" id="table_name">
+                    <input type="text" value="picture5.db" id="database_name">
+                    <input type="text" value="picture5" id="table_name">
                 </div>
                 <div id="results"></div>
             </div>
