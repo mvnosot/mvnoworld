@@ -78,7 +78,7 @@
                 println('onDeviceReady 호출됨.');
                 doOpenDatabase();
                 doCreateTable();
-                
+                doSelectData();
             }
 
             function doCapture(){
@@ -163,13 +163,18 @@
                 var data_createdAt = date.toLocaleTimeString("en-us", options);
 
                 var sql = 'INSERT INTO ' + table_name + ' VALUES(?,?,?,?)';
-                tx.executeSql(sql, [data_title, data_content, data_uri, data_createdAt], onSqlSuccess, onSqlError);
+                tx.executeSql(sql, [data_title, data_content, data_uri, data_createdAt], onSqlSuccess2, onSqlError);
 
                 println('데이터를 추가했습니다.: ' + data_title + "," + data_content + "," + data_uri + "," + data_createdAt);
+                
             }
         
             function onSqlSuccess(){
                 println('onSqlSuccess');
+            }
+            function onSqlSuccess2(){
+                println('onSqlSuccess');
+                doSelectData();
             }
             function onSqlError(){
                 println('onSqlError');
@@ -207,7 +212,7 @@
                     var uri = results.rows.item(i).uri;
                     var dtm = results.rows.item(i).dtm;
                     
-                    $('#cont_list').append("<div class='item'>");
+                    $('#cont_list').html("<div class='item'>");
                     $('#cont_list').append("<img src='" + uri + "' onclick='showPreview(uri)' width=30 height=30 />");
                     $('#cont_list').append("<div class='content'>");
                     $('#cont_list').append("<a class='header'>" + title +" (" + dtm + ")</a>");
@@ -215,7 +220,7 @@
                     $('#cont_list').append("</div>");
                     $('#cont_list').append("</div>");
 
-                    
+                                                            
                     println('결과: ' + title + "," + uri);
                 }
             }
@@ -238,7 +243,7 @@
             function showPreview(img_uri){
                 $('#container').hide();
                 $('#card_preview').show();
-                $('#card_preview_img').html("<p>aaa</p><img src='" + img_uri + "' width=500 height=500 />");
+                $('#card_preview_img').html("<p>aaa</p><img src='" + img_uri + "' width=100 height=100 />");
             }
 
             function println(data) {
@@ -257,7 +262,7 @@
                 <h1>Instagura</h1>
 
                 <div class="ui top attached tabular menu">
-                    <a class="item active" data-tab="first">사진목록</a>
+                    <a class="item active" data-tab="first" id="tab_1">사진목록</a>
                     <a class="item" data-tab="second">사진찍기</a>
                     <a class="item" data-tab="third">About</a>
                 </div>
@@ -304,7 +309,6 @@
                             
                             <div class="cont_row">
                                 <input type="button" class="ui primary button" value="저장" onclick="doInsertData()">
-                                <input type="button" class="ui primary button" value="목록" onclick="doSelectData()">
                             </div>
                         </div>
                     </div>
