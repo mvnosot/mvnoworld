@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" id="viewport" content="width=device-width, height=device-height, initial-scale=1">
+
+    <title>과제03</title>
+
+    <link rel="stylesheet" type="text/css" href="semantic.min.css">
+
+    <style>
+        * {
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        }
+
+        html,body {
+        width:100%;
+        height:100%;
+        }
+
+        .cont_table{
+        border:0;
+        width:100%;
+        height:100%;
+        display:table;
+        }
+
+        .cont_row{
+        text-align: center;
+        vertical-align: middle;
+        display: table-row;
+        }
+
+        .cont_col{
+        width: 50%;
+        text-align: right;
+        display: table-cell;
+        }
+
+        .cont_col_pic{
+        width: 100%;
+        height: 200px;
+        text-align: center;
+        vertical-align: middle;
+        display: table-cell;
+        }
+
+        #canvasContainer {
+        width: 100%;
+        height: 100%;
+        border: 1px solid blue;
+        }
+
+    </style>
+
+    <script src="jquery-3.1.0.min.js"></script>
+    <script src="semantic.min.js"></script>
+    <script>
+            var database_name;
+            var database;
+
+            var canvas01;
+            var context;
+            var uri;
+
+
+            function onLoad() {
+                document.addEventListener('deviceready', onDeviceReady, false);
+
+                $('.menu .item').tab();
+            }
+
+            function onDeviceReady() {
+                println('onDeviceReady 호출됨.');
+            }
+
+            function doCapture(){
+                navigator.device.capture.captureImage(
+                    onCaptureSuccess,
+                    onCaptureError,
+                    {limit:1});
+            }
+
+            function onCaptureSuccess(fileList){
+                var canvasContainer = document.getElementById('canvasContainer');
+                
+                println('onCaptureSuccess 호출됨 : ' + fileList.length);
+                var count = fileList.length;
+                for (var i = 0; i < count; i++) {
+                    uri = fileList[i].fullPath;
+                    $('#canvasContainer').html('<img src=' + uri 
+                                               + " width=" + canvasContainer.offsetWidth 
+                                               + " height=" + canvasContainer.offsetHeight
+                                               + " />");
+                }
+            }
+
+            function onCaptureError(){
+                    println('onCaptureError');
+            }
+
+            function doOpenDatabase(){
+                database_name = $('#database_name').val();
+
+                database = window.openDatabase(database_name, "1.0", "customer", 50000);
+
+                if(database){
+                    println('데이터베이스를 오픈했습니다 : ' + database_name);
+                }
+            }
+
+            function doCreateTable(){
+                if(database) {
+                    database.transaction(
+                        executeCreateTable,
+                        onTransactionError,
+                        onTransactionSuccess);
+                }
+                else {
+                    println('데이터베이스를 먼저 오픈하세요.');
+                }
+            }
+
+            function doInsertData (){
+                if(database) {
+                    database.transaction(
+                        executeInsertData,
+                        onTransactionError,
+                        onTransactionSuccess);
+                }
+                else {
+                    println('데이터베이스를 먼저 오픈하세요.');
+                }
+            }
+
+            function executeCreateTable (tx) {
+                var table_name = $('#table_name').val();
+                var sql = 'CREATE TABLE ' + table_name + '(title text, content text, uri text, dtm text)';
+                tx.executeSql(sql, [], onSqlSuccess, onSqlError);
+
+                println('테이블을 만들었습니다. : ' + table_name);
+            }
+
+            function executeInsertData(tx) {
+                var table_name = $('#table_name').val();
+                
+                var data_title = $('#data_title').val();
+                var data_content = $('#data_content').val();
+                var data_uri = uri;
+                var data_createdAt = '20160908';
+
+                var sql = 'INSERT INTO ' + table_name + ' VALUES(?,?,?,?)';
+                tx.executeSql(sql, [data_title, data_content, data_uri, data_createdAt], onSqlSuccess, onSqlError);
+
+                println('데이터를 추가했습니다.: ' + data_title + "," + data_content + "," + data_uri + "," + data_createdAt);
+            }
+        
+            function onSqlSuccess(){
+                println('onSqlSuccess');
+            }
+            function onSqlError(){
+                println('onSqlError');
+            }
+
+            function doSelectData(){
+                if(database) {
+                    database.transaction(
+                        executeSelectData,
+                        onTransactionError,
+                        onTransactionSuccess);
+                }
+                else {
+                    println('데이터베이스를 먼저 오픈하세요.');
+                }
+            }
+
+            function executeSelectData (tx){
+                println('executeSelectData 실행');
+                
+                var table_name = $('#table_name').val();
+
+                var sql = 'SELECT title,content,uri,dtm FROM ' + table_name;
+                tx.executeSql(sql,[],onSelectSuccess, onSelectError);
+            }
+
+            function onSelectSuccess(tx, results) {
+                var cnt = results.rows.length;
+                println('onSelectSuccess: 조회한 레코드 수: ' + cnt);
+
+                for(var i = 0; i < cnt; i++) {
+                    var a = results.rows.item(i).title;
+                    var b = results.rows.item(i).content;
+                    var c = results.rows.item(i).uri;
+                    var d = results.rows.item(i).dtm;
+                    
+//                    $('#cont_list').append('#' + i + ':' + a + ',' + b + ',' + c + ',' + d);
+                    println('결과: ' + a+b+c+d);
+                }
+            }
+            function onSelectError() {
+
+            }
+
+            function onTransactionSuccess() {
+
+            }
+            function onTransactionError() {
+
+            }
+
+            function println(data) {
+                $('#results').append('<p>' + data + '</p>');
+            }
+
+        </script>
+
+</head>
+<body>
+
+<div id="container">
+    <div id="card_container" class="ui raised segment widthset">
+        <a class="ui blue ribbon label">과제03</a>
+        <div class="ui blue fluid card widthset">
+            <div class="content widthset">
+                <h1>Instagura</h1>
+
+                <div class="ui top attached tabular menu">
+                    <a class="item active" data-tab="first">사진목록</a>
+                    <a class="item" data-tab="second">사진찍기</a>
+                    <a class="item" data-tab="third">About</a>
+                </div>
+                
+                <!-- 사진목록 -->
+                <div class="ui bottom attached tab segment active" data-tab="first">
+                    <div id="menu01">
+                        <div class="cont_table">
+                            <div class="cont_row">
+                                <div class="cont_col"></div>
+                                <div class="cont_col">
+                                    <div class="ui label" id="cont_cnt">Total 23</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- list -->
+                        <div id="cont_list">
+                        </div>
+<!--
+                        <div class="ui relaxed divided list" id="cont_list">
+                            <div class="item">
+                                <i class="large github middle aligned icon"></i>
+                                <div class="content">
+                                    <a class="header">Semantic-Org/Semantic-UI</a>
+                                    <div class="description">Updated 10 mins ago</div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="large github middle aligned icon"></i>
+                                <div class="content">
+                                    <a class="header">Semantic-Org/Semantic-UI-Docs</a>
+                                    <div class="description">Updated 22 mins ago</div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <i class="large github middle aligned icon"></i>
+                                <div class="content">
+                                    <a class="header">Semantic-Org/Semantic-UI-Meteor</a>
+                                    <div class="description">Updated 34 mins ago</div>
+                                </div>
+                            </div>
+                        </div>
+-->
+
+                    </div>
+                </div>
+                
+                <!-- 사진찍기 -->
+                <div class="ui bottom attached tab segment" data-tab="second">
+                    <div id="menu02">
+                        <div class="cont_table">
+                            <div class="cont_row">
+                                <div class="ui fluid input">
+                                    제목 : <input type="text" id="data_title">
+                                </div>
+                                <div class="ui fluid input">
+                                    내용 : <input type="text" id="data_content">
+                                </div>
+                                <input type="hidden" id="data_uri">
+                                <input type="hidden" id="data_createdAt">
+                            </div>
+                            <div class="cont_row">
+                                <div class="cont_col_pic">
+                                    <div id="canvasContainer" onclick="doCapture()">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="cont_row">
+                                <input type="button" class="ui primary button" value="저장" onclick="doInsertData()">
+                                <input type="button" class="ui primary button" value="목록" onclick="doSelectData()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- about-->
+                <div class="ui bottom attached tab segment" data-tab="third">
+                    <div id="menu03">
+                        <div id="menu02">
+                            <div class="cont_table">
+                                <div class="cont_row">
+                                    <div class="cont_col_pic">
+                                        <div class="ui card">
+                                            <a class="image" href="#">
+                                                <img src="steve.jpg">
+                                            </a>
+                                            <div class="content">
+                                                <a class="header" href="#">Steve Jobes</a>
+                                                <div class="meta">
+                                                    <a>Last Seen 2 days ago</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+                <p>Debugging:</p>
+                <input type="button" class="ui primary button" value="1.db connect" onclick="doOpenDatabase()">
+                <input type="button" class="ui primary button" value="2.create table" onclick="doCreateTable()">
+                <div>
+                    <!-- hidden -->
+                    <input type="text" value="picture2.db" id="database_name">
+                    <input type="text" value="picture2" id="table_name">
+                </div>
+                <div id="results"></div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="cordova.js"></script>
+<script>
+            onLoad();
+        </script>
+
+</body>
+</html>
